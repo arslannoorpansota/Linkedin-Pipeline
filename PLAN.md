@@ -16,6 +16,7 @@
 - [ ] Create email alias: `partnerships@electrocomit.com`
 - [ ] Google Sheet created (columns from `sheets/SCHEMA.md`)
 - [ ] LinkedIn profile optimized (Arslan: headline = "Chief Technology Officer | AI/ML Engineering | LLMs · RAG · AWS | 8+ Years Building at Scale")
+  - [x] About section rewritten to match CTO headline — drafts ready (long / short / third-person), first-person recommended. Pending: paste live on LinkedIn, then check parent box.
 - [ ] ElectroCom IT LinkedIn company page reviewed and updated
 - [ ] Calendly link active (30-min discovery call, link in outreach)
 - [ ] Resend / email client configured for outreach sending

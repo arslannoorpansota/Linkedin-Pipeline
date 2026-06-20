@@ -50,6 +50,9 @@
 **Value proposition:**  
 US company accountability + offshore delivery cost → enterprise-quality output at startup-friendly rates.
 
+**Positioning for partner outreach (Type B / Type C leads):**  
+Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontractor. The ask is always a development partnership, not a project quote.
+
 ---
 
 ## 3. Arslan's Personal Brand (for individual role outreach)

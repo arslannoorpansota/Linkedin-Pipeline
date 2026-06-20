@@ -24,9 +24,9 @@ ElectroCom IT is a US-registered company with a dev team in Pakistan. We build w
 
 | Type | Use when | Tone |
 |---|---|---|
-| **Partner** | They run a consultancy / agency that does tech transformation and needs delivery capacity | Peer-to-peer, specific to their client work |
+| **Partner** | They run a consultancy / agency that does tech transformation and needs a development partner | Peer-to-peer, specific to their client work — frame as "AI + development partnership" |
 | **Direct Client** | They're a CTO/founder at a funded company that needs to build AI or web products | Helpful, outcome-focused, not salesy |
-| **Anthropic Partner** | They're at a Claude/AI partner firm and might need implementation support | Technical peer, reference Claude/AI shared context |
+| **Anthropic Partner** | They're at a Claude/AI partner firm and might need AI development capacity for client engagements | Technical peer, reference Claude/AI shared context — frame as "AI + development partnership" |
 | **Hire (Individual)** | They're hiring a senior AI engineer or CTO and Arslan fits | First-person, personal, concise |
 
 ---
@@ -60,7 +60,8 @@ Always output BOTH of the following:
 3. **Value framing = 1 sentence.** What can I offer them specifically.
 4. **One soft ask.** "Worth a quick call?" or "Open to connecting?" Never "Please respond ASAP."
 5. **Never use:** "world-class," "best in class," "I noticed your impressive profile," "I hope this message finds you well"
-6. **Never pitch features.** Pitch outcomes: "ship faster," "reduce AI infrastructure cost," "extend your delivery capacity"
+6. **Never pitch features.** Pitch outcomes: "ship faster," "reduce AI infrastructure cost," "scale AI delivery"
+8. **For Partner / Anthropic Partner DMs:** always frame as a **development partnership** — use "development partner" not "vendor" or "subcontractor." The positioning is AI + Development, not just delivery.
 7. **Write as Arslan personally** — "I" not "we"
 
 ---

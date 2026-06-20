@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faizan Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <div class="nav-brand">Faizan</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow">Professional Web Portfolio</p>
+                <h1>Hi, I’m Faizan.</h1>
+                <p>Front-end developer building modern, responsive websites with clean code and thoughtful design.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="button primary">View Projects</a>
+                    <a href="#contact" class="button secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="hero-image"></div>
+                <div class="hero-stats">
+                    <div>
+                        <strong>8+</strong>
+                        <span>Projects</span>
+                    </div>
+                    <div>
+                        <strong>3</strong>
+                        <span>Technologies</span>
+                    </div>
+                    <div>
+                        <strong>1</strong>
+                        <span>Goal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-surface" id="about">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>I create digital experiences that help brands connect with their audience.</p>
+            </div>
+            <div class="about-grid">
+                <div>
+                    <p>I am a detail-oriented developer skilled in HTML, CSS, JavaScript, and modern front-end workflows. I enjoy turning ideas into polished interfaces with strong usability and performance.</p>
+                </div>
+                <div class="skills-list">
+                    <div><strong>Core Skills</strong></div>
+                    <span>Responsive Design</span>
+                    <span>UI Design</span>
+                    <span>JavaScript</span>
+                    <span>Performance</span>
+                    <span>Accessibility</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-surface" id="services">
+            <div class="section-header">
+                <h2>Services</h2>
+                <p>How I can help bring your next project to life.</p>
+            </div>
+            <div class="cards-grid">
+                <article class="service-card">
+                    <h3>Website Design</h3>
+                    <p>Responsive layouts, modern visuals, and a polished user experience across devices.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Front-End Development</h3>
+                    <p>Clean HTML, scalable CSS, and dynamic JavaScript for interactive interfaces.</p>
+                </article>
+                <article class="service-card">
+                    <h3>Portfolio Growth</h3>
+                    <p>Project planning, mockup development, and deployment-ready web experiences.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-surface" id="projects">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>A selection of recent work with real value and polished execution.</p>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Personal Portfolio</h3>
+                    <p>A responsive portfolio site showcasing projects, skills, and contact details.</p>
+                    <a href="#contact" class="link">Learn More</a>
+                </article>
+                <article class="project-card">
+                    <h3>Task Manager App</h3>
+                    <p>A lightweight JavaScript app for tracking tasks, deadlines, and progress.</p>
+                    <a href="#contact" class="link">See Details</a>
+                </article>
+                <article class="project-card">
+                    <h3>Landing Page</h3>
+                    <p>Fast and modern landing page design optimized for conversions and clarity.</p>
+                    <a href="#contact" class="link">View Project</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-surface contact-section" id="contact">
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Let’s collaborate on your next project or discuss a new opportunity.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><strong>Email</strong></p>
+                    <a href="mailto:faizan@example.com">faizan@example.com</a>
+                    <p><strong>GitHub</strong></p>
+                    <a href="https://github.com/yourname" target="_blank" rel="noreferrer">github.com/yourname</a>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project" required></textarea>
+
+                    <button type="submit" class="button primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year"></span> Faizan. Built with HTML, CSS & JavaScript.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

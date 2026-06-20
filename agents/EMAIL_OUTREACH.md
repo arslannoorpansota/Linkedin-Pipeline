@@ -11,7 +11,7 @@
 ## Who I Am (Arslan Noor)
 
 I'm Arslan Noor, CTO at ElectroCom IT (Little Elm, TX — Dallas metro). Senior AI Engineer, 8+ years full-stack + AI/ML.  
-Previously founded Effigy.ai (Y Combinator), led engineering at SafetyEQ (Miami, remote), worked with Beam Data (Canada).  
+Co-founded Effigy.ai, led engineering at SafetyEQ (Miami, remote), worked with Beam Data (Canada).  
 ElectroCom IT is a US-registered company with a dev team in Pakistan. We build web products, AI systems, full-stack apps, and managed IT at competitive offshore rates.
 
 **Sending email:** `arslan@electrocomit.com` (all outreach) or `partnerships@electrocomit.com` (partner / agency discussions)  
@@ -84,7 +84,7 @@ AI engineering for your clinical NLP work
 **[EMAIL]**
 Noticed [Company] is scaling your AI team — three senior engineer roles in the last month is a real signal something's moving fast.
 
-I'm Arslan Noor, CTO at ElectroCom IT. I previously built clinical NLP pipelines at SafetyEQ and founded an AI startup through Y Combinator.
+I'm Arslan Noor, CTO at ElectroCom IT. I previously built clinical NLP pipelines at SafetyEQ and co-founded Effigy.ai.
 
 We're a US-registered team with engineers in Pakistan — which means you get senior AI delivery at roughly 40–60% of US contractor rates. If you're building document understanding or summarization features, we could accelerate that without the 3-month hiring lag.
 

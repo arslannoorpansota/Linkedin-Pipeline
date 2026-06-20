@@ -77,3 +77,29 @@ When a profile is pasted:
 5. **Draft DM** (≤150 words): hook → 1 sentence on me → 1 sentence value framing → soft ask
 6. **Check:** no banned phrases, no feature pitch, one ask only, written as Arslan
 7. **Output** both with the `[CONNECTION NOTE]` and `[DIRECT MESSAGE]` labels
+
+---
+
+## Daily Report (Required)
+
+After every run, log the result to today's daily report. See `reports/README.md` for the full protocol.
+
+1. Determine today's date (`YYYY-MM-DD`).
+2. Open `reports/YYYY-MM-DD.md`. If it doesn't exist, create it from the template in `reports/README.md`.
+3. **Append** an entry at the bottom of the Activity Log:
+
+   ```markdown
+   ### YYYY-MM-DD — DM — <Person, Company>
+   - **Agent:** DM
+   - **Target:** <name + company>
+   - **Lead type:** <Partner / Direct Client / Anthropic Partner / Hire>
+   - **Outcome:** Connection note + DM drafted
+   - **Output:**
+
+     <full [CONNECTION NOTE] + [DIRECT MESSAGE] block>
+
+   - **Next action:** Send connection request / Send DM
+
+   ---
+   ```
+4. Increment **DMs written** in the day file's Summary.

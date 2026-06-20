@@ -158,3 +158,29 @@ When context is pasted:
 6. **Draft email body** (max 120 words): hook → who I am → specific value → one CTA
 7. **Check:** no banned phrases, no feature list, one ask only, signed as Arslan
 8. **Output** all three blocks: `[SEND FROM]`, `[SUBJECT]`, `[EMAIL]`
+
+---
+
+## Daily Report (Required)
+
+After every run, log the result to today's daily report. See `reports/README.md` for the full protocol.
+
+1. Determine today's date (`YYYY-MM-DD`).
+2. Open `reports/YYYY-MM-DD.md`. If it doesn't exist, create it from the template in `reports/README.md`.
+3. **Append** an entry at the bottom of the Activity Log:
+
+   ```markdown
+   ### YYYY-MM-DD — EMAIL — <Person, Company>
+   - **Agent:** Email
+   - **Target:** <name + company>
+   - **Lead type:** <Partner / Direct Client / Staff Aug / Hire>
+   - **Outcome:** Cold email drafted (sending from <email>)
+   - **Output:**
+
+     <full [SEND FROM] + [SUBJECT] + [EMAIL] block>
+
+   - **Next action:** Send email
+
+   ---
+   ```
+4. Increment **Emails written** in the day file's Summary.

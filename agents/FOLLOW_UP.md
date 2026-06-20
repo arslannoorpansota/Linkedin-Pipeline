@@ -198,3 +198,29 @@ When context is pasted:
 5. **Output** the full block: `[FOLLOW-UP TYPE]`, `[CHANNEL]`, `[SUBJECT]` (if email), `[MESSAGE]`
 
 6. **Word count check:** FU1 ≤ 40 words. FU2 ≤ 100 words. FU3 ≤ 50 words. Positive ≤ 120 words. Neutral ≤ 50 words.
+
+---
+
+## Daily Report (Required)
+
+After every run, log the result to today's daily report. See `reports/README.md` for the full protocol.
+
+1. Determine today's date (`YYYY-MM-DD`).
+2. Open `reports/YYYY-MM-DD.md`. If it doesn't exist, create it from the template in `reports/README.md`.
+3. **Append** an entry at the bottom of the Activity Log:
+
+   ```markdown
+   ### YYYY-MM-DD — FOLLOW-UP — <Person, Company>
+   - **Agent:** Follow-Up
+   - **Target:** <name + company>
+   - **Lead type:** <Direct Client / Agency Partner / Anthropic Partner / Hire>
+   - **Outcome:** <No Response FU1/FU2/FU3 / Positive / Neutral> drafted
+   - **Output:**
+
+     <full [FOLLOW-UP TYPE] + [CHANNEL] + [SUBJECT] + [MESSAGE] block>
+
+   - **Next action:** Send follow-up (channel: <LinkedIn DM / Email>)
+
+   ---
+   ```
+4. Increment **Follow-ups written** in the day file's Summary.

@@ -215,3 +215,29 @@ Reason: Too small — 2-person team with no funding and a $500 budget. No viable
 6. **Find the hook:** their most recent relevant post, a company announcement, a role change, or a product launch
 7. **Output** the full `[QUALIFIED]` + `[DECISION-MAKER]` + `[TRACKER ROW]` block
 8. If decision-maker can't be found: output company as `[QUALIFIED]` but flag `[DECISION-MAKER] — Not found. Recommend: search LinkedIn for [title] at [company]`
+
+---
+
+## Daily Report (Required)
+
+After every run, log the result to today's daily report. See `reports/README.md` for the full protocol.
+
+1. Determine today's date (`YYYY-MM-DD`).
+2. Open `reports/YYYY-MM-DD.md`. If it doesn't exist, create it from the template in `reports/README.md`.
+3. **Append** an entry at the bottom of the Activity Log:
+
+   ```markdown
+   ### YYYY-MM-DD — LEAD RESEARCH — <Company>
+   - **Agent:** Lead Research
+   - **Target:** <decision-maker name + company>
+   - **Lead type:** <Direct Client / Agency Partner / Anthropic Partner / Hire>
+   - **Outcome:** Qualified <X/10> / Skipped (<reason>)
+   - **Output:**
+
+     <full [QUALIFIED]/[SKIP] + [DECISION-MAKER] + [TRACKER ROW] block>
+
+   - **Next action:** <Send DM / Send connection request / —>
+
+   ---
+   ```
+4. Increment **Leads researched** in the day file's Summary.

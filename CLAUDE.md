@@ -124,6 +124,8 @@ Engineering Directors, Heads of AI, CTOs at companies posting senior AI engineer
 | `agents/EMAIL_OUTREACH.md` | Paste a company/person page → get a cold email (subject + body) |
 | `agents/FOLLOW_UP.md` | Paste thread history → get the right follow-up message |
 
+**Daily reporting is mandatory.** After every agent run, append a dated entry to that day's report in `reports/YYYY-MM-DD.md`. The protocol and entry format live in `reports/README.md`. Every entry is date-stamped, there is one report file per day, and the Summary counters at the top of the day file are updated after each entry.
+
 ---
 
 ## 8. Tracking

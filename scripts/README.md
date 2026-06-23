@@ -26,7 +26,7 @@ You chose **OAuth (your own Google login)**, so the sync writes to a sheet in *y
 
 ### 2. First run (one-time browser consent)
 ```bash
-cd /home/faizan/portfolio
+# Run from the repo root
 scripts/.venv/bin/python scripts/sync_reports_to_sheet.py
 ```
 A browser opens → log in → "Allow". A `token.json` is cached (refreshes itself after this, so cron runs are silent).

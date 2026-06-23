@@ -123,6 +123,7 @@ Engineering Directors, Heads of AI, CTOs at companies posting senior AI engineer
 | `agents/DM_LINKEDIN.md` | Paste a LinkedIn profile → get a personalized DM |
 | `agents/EMAIL_OUTREACH.md` | Paste a company/person page → get a cold email (subject + body) |
 | `agents/FOLLOW_UP.md` | Paste thread history → get the right follow-up message |
+| `agents/SALES_NAV_PLAYBOOK.md` | Sales Navigator targeting + channel strategy (free DM vs InMail vs email) under the 50-InMail/mo cap |
 
 **Daily reporting is mandatory — for ALL work, not just outreach.** After any substantive task in this workspace (outreach agent runs AND profile/company-page setup, generated assets, infra/ops, research — anything that changes a file or produces output), append a dated entry to that day's report in `reports/YYYY-MM-DD.md` before ending the session. The protocol, activity types, and entry format live in `reports/README.md`. Every entry is date-stamped, there is one report file per day, and the Summary counters at the top of the day file are updated after each entry. Trivial chit-chat with no output does not need an entry.
 

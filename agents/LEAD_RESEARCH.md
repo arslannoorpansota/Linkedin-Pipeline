@@ -16,17 +16,20 @@ Apply this before researching anyone at the company. If it fails, output `[SKIP]
 
 | Signal | Target range |
 |---|---|
-| Company size | 10–300 employees |
-| Funding stage | Bootstrapped with revenue / Seed / Series A / Series B |
-| Agency or consultancy | 15–200 people |
-| Budget signals | Posts $10k+ projects, hires senior engineers, describes complex technical builds |
+| Company size | 10–150 employees |
+| Funding stage | Seed / Series A / Series B (raised within the last 18 months) |
+| Engineering hiring signal | Job posts for engineers, or founder publicly stated hiring intent |
+| Budget signals | $3M–$50M raised, hires senior engineers, describes complex AI/full-stack builds |
 
-### Auto-Skip — Too Big
+**Primary focus:** Direct clients (Type A). Agency/consultancy partner (Type B) only if the firm is boutique (<200 people) and does NOT have its own offshore delivery bench.
 
-- 500+ employees, or has a dedicated vendor procurement/sourcing team
-- Publicly traded company
-- Household brand that fields 100+ cold outreaches per day
+### Auto-Skip — Wrong Profile
+
+- Publicly traded company or household brand (Apple, Amazon, GE, etc.) — long procurement cycles, wrong ICP
+- 500+ employees with a dedicated vendor/sourcing team
+- **Large offshore delivery firms** (Intellias, N-iX, ELEKS, Ciklum, Sigma Software, Svitla, etc.) — they have their own offshore bench and are effectively competitors; partnering yields thin margins and low conversion
 - Enterprise procurement cycle (6+ months to sign a contract)
+- Recruiting/talent-marketplace companies (e.g. Clera) — they are not services buyers
 
 ### Auto-Skip — Too Small
 
@@ -45,10 +48,10 @@ Find the real person, not a generic contact. One row per person in the tracker.
 
 | Lead Type | Target role |
 |---|---|
-| **Direct Client** | Founder, CTO, VP Engineering, Head of Product |
-| **Agency Partner** | MD, Head of Engineering, Practice Lead, Delivery Director |
+| **Direct Client** *(primary)* | Founder, CTO, VP Engineering — whoever controls the engineering roadmap |
+| **Boutique Agency Partner** *(selective)* | MD, Head of Engineering, Practice Lead — only at firms <200 people without their own offshore bench |
 | **Anthropic / AI Partner** | Head of AI, VP Engineering, Managing Director |
-| **Hire (Arslan)** | Engineering Director, Head of AI, CTO, Hiring Manager who posted the role |
+| **Hire (Arslan)** *(paused)* | Engineering Director, Head of AI, CTO — only pursue if a strong inbound opportunity surfaces |
 
 ### Tiebreaker rules
 

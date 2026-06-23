@@ -92,26 +92,35 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 
 ## 5. BD Goals (current priority order)
 
-1. **Agency contracts** — clients who need a development team (project-based or retainer)
-2. **Partnership deals** — consulting firms, Anthropic partners, agencies who need delivery capacity
-3. **Staff augmentation** — place 1–3 engineers with a client team
-4. **Individual remote role for Arslan** — senior AI engineer or CTO advisory
+1. **Direct client contracts** — funded startups (Seed–Series B) who need to ship AI or web products; project-based or retainer
+2. **Staff augmentation** — place 1–3 engineers embedded in a client team
+3. **Anthropic / AI partner deals** — companies in the Claude/OpenAI partner network who need AI implementation capacity for their clients
+4. **Individual remote role for Arslan** — paused; revisit only if a genuinely strong inbound appears
+
+> **Single motion rule:** Focus exclusively on direct clients (#1 + #2). Do not run agency-partner outreach, large-enterprise outreach, or "hire Arslan" campaigns simultaneously. Diluted messaging hurts conversion on all tracks.
 
 ---
 
 ## 6. Target Lead Profiles
 
-### Type A — Direct Client
-CTOs, VPs Engineering, Founders at funded startups or mid-size companies in the US/UK/Canada/Australia who need to ship AI or web products but don't have a full in-house team.
+### Type A — Direct Client ✅ PRIMARY FOCUS
+Founders, CTOs, VPs Engineering at **Seed–Series B** companies in the US/UK/Canada/Australia who:
+- Are actively hiring engineers OR just raised capital with an explicit engineering build-out signal
+- Have an AI/ML or complex web product in flight
+- Have a team too small to execute the roadmap in-house (typically <50 engineers)
 
-### Type B — Agency/Consultancy Partner
-Heads of Engineering, Practice Leads, MDs at consultancies (e.g. Zartis, ThoughtWorks, McKinsey Digital) who take on AI transformation engagements and need delivery partners at competitive rates.
+**ICP sweet spot:** 10–150 employees, $3M–$50M raised in the last 18 months, AI-native product, engineering hiring signal visible in job posts or founder announcements.
+
+### Type B — Boutique AI Consultancy Partner ⚠️ NARROW TARGET
+Heads of Engineering, Practice Leads, or MDs at **boutique AI consultancies** (<200 people) who take on AI transformation engagements and need external delivery capacity.
+
+**Hard filter:** Do NOT target large offshore delivery firms (Intellias, N-iX, ELEKS, Ciklum, Sigma Software, Svitla, etc. — 500–5,000 engineers). They have their own offshore bench, operate at thin margins, and are effectively competitors. The only worthwhile partner targets are consultancies that primarily sell strategy/advisory and lack their own delivery team.
 
 ### Type C — Anthropic / AI Platform Partners
-Companies in the Claude/OpenAI partner network who need implementation capacity for their clients.
+Companies in the Claude partner network who need AI engineering capacity for client engagements. Look for the Anthropic "Preferred Partner" or "Anthology Fund" signal — they have active implementation needs and a direct Claude context to anchor the pitch.
 
 ### Type D — Hiring Managers (for Arslan personally)
-Engineering Directors, Heads of AI, CTOs at companies posting senior AI engineer or staff engineer roles.
+**Paused.** Do not run this track simultaneously with Type A. Revisit only if a high-signal inbound arrives or Type A pipeline dries up.
 
 ---
 
@@ -141,7 +150,11 @@ All outreach is logged in Google Sheets. Schema defined in `sheets/SCHEMA.md`.
 ## 9. Tone Rules (apply to ALL outreach)
 
 - **Never lead with a pitch.** Lead with what you noticed about THEM.
+- **Never lead with a pitch.** Lead with what you noticed about THEM.
 - **Be specific.** Reference their actual recent post, company news, or role change.
+- **Hooks must be verifiable.** Only reference a post, talk, or article you can actually link to. If someone replies "which post?" and it doesn't exist, credibility is gone. When no verifiable hook exists, anchor on a company signal (funding round, job posting) instead.
+- **Vary message structure, not just the hook.** Swapping the first line while keeping the same body is still a template. Change the CTA, the value frame, and the body structure across different recipients.
+- **Lead with proof before the ask.** Offer one concrete proof point (a relevant outcome, a brief teardown observation, a specific case) before asking for a call. Cold asking for 20 minutes with no evidence of value lands poorly.
 - **Short is better.** LinkedIn DMs < 200 chars for connection notes (free account hard limit). Messages < 150 words.
 - **One ask only.** Don't stack multiple CTAs.
 - **Soft ask.** "Worth a 20-min call?" not "Please respond ASAP."

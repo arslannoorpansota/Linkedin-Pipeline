@@ -13,7 +13,9 @@ CRON_LINE="$SCHEDULE * * * $WRAPPER"
 MARK="# electrocom-bd-sheet-sync"
 
 # Remove any prior version of our job, then add the new one.
-( crontab -l 2>/dev/null | grep -v "$MARK" ; echo "$CRON_LINE $MARK" ) | crontab -
+# (|| true guards against grep exit 1 / empty crontab under `set -e`.)
+EXISTING="$(crontab -l 2>/dev/null | grep -v "$MARK" || true)"
+printf '%s\n%s\n' "$EXISTING" "$CRON_LINE $MARK" | grep -v '^$' | crontab -
 
 echo "Installed cron job:"
 crontab -l | grep "$MARK"

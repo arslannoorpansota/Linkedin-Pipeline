@@ -10,5 +10,6 @@ LOG="$SCRIPT_DIR/sync.log"
 {
   echo "===== $(date '+%Y-%m-%d %H:%M:%S') sync start ====="
   "$VENV_PY" "$SCRIPT_DIR/sync_reports_to_sheet.py"
+  "$VENV_PY" "$SCRIPT_DIR/format_sheet.py" || echo "(format step skipped)"
   echo "===== sync done ====="
 } >> "$LOG" 2>&1

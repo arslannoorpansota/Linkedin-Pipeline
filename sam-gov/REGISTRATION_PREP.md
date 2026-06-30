@@ -1,32 +1,50 @@
 # SAM.gov Entity Registration — Prep Packet
 
-> **Entity:** ElectroCom IT · **Goal:** Full registration (eligible to bid on US federal awards)
+> **Entity:** ElectroCom Innovations LLC · **Goal:** Complete full registration (eligible to bid on US federal awards)
 > **Owner:** Faizan (BD) · **Reviewer:** Arslan / Zulfiqar
-> Last updated: 2026-06-30
+> Last updated: 2026-07-01
 
-This packet pre-fills everything ElectroCom already knows, flags the data we still need,
+This packet records the confirmed entity status, flags the data we still need,
 recommends NAICS codes, and gives the exact step-by-step for the live SAM.gov flow.
 SAM.gov requires a personal **Login.gov** sign-in and on-site entry of sensitive fields
 (EIN, bank/EFT) — those can't be filled in advance, only prepared.
 
 ---
 
-## STEP 0 — Check if we're already registered (DO THIS FIRST)
+## ⭐ STATUS — CONFIRMED 2026-07-01 (entity search)
 
-Our internal notes say "SAM.gov registered," but that's unconfirmed. Re-registering a
-duplicate entity causes a validation failure, so verify first.
+We are **NOT registering from scratch.** A SAM.gov record already exists and is **ours**
+(confirmed by team). It is stuck at the **UEI-only** stage — full registration was never
+completed, so **we cannot yet bid on federal awards.** The task is to **COMPLETE** it.
 
-1. Go to **sam.gov → Search** (no login needed).
-2. Select the **Entity Information** domain.
-3. Search the legal business name **"ElectroCom"** and the Celina, TX address.
-4. Outcome:
-   - **Found + Active** → we're registered. Switch to **renew/update** path (Entity Workspace → Renew). Stop here, tell the team.
-   - **Found + Inactive/Expired** → registration lapsed. Renew it (don't make a new one).
-   - **Not found** → proceed with new registration below.
+| Field | Confirmed value |
+|---|---|
+| **Legal name** | **ElectroCom Innovations LLC** (NOT "ElectroCom IT" — that's the brand) |
+| **UEI** | **P5Y6JWM2JA53** |
+| **SAM status** | **"ID Assigned"** = UEI only, registration INCOMPLETE → can't bid |
+| **Structure** | LLC |
+| **State** | TX |
+| **Address on SAM** | 1212 Horsemint Dr, Little Elm, TX 75068 ⚠️ (differs from Celina HQ — reconcile, see below) |
+| **UEI assigned** | Jul 4, 2025 |
 
-> Also worth checking: does anyone on the team already hold the **Login.gov** account and
-> **Entity Administrator** role? If a prior employee registered it, we may need to request
-> the admin role rather than start fresh.
+> 🚨 **Internal-notes correction:** CLAUDE.md says "SAM.gov registered." That's misleading —
+> we only have a UEI, not an active registration. Update once registration goes Active.
+
+---
+
+## STEP 0 — Find the account holder (DO THIS FIRST)
+
+Completing the registration requires logging into the **existing** record. Whoever created
+the UEI on **Jul 4, 2025** holds the **Login.gov account + Entity Administrator role.**
+
+- **Ask the team:** *"Who created the SAM.gov UEI last July — whose Login.gov email is it under?"*
+- **If found** → that person signs in: **sam.gov → Workspace → Entity → continue/complete registration.**
+- **If nobody has it / they left** → request the **Entity Administrator role** via SAM.gov
+  (identity-verification process; slower but doable). Federal Service Desk can guide this.
+
+**Reconcile the address:** the SAM record shows Little Elm, but our HQ is Celina. The address
+on SAM must match the LLC's **legal formation / IRS records.** Confirm which address the LLC
+was actually formed under and use that; update it during completion if needed.
 
 ---
 
@@ -34,30 +52,33 @@ duplicate entity causes a validation failure, so verify first.
 
 | Field | Value |
 |---|---|
-| Physical address | 2750 S Preston Rd Ste 1167, Celina, TX 75009, USA |
-| Website | electrocomit.com |
+| Legal name | ElectroCom Innovations LLC |
+| UEI | P5Y6JWM2JA53 |
+| Entity structure | LLC |
+| State | TX |
+| Brand / website | ElectroCom IT · electrocomit.com |
 | Employee count | 11+ |
 | Founded (operating history) | 1998 (telecom roots → full IT services) |
 | Primary business | IT solutions / software / AI-ML engineering |
 
 ---
 
-## STEP 2 — Data we NEED before starting ⚠️ (fill these in)
+## STEP 2 — Data we still NEED to COMPLETE registration ⚠️ (fill these in)
 
-These come from the company's US formation documents and IRS records. **The legal name and
-address must match the IRS EIN letter EXACTLY** or registration fails validation.
+Legal name, UEI, structure and state are now confirmed (see Status box). The fields below
+come from the LLC's formation docs + IRS records. **The legal name "ElectroCom Innovations LLC"
+must match the IRS EIN letter EXACTLY** or the TIN match fails.
 
 | Field | Why it's needed | Value (FILL IN) |
 |---|---|---|
-| **Exact legal business name** | Must match IRS/state filing char-for-char (e.g. "Electrocom IT LLC" vs "ElectroCom IT Inc") | __________ |
-| **Entity structure** | LLC / C-Corp / S-Corp / etc. | __________ |
-| **State of incorporation** | Likely TX | __________ |
-| **US business start date** | Date the US entity was formed (NOT 1998 — that's the telecom origin) | __________ |
-| **EIN / TIN** (9-digit) | IRS taxpayer ID — must match IRS name. *Sensitive — enter on-site only.* | __________ |
+| **Login.gov account holder** | Whoever created the UEI Jul 4 2025 — needed to access the record | __________ |
+| **Correct legal address** | Reconcile Little Elm (on SAM) vs Celina HQ — use the LLC's formation/IRS address | __________ |
+| **LLC formation date** | Date ElectroCom Innovations LLC was formed (NOT 1998) | __________ |
+| **EIN / TIN** (9-digit) | IRS taxpayer ID — must match "ElectroCom Innovations LLC". *Sensitive — on-site only.* | __________ |
 | **Name exactly as on IRS records** | For the IRS TIN match step | __________ |
-| **Bank routing + account #** | For EFT (how the govt pays you). *Sensitive — enter on-site only.* | __________ |
+| **Bank routing + account #** | For EFT (how the govt pays you). *Sensitive — on-site only.* | __________ |
 | **Prior-year annual revenue** | For small-business size determination | __________ |
-| **DBA (if any)** | "Doing business as" name, if different from legal | __________ |
+| **DBA (if any)** | e.g. "ElectroCom IT" as a doing-business-as name | __________ |
 
 ---
 
@@ -131,8 +152,12 @@ minority/disadvantaged-owned status here drive set-aside eligibility.
 ---
 
 ## Outstanding actions
-- [ ] Run Step 0 entity-status check
-- [ ] Fill all ⚠️ fields in Step 2 (from US formation docs + IRS letter)
+- [x] Run entity-status check → FOUND: ElectroCom Innovations LLC, UEI P5Y6JWM2JA53, status "ID Assigned"
+- [x] Confirm it's our company → YES (team confirmed)
+- [ ] **Identify the Login.gov account holder who created the UEI Jul 4 2025** ← critical blocker
+- [ ] Reconcile address (Little Elm on SAM vs Celina HQ — use legal formation address)
+- [ ] Fill remaining ⚠️ fields in Step 2 (formation date, EIN, EFT bank, revenue)
 - [ ] Confirm POC mapping (Step 3)
 - [ ] Confirm primary + secondary NAICS (Step 4)
-- [ ] Decide who holds the Login.gov / Entity Admin account
+- [ ] Log into Workspace → Entity → complete full registration (ID Assigned → Active)
+- [ ] Once Active: correct the "SAM.gov registered" line in CLAUDE.md

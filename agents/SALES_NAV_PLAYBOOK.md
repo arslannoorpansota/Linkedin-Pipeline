@@ -68,6 +68,7 @@ Set **Company HQ location** (not Personal Geography — see §5) to:
 - Ireland
 - New Zealand
 - United Arab Emirates (Dubai / Abu Dhabi)
+- Saudi Arabia (Riyadh / Jeddah)
 - Singapore
 
 **Tier 3 — strong English, high budgets (test, longer timezone gap):**

@@ -106,7 +106,7 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 ## 6. Target Lead Profiles
 
 ### Type A — Direct Client
-CTOs, VPs Engineering, Founders at funded startups or mid-size companies in the US/UK/Canada/Australia who need to ship AI or web products but don't have a full in-house team.
+CTOs, VPs Engineering, Founders at funded startups or mid-size companies in the US/UK/Canada/Australia/Saudi Arabia who need to ship AI or web products but don't have a full in-house team.
 
 ### Type B — Agency/Consultancy Partner
 Heads of Engineering, Practice Leads, MDs at consultancies (e.g. Zartis, ThoughtWorks, McKinsey Digital) who take on AI transformation engagements and need delivery partners at competitive rates.

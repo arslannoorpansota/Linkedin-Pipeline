@@ -81,7 +81,7 @@ After qualifying, score the lead. Be honest — most leads are 5–7. Reserve 9�
 | Anthropic / Claude partner network member | +2 |
 | Decision-maker is 2nd-degree connection | +1 |
 | Decision-maker posted recently (active on LinkedIn) | +1 |
-| Company in US / UK / Canada / Australia | +1 |
+| Company in US / UK / Canada / Australia / Saudi Arabia | +1 |
 | Clear budget signals ($50k+ project or 10+ eng team) | +1 |
 | They're actively running AI transformation projects | +1 |
 

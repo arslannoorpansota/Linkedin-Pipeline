@@ -55,9 +55,6 @@ WIDE = {
     "DM Content": 340, "Email Content": 340, "Internal Notes": 340,
     "Meeting Notes": 260, "Next Action": 200, "Response Summary": 220,
     "Interested In": 200, "Full Name": 150, "LinkedIn URL": 190,
-    # rating block
-    "Lead Name": 160, "Company Name": 180,
-    "Profile Rating (/10)": 130, "Company Rating (/10)": 140,
     # activity log
     "Target": 240, "Outcome": 300, "Next Action": 260,
 }
@@ -187,35 +184,6 @@ def date_rules(sheet_id, date_col, base_index):
     ]
 
 
-def rating_rules(sheet_id, cols, base_index):
-    """Red→yellow→green color scale on rating columns (0..10)."""
-    reqs = []
-    for j, c in enumerate(cols):
-        rng = {"sheetId": sheet_id, "startRowIndex": 1,
-               "startColumnIndex": c, "endColumnIndex": c + 1}
-        reqs.append({"addConditionalFormatRule": {"index": base_index + j, "rule": {
-            "ranges": [rng],
-            "gradientRule": {
-                "minpoint": {"color": rgb("#F4B7B7"), "type": "NUMBER", "value": "1"},
-                "midpoint": {"color": rgb("#FFE699"), "type": "NUMBER", "value": "5"},
-                "maxpoint": {"color": rgb("#63BE7B"), "type": "NUMBER", "value": "10"}}}}})
-    return reqs
-
-
-def center_cols(sheet_id, cols):
-    """Center-align + bold the given columns (body rows)."""
-    reqs = []
-    for c in cols:
-        reqs.append({"repeatCell": {
-            "range": {"sheetId": sheet_id, "startRowIndex": 1,
-                      "startColumnIndex": c, "endColumnIndex": c + 1},
-            "cell": {"userEnteredFormat": {
-                "horizontalAlignment": "CENTER",
-                "textFormat": {"fontSize": 11, "bold": True}}},
-            "fields": "userEnteredFormat(horizontalAlignment,textFormat)"}})
-    return reqs
-
-
 def clear_existing(service, sid, info):
     """Delete existing bandings + conditional formats so re-runs stay clean."""
     reqs = []
@@ -234,11 +202,9 @@ def clear_existing(service, sid, info):
             spreadsheetId=sid, body={"requests": reqs}).execute()
 
 
-def row_count(service, sid, tab, col="A"):
-    # Count by a reliably-populated column (Pipeline's col A / Lead ID is often blank,
-    # so callers pass Full Name's column instead).
+def row_count(service, sid, tab):
     resp = service.spreadsheets().values().get(
-        spreadsheetId=sid, range=f"'{tab}'!{col}:{col}").execute()
+        spreadsheetId=sid, range=f"'{tab}'!A:A").execute()
     return max(len(resp.get("values", [])), 2)
 
 
@@ -255,23 +221,14 @@ def main() -> int:
 
     reqs = []
 
-    # Pipeline tab — use the LIVE header row so extra columns (rating block) are covered.
+    # Pipeline tab
     p = info[PIPELINE_TAB]
-    p_rows = row_count(service, sid, PIPELINE_TAB, col="C")  # Full Name is always filled
-    live_hdr = service.spreadsheets().values().get(
-        spreadsheetId=sid, range=f"'{PIPELINE_TAB}'!1:1").execute().get("values", [[]])[0]
-    reqs += style_tab(p["id"], len(live_hdr), p_rows, live_hdr)
-    status_col = live_hdr.index("Status")
+    p_rows = row_count(service, sid, PIPELINE_TAB)
+    reqs += style_tab(p["id"], len(PIPELINE_HEADERS), p_rows, PIPELINE_HEADERS)
+    status_col = PIPELINE_HEADERS.index("Status")
     reqs += status_rules(p["id"], status_col)
-    nad_col = live_hdr.index("Next Action Date")
-    base = len(STATUS_COLORS)
-    reqs += date_rules(p["id"], nad_col, base_index=base)
-    base += 2
-    rating_cols = [live_hdr.index(h) for h in
-                   ("Profile Rating (/10)", "Company Rating (/10)") if h in live_hdr]
-    if rating_cols:
-        reqs += rating_rules(p["id"], rating_cols, base_index=base)
-        reqs += center_cols(p["id"], rating_cols)
+    nad_col = PIPELINE_HEADERS.index("Next Action Date")
+    reqs += date_rules(p["id"], nad_col, base_index=len(STATUS_COLORS))
 
     # Activity Log tab
     a = info[ACTIVITY_TAB]

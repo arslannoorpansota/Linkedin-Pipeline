@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ElectroCom × TRK Infratech — Delivery Partnership</title>
+<style>
+  :root{
+    --bg:#0b1020; --bg2:#0f1830; --panel:#131f3d; --line:rgba(255,255,255,.10);
+    --ink:#eaf0ff; --muted:#93a4c8; --accent:#4f8cff; --accent2:#38e0c8; --gold:#ffcf6b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(1200px 700px at 70% -10%,#16244a 0%,var(--bg) 55%) fixed;
+    color:var(--ink); font:16px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{max-width:1120px;margin:0 auto;padding:28px 22px 90px}
+  .slide{
+    position:relative; min-height:600px; margin:22px 0; padding:52px 56px;
+    background:linear-gradient(180deg,var(--bg2),#0c1428);
+    border:1px solid var(--line); border-radius:20px;
+    box-shadow:0 30px 70px rgba(0,0,0,.45);
+    display:flex; flex-direction:column; justify-content:center;
+    scroll-margin-top:20px;
+  }
+  .kicker{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:18px}
+  h1{font-size:46px;line-height:1.08;margin:0 0 16px;letter-spacing:-.02em}
+  h2{font-size:32px;line-height:1.15;margin:0 0 22px;letter-spacing:-.01em}
+  h3{font-size:18px;margin:0 0 6px}
+  p{margin:0 0 12px;color:#d6e0f7}
+  .lead{font-size:20px;color:#cdd9f4;max-width:760px}
+  .muted{color:var(--muted)}
+  .accent{color:var(--accent)}
+  .gold{color:var(--gold)}
+  .pill{display:inline-block;padding:5px 12px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--muted);margin:4px 6px 0 0}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card .n{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:.08em}
+  .stat{font-size:40px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .row{display:flex;gap:14px;align-items:flex-start;margin:10px 0}
+  .dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-top:8px;box-shadow:0 0 0 4px rgba(79,140,255,.15)}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean .role{color:var(--muted);font-size:14px;text-align:right}
+  .cover-mark{font-weight:800;letter-spacing:.02em}
+  .brandbar{display:flex;align-items:center;gap:14px;font-weight:800;font-size:22px}
+  .x{color:var(--muted);font-weight:400}
+  .foot{position:absolute;left:56px;right:56px;bottom:20px;display:flex;justify-content:space-between;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+  .quote{font-size:22px;line-height:1.35;color:#eaf0ff;max-width:820px}
+  .tag{display:inline-block;background:rgba(56,224,200,.12);color:var(--accent2);border:1px solid rgba(56,224,200,.3);padding:3px 10px;border-radius:8px;font-size:12px;font-weight:700}
+  .cta{display:inline-block;margin-top:10px;background:linear-gradient(90deg,var(--accent),#6aa0ff);color:#08122c;font-weight:800;padding:12px 20px;border-radius:12px;font-size:16px}
+  .nav{position:fixed;right:18px;bottom:18px;display:flex;gap:8px;z-index:20}
+  .nav button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:15px;cursor:pointer}
+  .nav button:hover{border-color:var(--accent)}
+  .counter{position:fixed;left:18px;bottom:20px;font-size:12px;color:var(--muted);z-index:20}
+  @media (max-width:720px){
+    .slide{padding:34px 24px;min-height:auto}
+    h1{font-size:32px} h2{font-size:24px} .g2,.g3{grid-template-columns:1fr}
+    .foot{position:static;margin-top:24px}
+  }
+  @media print{
+    body{background:#fff;color:#0b1020}
+    .nav,.counter{display:none}
+    .deck{max-width:none;padding:0}
+    .slide{page-break-after:always;break-after:page;min-height:92vh;margin:0;border-radius:0;border:none;box-shadow:none;
+      background:#fff;color:#0b1020}
+    h1,h2,h3,p,.lead{color:#0b1020}
+    .muted,.foot{color:#5a6785}
+    .card{background:#f4f7ff;border-color:#dce4f5}
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide" id="s1">
+    <div class="kicker">Delivery Partnership · Confidential</div>
+    <div class="brandbar">ElectroCom <span class="x">×</span> TRK Infratech</div>
+    <h1 style="margin-top:22px">Senior AI &amp; engineering<br>specialists, on tap.</h1>
+    <p class="lead">A two-way delivery partnership — embed our in-house senior engineers into your teams for the high-leverage phases, and refer overflow both directions.</p>
+    <div class="foot">
+      <span>Arslan Noor — CTO, ElectroCom · arslan@electrocomit.com</span>
+      <span>Prepared for Heel Desai · Jul 2026</span>
+    </div>
+  </section>
+
+  <!-- 2 · WHERE WE LANDED -->
+  <section class="slide" id="s2">
+    <div class="kicker">Where we landed on the call</div>
+    <h2>Same lane — so let's complement, not compete.</h2>
+    <p class="lead" style="margin-bottom:26px">We both plug specialists into AI teams for the phases that matter. The useful shape isn't vendor–client — it's partnership.</p>
+    <div class="grid g3">
+      <div class="card"><div class="n">01</div><h3>Two-way referral</h3><p class="muted">When either of us has demand the other can cover, we refer or subcontract — both directions.</p></div>
+      <div class="card"><div class="n">02</div><h3>In-house resources</h3><p class="muted">We bring our own senior bench — not recruiters reselling contractors.</p></div>
+      <div class="card"><div class="n">03</div><h3>White-label</h3><p class="muted">Our engineers work under your brand. Your client relationship stays yours.</p></div>
+    </div>
+  </section>
+
+  <!-- 3 · WHO WE ARE -->
+  <section class="slide" id="s3">
+    <div class="kicker">Who we are</div>
+    <h2>ElectroCom — a team that ships production AI, not demos.</h2>
+    <div class="grid g2">
+      <div>
+        <p class="lead">11+ engineers across AI/ML, full-stack, and DevOps. We build and run real products in production — where the model is rarely the bottleneck.</p>
+        <p class="muted">The hard part is guardrails, context management, and reliability. That's the work we specialize in.</p>
+        <div style="margin-top:14px">
+          <span class="pill">AI / ML Engineering</span>
+          <span class="pill">RAG &amp; LLM Infra</span>
+          <span class="pill">Full-Stack (Next.js / Django)</span>
+          <span class="pill">Cloud &amp; DevOps</span>
+        </div>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card"><div class="stat">11+</div><p class="muted">senior engineers in-house</p></div>
+        <div class="card"><div class="stat">US</div><p class="muted">registered entity, global delivery</p></div>
+        <div class="card"><div class="stat">AI</div><p class="muted">-first: LLMs, RAG, CV, eval</p></div>
+        <div class="card"><div class="stat">24/7</div><p class="muted">managed infra &amp; monitoring</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · THE ANCHOR CREDENTIAL -->
+  <section class="slide" id="s4">
+    <div class="kicker">The anchor credential</div>
+    <span class="tag">Frontier generative AI</span>
+    <h2 style="margin-top:16px">I worked on OpenAI's video-generation model training in 2025.</h2>
+    <p class="quote">Direct, hands-on experience at the frontier of generative AI — and a production philosophy built from it: in real systems, the model is rarely the bottleneck. <span class="accent">Guardrails, context, and reliability are.</span></p>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><h3>8+ yrs</h3><p class="muted">full-stack + AI/ML engineering leadership</p></div>
+      <div class="card"><h3>Ex-SafetyEQ · Beam Data</h3><p class="muted">led engineering teams, US &amp; Canada</p></div>
+      <div class="card"><h3>Turing-verified</h3><p class="muted">Codility award · frontier AI exposure</p></div>
+    </div>
+  </section>
+
+  <!-- 5 · PROOF WE SHIP -->
+  <section class="slide" id="s5">
+    <div class="kicker">Proof we ship — case study</div>
+    <h2>Effigy.ai — an AI product we built and took to market.</h2>
+    <p class="lead" style="margin-bottom:22px">AI-generated fashion marketing photography — replacing physical photoshoots. A product of ElectroCom Innovations, live with paying brands.</p>
+    <div class="grid g3">
+      <div class="card"><div class="stat">95%</div><p class="muted">cost reduction vs. traditional shoots</p></div>
+      <div class="card"><div class="stat">48 hrs</div><p class="muted">campaign turnaround, upload to delivery</p></div>
+      <div class="card"><div class="stat">100+</div><p class="muted">brands producing content on it</p></div>
+    </div>
+    <p class="muted" style="margin-top:20px">Generative pipelines, model conditioning, and a production delivery workflow — end to end. Not a prototype: a shipped, revenue-generating AI product.</p>
+  </section>
+
+  <!-- 6 · WHAT WE PLUG IN -->
+  <section class="slide" id="s6">
+    <div class="kicker">What we plug in</div>
+    <h2>Specialist pods for the phases that create leverage.</h2>
+    <div class="grid g2">
+      <div class="card"><h3 class="accent">RAG builds</h3><p class="muted">Retrieval, chunking, grounding, and context management that survives production traffic.</p></div>
+      <div class="card"><h3 class="accent">Eval harnesses &amp; pipelines</h3><p class="muted">Reproducible evals so quality is measured, not guessed — the difference between shipping and iterating on demos.</p></div>
+      <div class="card"><h3 class="accent">LLM infra &amp; scaling</h3><p class="muted">Serving, latency, cost, observability, and reliability under load.</p></div>
+      <div class="card"><h3 class="accent">Full-stack &amp; DevOps overflow</h3><p class="muted">Senior Next.js/Python and cloud/DevOps capacity when a milestone needs more hands, fast.</p></div>
+    </div>
+    <p class="muted" style="margin-top:18px">Dropped into your core team for a defined phase — they own the architecture, we bring the depth.</p>
+  </section>
+
+  <!-- 7 · THE BENCH -->
+  <section class="slide" id="s7">
+    <div class="kicker">The in-house bench</div>
+    <h2>The people you'd actually be plugging in.</h2>
+    <ul class="clean">
+      <li><span><strong>Arslan Noor</strong> — Senior AI Engineer</span><span class="role">CTO · LLMs, RAG, frontier AI</span></li>
+      <li><span><strong>Umar Farooq</strong></span><span class="role">Data Scientist · ML models, analytics</span></li>
+      <li><span><strong>Zain Goraya</strong></span><span class="role">Senior Software Engineer</span></li>
+      <li><span><strong>Bilal Arshad</strong></span><span class="role">Senior DevOps · cloud, CI/CD, infra</span></li>
+      <li><span><strong>Muhammad Husnain</strong></span><span class="role">Data Engineer · pipelines</span></li>
+      <li><span><strong>Haseeb Ilyaas</strong></span><span class="role">Backend Engineer</span></li>
+      <li><span><strong>Noman Aijaz</strong></span><span class="role">Full-Stack Developer</span></li>
+    </ul>
+    <p class="muted" style="margin-top:16px">Senior, in-house, and already working together — not a marketplace of strangers.</p>
+  </section>
+
+  <!-- 8 · HOW IT WORKS -->
+  <section class="slide" id="s8">
+    <div class="kicker">How the partnership works</div>
+    <h2>Three ways to engage — you pick per project.</h2>
+    <div class="grid g3">
+      <div class="card"><div class="n">MODEL A</div><h3>Phase-based specialist</h3><p class="muted">One expert for a defined milestone — a RAG build, an eval harness, a scaling push. Scoped and time-boxed.</p></div>
+      <div class="card"><div class="n">MODEL B</div><h3>Embedded engineer</h3><p class="muted">A senior engineer dedicated to your team for a monthly rate. Works your hours, your stack, your standups.</p></div>
+      <div class="card"><div class="n">MODEL C</div><h3>Retainer overflow</h3><p class="muted">Standing capacity you draw on when demand spikes — first call when you're stretched.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="row"><div class="dot"></div><p><strong>White-label.</strong> We stay invisible. Your client, your brand, your relationship.</p></div>
+      <div class="row"><div class="dot"></div><p><strong>Both directions.</strong> When we're stretched on delivery, you're our first referral too.</p></div>
+    </div>
+  </section>
+
+  <!-- 9 · NEXT STEP -->
+  <section class="slide" id="s9">
+    <div class="kicker">Next step</div>
+    <h2>Start small — one engagement, low risk.</h2>
+    <p class="lead">Pick a single live need on your side — one specialist phase or one embedded engineer for a month — and let's run it. If it delivers, we scale the partnership from proof, not promises.</p>
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card"><h3>What I need from you</h3><p class="muted">One current or upcoming client need where an extra senior specialist would help — the area, the timeline, the stack.</p></div>
+      <div class="card"><h3>What you get back</h3><p class="muted">A named engineer, a scoped plan, and a start date — within the week.</p></div>
+    </div>
+    <div><a class="cta" href="mailto:arslan@electrocomit.com">Let's scope the first one → arslan@electrocomit.com</a></div>
+    <div class="foot"><span>Arslan Noor — CTO, ElectroCom</span><span>electrocomit.com · partnerships@electrocomit.com</span></div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">1 / 9</div>
+<div class="nav">
+  <button onclick="go(-1)">← Prev</button>
+  <button onclick="go(1)">Next →</button>
+</div>
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides[i].scrollIntoView({behavior:'smooth', block:'center'});
+    document.getElementById('counter').textContent = (i+1)+' / '+slides.length;
+  }
+  function go(d){ show(i+d); }
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); go(1); }
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(-1); }
+  });
+  // track slide in view on manual scroll
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ i = slides.indexOf(en.target);
+      document.getElementById('counter').textContent = (i+1)+' / '+slides.length; } });
+  }, {threshold:.6});
+  slides.forEach(function(s){ obs.observe(s); });
+</script>
+</body>
+</html>

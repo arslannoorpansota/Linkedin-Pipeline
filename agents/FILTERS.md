@@ -37,6 +37,14 @@ Sales Nav uses specific label names — pick these from the **Industry** dropdow
 - Retail Apparel and Fashion
 - Consumer Goods
 
+**Shopify ecosystem (e-commerce sub-target):**
+- **Account filter → Technologies used → `Shopify`** — finds companies that *run on
+  Shopify* = online merchants who need theme/app/integration/dev work. These are
+  **clients**, and a strong build-for-you / dev-capacity fit.
+- Optional keyword: `Shopify` (headline/About). ⚠️ But keyword `Shopify` also pulls
+  **Shopify agencies** — those are competitor dev shops (skip, or treat as Type B
+  partners only). "Technologies used = Shopify" is the cleaner signal for merchants.
+
 **SaaS / Software Development (select all that apply):**
 - Software Development
 - Technology, Information and Internet
@@ -97,7 +105,35 @@ After filters load results:
 
 ---
 
-## 5. Quick-start checklist
+## 5. Widening the funnel — when you need MORE leads
+
+The tight filter set trades volume for precision (a narrow search can return only
+~10–15 leads). To grow the pool, loosen these levers **in this order** — biggest
+lead-count gain first. Loosen one at a time so you can see what each adds.
+
+| # | Lever | Change | Effect |
+|---|---|---|---|
+| 1 | **"Posted on LinkedIn 30d"** | Turn **OFF** (or run it as its own priority batch) | Biggest single multiplier — the 30-day activity gate cuts most of the pool |
+| 2 | **Company headcount** | Add `1–10` and `201–500` (and `501–1000`) | Opens early startups + larger mid-market |
+| 3 | **Current job title** | Add: Owner, President, Managing Director, Director of Engineering, Head of Product, VP Product, Founding Engineer | Captures buyers with non-standard titles |
+| 4 | **Seniority level** | Add **Director** | Directors often own vendor decisions in bigger orgs |
+| 5 | **Company HQ location** | Add Tier-2: Ireland, New Zealand, UAE, Saudi Arabia, Singapore | More in-budget English-first markets (still **no UK**) |
+| 6 | **Industry** | Add adjacent: Financial Services, Marketing Services, Computer Games, Wellness & Fitness, Consumer Services | Widens beyond the 3 core verticals |
+| 7 | **Changed jobs 90d** | Run as a **separate** batch (new leaders = new budgets) | A whole second stream of fresh leads |
+
+**Keep these ON even when widening** (never trade these away):
+- HQ location discipline (US/CA/AU + Tier-2 only — no UK, no off-market).
+- Exclusions in §3 (competitor dev/IT shops, and never filter on a person's
+  name/ethnicity/nationality).
+- Re-qualify: a wider net lowers average quality, so run new leads through
+  `LEAD_RESEARCH.md` before spending outreach on them.
+
+> Rule of thumb: **loosening headcount + turning off the 30-day post gate** alone
+> usually 3–5×'s the result count. Do those two first before touching anything else.
+
+---
+
+## 6. Quick-start checklist
 
 1. [ ] Industry → Media set + E-commerce set + SaaS/Software Dev set (§1)
 2. [ ] Company headcount → 11–50 + 51–200

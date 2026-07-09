@@ -93,6 +93,27 @@ Sales Nav uses specific label names — pick these from the **Industry** dropdow
   run in-market companies are exactly the ICP regardless of background). Filter on
   **company HQ + company type**, never on the person.
 
+### 3a. Competitor-exclusion Boolean (paste into Search keywords box)
+
+The one filter that actively strips competitors out of results. Operators MUST be CAPS:
+
+```
+NOT (agency OR "software house" OR outsourcing OR "staff augmentation" OR nearshore OR offshore OR "IT services" OR "custom software" OR "development services" OR "dedicated developers" OR consultancy)
+```
+
+- Searches company name + description → drops companies that *describe themselves*
+  as a dev shop / agency / outsourcer (= our competitors).
+- **Target companies survive it** because they describe a product/brand, not dev services.
+
+### 3b. Industry choices that avoid competitors
+
+| Industry | Verdict |
+|---|---|
+| Media Production, Internet Marketplace Platforms, Retail, Consumer Goods, Entertainment | ✅ Keep — product/brand companies, ~no dev shops |
+| Technology, Information and Internet | ✅ Keep — mostly product SaaS |
+| **Software Development** | ⚠️ Agency-heavy — use ONLY with the §3a Boolean, or prefer "Technology, Information and Internet" instead |
+| **IT Services and IT Consulting** | ❌ Never add — pure competitor territory |
+
 ---
 
 ## 4. Save the search

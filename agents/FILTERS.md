@@ -2,18 +2,20 @@
 
 > Copy-paste filter set for building lead searches. Companion to
 > `SALES_NAV_PLAYBOOK.md` (which covers channel strategy + the 50-InMail cap).
-> **Current priority verticals: Media and E-commerce** (see §1 for why).
+> **Current priority verticals: Media, E-commerce, and SaaS / Software Development** (see §1 for why).
 
 ---
 
 ## 1. Priority industries (set these FIRST)
 
-Prioritize **Media** and **E-commerce** companies. Both are strong ElectroCom fits:
+Prioritize **Media**, **E-commerce**, and **SaaS / Software Development** companies.
+All three are strong ElectroCom fits:
 
 | Vertical | Why it fits ElectroCom | Lead-with angle |
 |---|---|---|
 | **Media** | Video/content/generative-AI demand is exploding, and few media firms have AI talent in-house. **Arslan's OpenAI video-model credential is the single best-matched proof point we have here.** | AI/video engineering — "I trained video-gen models with OpenAI in 2025" |
 | **E-commerce** | Constant need for storefronts, web/full-stack builds, integrations, and AI (recommendations, search, support). Non-technical merchant founders → classic build-for-you. | Web/full-stack + AI product features; conversion & storefront work |
+| **SaaS / Software Development** | Product companies that *ship software* and constantly need eng capacity — feature velocity, overflow work, AI features, DevOps. The founder/CTO is the buyer, no procurement. | Staff augmentation / dev capacity — "scale your team faster" |
 
 ### Exact Sales Navigator industry labels to select
 
@@ -35,8 +37,14 @@ Sales Nav uses specific label names — pick these from the **Industry** dropdow
 - Retail Apparel and Fashion
 - Consumer Goods
 
-> Keep **Software Development** and **Financial Services** as secondary/optional —
-> useful but they surface lots of competitor agencies (eyeball before spending a credit).
+**SaaS / Software Development (select all that apply):**
+- Software Development
+- Technology, Information and Internet
+
+> ⚠️ SaaS caveat: **Software Development also surfaces competitor dev/IT agencies.**
+> To keep it to real SaaS *product* companies, add `SaaS OR platform OR product`
+> in the keyword box, or eyeball each result and skip anything that reads like a
+> services/outsourcing shop (see §3). Keep **Financial Services** as secondary/optional.
 
 ---
 
@@ -47,7 +55,7 @@ Sales Nav uses specific label names — pick these from the **Industry** dropdow
 - **Company HQ location:** United States, Canada, Australia (Tier 1).
   Add Ireland / New Zealand / UAE / Saudi Arabia / Singapore to widen.
   **Do NOT include United Kingdom** (excluded by decision).
-- **Industry:** the Media + E-commerce set from §1
+- **Industry:** the Media + E-commerce + SaaS/Software Development set from §1
 
 ### Role
 - **Current job title:** Chief Executive Officer, Founder, Co-Founder,
@@ -91,7 +99,7 @@ After filters load results:
 
 ## 5. Quick-start checklist
 
-1. [ ] Industry → Media set + E-commerce set (§1)
+1. [ ] Industry → Media set + E-commerce set + SaaS/Software Dev set (§1)
 2. [ ] Company headcount → 11–50 + 51–200
 3. [ ] Company HQ location → US/CA/AU (no UK); clear Personal Geography
 4. [ ] Titles → CEO/Founder/CTO/VP Eng; Seniority → CXO/Owner/VP

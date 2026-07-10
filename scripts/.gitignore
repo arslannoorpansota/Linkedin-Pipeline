@@ -2,6 +2,8 @@
 .venv/
 credentials.json
 token.json
+token.json.*
+*.old
 sheet_config.json
 .sheet_sync_state.json
 .prospect_push_state.json

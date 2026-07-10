@@ -50,6 +50,9 @@
 **Value proposition:**  
 US company accountability + offshore delivery cost → enterprise-quality output at startup-friendly rates.
 
+**Flagship credibility signal (use in EVERY pitch — DM, email, follow-up):**  
+Our CTO Arslan worked with **OpenAI in 2025 on training their video generation models** — direct, hands-on frontier generative-AI experience. Lead with this as the top AI proof point across all lead types.
+
 **Positioning for partner outreach (Type B / Type C leads):**  
 Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontractor. The ask is always a development partnership, not a project quote.
 
@@ -58,6 +61,7 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 ## 3. Arslan's Personal Brand (for individual role outreach)
 
 - Senior AI Engineer, 8+ years full-stack + AI/ML
+- **Worked with OpenAI in 2025 on training their video generation models** — frontier generative-AI experience
 - Co-founded Effigy.ai (AI marketing content for fashion brands)
 - Led engineering teams at SafetyEQ (Miami, remote) and Beam Data (Canada)
 - Open to senior remote individual roles (AI engineer, CTO advisory, team lead)
@@ -104,7 +108,7 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 ## 6. Target Lead Profiles
 
 ### Type A — Direct Client ✅ PRIMARY FOCUS
-Founders, CTOs, VPs Engineering at **Seed–Series B** companies in the US/UK/Canada/Australia who:
+Founders, CTOs, VPs Engineering at **Seed–Series B** companies in the US/UK/Canada/Australia/Saudi Arabia who:
 - Are actively hiring engineers OR just raised capital with an explicit engineering build-out signal
 - Have an AI/ML or complex web product in flight
 - Have a team too small to execute the roadmap in-house (typically <50 engineers)
@@ -132,6 +136,7 @@ Companies in the Claude partner network who need AI engineering capacity for cli
 | `agents/DM_LINKEDIN.md` | Paste a LinkedIn profile → get a personalized DM |
 | `agents/EMAIL_OUTREACH.md` | Paste a company/person page → get a cold email (subject + body) |
 | `agents/FOLLOW_UP.md` | Paste thread history → get the right follow-up message |
+| `agents/SALES_NAV_PLAYBOOK.md` | Sales Navigator targeting + channel strategy (free DM vs InMail vs email) under the 50-InMail/mo cap |
 
 **Daily reporting is mandatory — for ALL work, not just outreach.** After any substantive task in this workspace (outreach agent runs AND profile/company-page setup, generated assets, infra/ops, research — anything that changes a file or produces output), append a dated entry to that day's report in `reports/YYYY-MM-DD.md` before ending the session. The protocol, activity types, and entry format live in `reports/README.md`. Every entry is date-stamped, there is one report file per day, and the Summary counters at the top of the day file are updated after each entry. Trivial chit-chat with no output does not need an entry.
 

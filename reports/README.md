@@ -14,7 +14,12 @@
 
 ---
 
-## 2. Which Agents Report
+## 2. What Gets Reported
+
+**Rule: log ALL substantive work done in this workspace, not just outreach.**
+Every session that produces real output appends at least one entry to today's file.
+
+### Outreach agents (always log)
 
 | Agent | Logs when |
 |---|---|
@@ -22,6 +27,21 @@
 | `DM_LINKEDIN` | After every connection note + DM generated |
 | `EMAIL_OUTREACH` | After every cold email generated |
 | `FOLLOW_UP` | After every follow-up message generated |
+
+### Other workspace activity (also log)
+
+Any other meaningful work — log it under the `Other / Setup` activity type:
+
+| Activity type | Examples |
+|---|---|
+| `Profile Setup` | LinkedIn profile/headline/About edits, skills, banner, custom URL |
+| `Company Page` | Company-page fields, services, overview, specialties |
+| `Assets` | Generated images, templates, copy saved to `assets/` |
+| `Infra / Ops` | Email aliases, Sheet setup, git, tooling, PLAN.md progress |
+| `Research / Misc` | Any other research or task that produced output |
+
+Trivial chit-chat with no output does **not** need an entry. Anything that
+changed a file, produced copy, or advanced a PLAN.md task **does**.
 
 ---
 
@@ -40,6 +60,7 @@ When creating a new day's file, start it with this header:
 - DMs written: 0
 - Emails written: 0
 - Follow-ups written: 0
+- Other activity (setup/assets/ops): 0
 
 ---
 

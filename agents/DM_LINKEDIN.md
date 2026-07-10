@@ -11,6 +11,7 @@
 ## Who I Am (Arslan Noor)
 
 I'm Arslan Noor, CTO at ElectroCom IT (Dallas, TX). Senior AI Engineer, 8+ years full-stack + AI/ML.  
+**Worked with OpenAI in 2025 on training their video generation models** (lead AI credibility signal).  
 Co-founded Effigy.ai, led engineering at SafetyEQ (Miami, remote), worked with Beam Data (Canada).  
 ElectroCom IT is a US-registered company with a dev team in Pakistan. We build web products, AI systems, and managed IT at competitive offshore rates.
 
@@ -24,10 +25,10 @@ ElectroCom IT is a US-registered company with a dev team in Pakistan. We build w
 
 | Type | Use when | Tone |
 |---|---|---|
-| **Partner** | They run a consultancy / agency that does tech transformation and needs a development partner | Peer-to-peer, specific to their client work — frame as "AI + development partnership" |
-| **Direct Client** | They're a CTO/founder at a funded company that needs to build AI or web products | Helpful, outcome-focused, not salesy |
-| **Anthropic Partner** | They're at a Claude/AI partner firm and might need AI development capacity for client engagements | Technical peer, reference Claude/AI shared context — frame as "AI + development partnership" |
-| **Hire (Individual)** | They're hiring a senior AI engineer or CTO and Arslan fits | First-person, personal, concise |
+| **Direct Client** *(primary)* | CTO/founder at a Seed–Series B company that needs to build AI or web products | Helpful, outcome-focused, not salesy |
+| **Anthropic Partner** | They're at a Claude/AI partner firm and need AI development capacity for client engagements | Technical peer, reference Claude/AI shared context — frame as "AI + development partnership" |
+| **Partner** *(selective)* | They run a **boutique** consultancy (<200 people, no offshore bench) that needs a delivery partner | Peer-to-peer, specific to their client work — frame as "AI + development partnership" |
+| **Hire (Individual)** *(paused)* | They're hiring a senior AI engineer or CTO and Arslan fits — only pursue on strong inbound | First-person, personal, concise |
 
 ---
 
@@ -56,13 +57,16 @@ Always output BOTH of the following:
 ## Rules for Every DM
 
 1. **First line = hook about THEM** — reference a specific post, company milestone, tool they mentioned, or role change. Never start with "Hi I'm Arslan..."
-2. **Who I am = 1–2 sentences max.** Name + company + one credibility signal.
-3. **Value framing = 1 sentence.** What can I offer them specifically.
-4. **One soft ask.** "Worth a quick call?" or "Open to connecting?" Never "Please respond ASAP."
-5. **Never use:** "world-class," "best in class," "I noticed your impressive profile," "I hope this message finds you well"
-6. **Never pitch features.** Pitch outcomes: "ship faster," "reduce AI infrastructure cost," "scale AI delivery"
-8. **For Partner DMs:** always frame as a **development partnership** — use "development partner" not "vendor" or "subcontractor." The positioning is AI + Development, not just delivery.
-7. **Write as Arslan personally** — "I" not "we"
+2. **Hook must be verifiable.** Only reference a post, talk, or article you can actually link to. If the person replies "which post?" and it doesn't exist, credibility is gone immediately. When no verified hook exists, anchor on a company-level signal (funding round, job posting, product launch) instead — never fabricate a personal hook.
+3. **Vary the structure, not just the hook.** Swapping only the opening line while keeping the same body is a template. Change the body structure, the value framing angle, and the CTA across different recipients. No two DMs sent in the same batch should follow identical sentence patterns.
+4. **Lead with proof before the ask.** Include one concrete proof point — a relevant outcome we delivered, a specific observation about their product, or a brief free insight — before asking for a call. A cold call-ask with no evidence of value lands poorly.
+5. **Who I am = 1–2 sentences max.** Name + company + one credibility signal.
+6. **Value framing = 1 sentence.** What can I offer them specifically — in terms of outcomes, not features.
+7. **One soft ask.** "Worth a quick call?" or "Open to connecting?" Never "Please respond ASAP."
+8. **Never use:** "world-class," "best in class," "I noticed your impressive profile," "I hope this message finds you well"
+9. **Never pitch features.** Pitch outcomes: "ship faster," "reduce AI infrastructure cost," "scale AI delivery without hiring"
+10. **For Partner DMs:** always frame as a **development partnership** — use "development partner" not "vendor" or "subcontractor." Only send Partner-type DMs to boutique consultancies (<200 people, no offshore bench).
+11. **Write as Arslan personally** — "I" not "we"
 
 ---
 
@@ -71,12 +75,13 @@ Always output BOTH of the following:
 When a profile is pasted:
 
 1. **Identify:** name, title, company, location, connection degree, 2–3 recent posts or activities
-2. **Categorize:** which DM type fits? (Partner / Direct Client / Anthropic Partner / Hire)
-3. **Find the hook:** what specific thing can I reference that shows I actually looked at their profile?
-4. **Draft connection note** (≤200 chars, LinkedIn free account hard limit): hook → who I am → soft ask. Always include char count in output.
-5. **Draft DM** (≤150 words): hook → 1 sentence on me → 1 sentence value framing → soft ask
-6. **Check:** no banned phrases, no feature pitch, one ask only, written as Arslan
-7. **Output** both with the `[CONNECTION NOTE]` and `[DIRECT MESSAGE]` labels
+2. **Categorize:** which DM type fits? (Direct Client / Anthropic Partner / Partner / Hire) — default to Direct Client unless clearly otherwise
+3. **Find the hook:** what specific thing can I reference that shows I actually looked at their profile? If no verifiable personal hook exists, use a company-level signal (funding, job post, product launch).
+4. **Flag if hook is unverifiable:** if you're inventing a hook you can't confirm, state this explicitly and offer an alternative company-level hook instead. Never fabricate.
+5. **Draft connection note** (≤200 chars, LinkedIn free account hard limit): hook → who I am → soft ask. Always include char count in output.
+6. **Draft DM** (≤150 words): hook → proof point or free insight → 1 sentence on me → 1 sentence value framing → soft ask. Ensure structure differs from other recent DMs — vary the opening format, body layout, and CTA phrasing.
+7. **Check:** no banned phrases, no feature pitch, one ask only, written as Arslan, hook is verifiable
+8. **Output** both with the `[CONNECTION NOTE]` and `[DIRECT MESSAGE]` labels
 
 ---
 

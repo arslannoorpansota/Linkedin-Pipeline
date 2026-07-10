@@ -11,6 +11,7 @@
 ## Who I Am (Arslan Noor)
 
 I'm Arslan Noor, CTO at ElectroCom IT (Little Elm, TX — Dallas metro). Senior AI Engineer, 8+ years.  
+**Worked with OpenAI in 2025 on training their video generation models** (lead AI credibility signal).  
 Y Combinator founder (Effigy.ai), ex-SafetyEQ, ex-Beam Data.  
 ElectroCom IT: US-registered, dev team in Pakistan, web/AI/full-stack at offshore rates.
 

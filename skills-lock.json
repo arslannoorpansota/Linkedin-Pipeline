@@ -17,6 +17,18 @@
       "sourceType": "local",
       "computedHash": "40b9f1339e898d95f90b995911e661b5fb0d2298d01c6ca54963975f49bdfb93"
     },
+    "cold-email-verifier": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/cold-email-verifier/SKILL.md",
+      "computedHash": "3f241f037fe31ba1b69c9636b74cc32749f6e718505a8cbddb7ae856024d0881"
+    },
+    "company-radar": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/company-radar/SKILL.md",
+      "computedHash": "5df6817bc32470911b3b5a2c2ae93755a93ed8f30c88c89c482424424a696857"
+    },
     "competitive-positioning": {
       "source": "/home/faizan/Downloads/claude-sales-skills",
       "sourceType": "local",
@@ -47,6 +59,12 @@
       "sourceType": "local",
       "computedHash": "b1317fd31cab42251025d188fb6a36190062a53a18ca6b777bfb1776291a0595"
     },
+    "human-tone": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/human-tone/SKILL.md",
+      "computedHash": "d6cfe1772805171af22e72c0bed87596f6f679b03e186a6d6779682aebea6634"
+    },
     "humanizer": {
       "source": "blader/humanizer",
       "sourceType": "github",
@@ -57,6 +75,30 @@
       "source": "/home/faizan/Downloads/claude-sales-skills",
       "sourceType": "local",
       "computedHash": "e86fefd8d8a2e536a510ff92b58addeff3abfb21df94273b8d56426ac3c9a388"
+    },
+    "linkedin-job-post-to-buyer-pain-map": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/linkedin-job-post-to-buyer-pain-map/SKILL.md",
+      "computedHash": "5a27d9e9579373ae6c074442683198e44d49ca68a637eabe7bd4b905930ce9a0"
+    },
+    "linkedin-post-generator": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/linkedin-post-generator/SKILL.md",
+      "computedHash": "b0ca0a233eedd309f3106061cc17908be5db9db47fba368f434c8e41fc63b037"
+    },
+    "map-your-market": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/map-your-market/SKILL.md",
+      "computedHash": "7adb6444fe7d58aa2a9c29e5783ddd143dca41565fc69a63c4181bbc17adac22"
+    },
+    "meeting-brief-generator": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/meeting-brief-generator/SKILL.md",
+      "computedHash": "d1c4397d0c9c05d3f0d99c54ba0fe37096c32705da588ee467b6bb34cf22d0e4"
     },
     "negotiation": {
       "source": "/home/faizan/Downloads/claude-sales-skills",
@@ -73,10 +115,28 @@
       "sourceType": "local",
       "computedHash": "79c9483a66b9306efe35a0994466a454dd010f0cc6647c776cf2c6b622fda66d"
     },
+    "outreach-sequence-builder": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/outreach-sequence-builder/SKILL.md",
+      "computedHash": "78830b9b6cee64d39158d74feb4b703006962ff1f8884eb71359ed4e43f87b1d"
+    },
+    "position-me": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/position-me/position-me/SKILL.md",
+      "computedHash": "98fd77251f4dd5a7d3e1641285b942d581fa4127746823735a73cd523c8a0afc"
+    },
     "re-engagement-sequencing": {
       "source": "/home/faizan/Downloads/claude-sales-skills",
       "sourceType": "local",
       "computedHash": "0cdca1df9c029dfc95fbbf165d4e776312b701ef577d5de790fbbdb28a55f015"
+    },
+    "reddit-icp-monitor": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/reddit-icp-monitor/SKILL.md",
+      "computedHash": "ccc19a710f0d7f05572c71c5994f6d89c56f6cc4e3ffcac02127038bb597224a"
     },
     "social-selling": {
       "source": "/home/faizan/Downloads/claude-sales-skills",
@@ -87,6 +147,24 @@
       "source": "/home/faizan/Downloads/claude-sales-skills",
       "sourceType": "local",
       "computedHash": "e02ff7f064436eff693378e0fbe04c74f2c6685e61880843e7d9ddef6ab6236e"
+    },
+    "vc-curated-match": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/vc-curated-match/SKILL.md",
+      "computedHash": "c21f03179de1719bd96120ec695d87e8c03adcda0b43339b863b0f35f3165488"
+    },
+    "vc-finder": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/vc-finder/SKILL.md",
+      "computedHash": "3bf01e1faa106d7272fb0c3664738c229504c7160c3dd1b50f6d52a306dd93a0"
+    },
+    "where-your-customer-lives": {
+      "source": "Varnan-Tech/opendirectory",
+      "sourceType": "github",
+      "skillPath": "skills/where-your-customer-lives/SKILL.md",
+      "computedHash": "07d88d190e56281e6f1899073f0e1bf4e25fb17ec962dade9e58d108c73cfc74"
     }
   }
 }

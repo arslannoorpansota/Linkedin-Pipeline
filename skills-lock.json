@@ -17,6 +17,13 @@
       "sourceType": "local",
       "computedHash": "40b9f1339e898d95f90b995911e661b5fb0d2298d01c6ca54963975f49bdfb93"
     },
+    "cold-email": {
+      "source": "arslannoorpansota/Linkedin-Pipeline",
+      "ref": "improvement",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/cold-email/SKILL.md",
+      "computedHash": "22ee3f048392f0a4dcbfc8cf2b20b332fce8f9fcabcbe942ea4ac9169513c31f"
+    },
     "cold-email-verifier": {
       "source": "Varnan-Tech/opendirectory",
       "sourceType": "github",
@@ -54,6 +61,13 @@
       "sourceType": "local",
       "computedHash": "f6689f804267757545300fcc4e5a228fe921197aae0e9f30a38a2fa04177bcb8"
     },
+    "follow-up": {
+      "source": "arslannoorpansota/Linkedin-Pipeline",
+      "ref": "improvement",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/follow-up/SKILL.md",
+      "computedHash": "86e827aa9c689b260d5b05ff75ca32c2d257453e354b7e3cf129f5fce96ef002"
+    },
     "follow-up-discipline": {
       "source": "/home/faizan/Downloads/claude-sales-skills",
       "sourceType": "local",
@@ -75,6 +89,20 @@
       "source": "/home/faizan/Downloads/claude-sales-skills",
       "sourceType": "local",
       "computedHash": "e86fefd8d8a2e536a510ff92b58addeff3abfb21df94273b8d56426ac3c9a388"
+    },
+    "lead-research": {
+      "source": "arslannoorpansota/Linkedin-Pipeline",
+      "ref": "improvement",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/lead-research/SKILL.md",
+      "computedHash": "7f3d176392fffd2568d51d3e82bc6d73c5ae4d5e4d1dc063b93b22cdf53646cb"
+    },
+    "linkedin-dm": {
+      "source": "arslannoorpansota/Linkedin-Pipeline",
+      "ref": "improvement",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/linkedin-dm/SKILL.md",
+      "computedHash": "1083a8e9666ee101943a60b9b582bf6af183fff75ac88c68082da52dc045e017"
     },
     "linkedin-job-post-to-buyer-pain-map": {
       "source": "Varnan-Tech/opendirectory",

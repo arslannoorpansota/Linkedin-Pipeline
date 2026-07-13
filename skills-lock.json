@@ -176,6 +176,13 @@
       "sourceType": "local",
       "computedHash": "e02ff7f064436eff693378e0fbe04c74f2c6685e61880843e7d9ddef6ab6236e"
     },
+    "twitter-GTM-find-Skill": {
+      "source": "arslannoorpansota/Linkedin-Pipeline",
+      "ref": "improvement",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/twitter-GTM-find-skill/SKILL.md",
+      "computedHash": "233d69b90522d28b235e47148e10264ee924adc84d895c21a1ad99530ece0047"
+    },
     "vc-curated-match": {
       "source": "Varnan-Tech/opendirectory",
       "sourceType": "github",

@@ -1,11 +1,92 @@
 {
   "version": 1,
   "skills": {
+    "active-listening": {
+      "source": "louisblythe/salesskills",
+      "sourceType": "github",
+      "skillPath": "skills/active-listening/SKILL.md",
+      "computedHash": "3c95408473cc23ca6097c8ac6b37d419d2e887c3de756cf0a4649e599adadda0"
+    },
+    "building-rapport": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "fb1bb9e0b3fbd1a46a911725e0dd466bf1ed7e6efc3e5e010098a7de2e8fa3ef"
+    },
+    "closing": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "40b9f1339e898d95f90b995911e661b5fb0d2298d01c6ca54963975f49bdfb93"
+    },
+    "competitive-positioning": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "b77d35b5775bc6ab3ea9e1ab564ce80f083db7f93864e6838592df2118eebb54"
+    },
+    "copywriting": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "a5f103ec853ba9d7bd0a78a041bc8c78f7715108f00bd4832042c087ef98b552"
+    },
+    "decision-maker-identification": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "5bed0d73a824830561866c0711a585681a155a00ff7d3a8b16a711ec427c4ad1"
+    },
+    "discovery": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "80d113be50d095d9b5f7ba0187a33b4f7c0ae00a83acc79c85197d6f13e383f1"
+    },
+    "email-sequence": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "f6689f804267757545300fcc4e5a228fe921197aae0e9f30a38a2fa04177bcb8"
+    },
+    "follow-up-discipline": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "b1317fd31cab42251025d188fb6a36190062a53a18ca6b777bfb1776291a0595"
+    },
     "humanizer": {
       "source": "blader/humanizer",
       "sourceType": "github",
       "skillPath": "SKILL.md",
       "computedHash": "44201a7ac488b5147fde0a8a63aeb1ffd1501f384d525fd3c482f9599c4903f4"
+    },
+    "lead-qualification": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "e86fefd8d8a2e536a510ff92b58addeff3abfb21df94273b8d56426ac3c9a388"
+    },
+    "negotiation": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "c9eebfe6a0957f4e4d2773db74cc1fd56cf8a0ec36927774115285bdb44ebe0e"
+    },
+    "objection-handling": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "86f5384b4c78a7a7747e2a8d12b1536bfda5228819306df904250296009e09ef"
+    },
+    "outbound-prospecting": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "79c9483a66b9306efe35a0994466a454dd010f0cc6647c776cf2c6b622fda66d"
+    },
+    "re-engagement-sequencing": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "0cdca1df9c029dfc95fbbf165d4e776312b701ef577d5de790fbbdb28a55f015"
+    },
+    "social-selling": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "51ca8c2cbcfc8ee7f3419a660c25c1c4c411e48e249d20ce4778de69f07fbc6a"
+    },
+    "storytelling": {
+      "source": "/home/faizan/Downloads/claude-sales-skills",
+      "sourceType": "local",
+      "computedHash": "e02ff7f064436eff693378e0fbe04c74f2c6685e61880843e7d9ddef6ab6236e"
     }
   }
 }

@@ -25,6 +25,51 @@ Buying signals, in priority order:
 
 ---
 
+## 1b. Direct-client ICP — the NON-TECHNICAL DOMAIN FOUNDER (VALIDATED — use this for client hunting)
+
+> Hard lesson from the July 2026 lead-list.6 + Sales Nav work: the §1 thesis
+> ("funded startup hiring engineers → pitch the CTO") **does not convert.** Funded
+> startups, YC / AI-native companies, and technical founders **build in-house** —
+> they *are* the engineers. The only direct client who said yes (Donna Bower /
+> Liminal Spaces) was the opposite profile. Target this instead.
+
+**The buyer who actually converts:**
+- **Non-technical Founder / Co-Founder / CEO / Owner** (domain expert, not an engineer)
+- Small company (**1–50**), **no in-house engineering team**
+- Building a **real software product** in a **vertical** (real estate, construction, insurance, logistics, healthcare, retail)
+- Has budget and owns the "we need to build this" problem
+
+**Anti-signals — skip on sight:**
+- **CTO / VP Engineering / Chief Architect** in the title → they build it themselves
+- Company is **AI-native / deep-tech / a dev tool** → own core
+- **Funded (YC / Series A+) with a technical co-founder** → in-house team
+- **Dev shop / IT services / staffing / nearshore** → competitor
+- **Coach / consultant / advisor / broker / loan originator / trainer / speaker / association / fractional-anything** → no product to build
+- **Industry = "Technology, Information and Internet"** → where builders live, NOT buyers
+
+### The validated LEAD search (Leads tab, no account list needed)
+- **Current job title:** Founder, Co-Founder, CEO, Owner — *only* (NO VP Engineering, NO CXO/VP seniority)
+- **Company headcount:** 1–10, 11–50
+- **Company HQ location:** United States (+ Canada, Australia, Saudi Arabia to widen)
+- **Industry — VERTICALS ONLY:** Real Estate, Construction, Hospitals & Health Care, Retail, Insurance, Transportation/Logistics/Supply Chain
+  - **NEVER include:** Technology/Information/Internet, Media Production, Online Audio/Video, Internet Marketplace (= builders + dev shops)
+  - **Avoid:** Consumer Services, Education (coach magnets)
+- **Recent updates → Posted on LinkedIn:** ON
+- **Search-keywords box:** `software OR platform OR app OR SaaS`  ← POSITIVE terms only; biases toward product-builders
+- **Clear** the stray `Function: Business Development` and any Seniority filter.
+
+### Reality of this search (don't over-tune)
+- Even tuned, expect **~2–3 real fits per page** — coaches/consultants leak because
+  they use software language ("my platform / my app"). This is the **filter ceiling**;
+  work it by eye, don't keep re-tuning.
+- **Keep** only a founder whose company **is a named software product** for a vertical
+  (e.g. *SeguroAmigo.app* — non-standard auto insurance; *elevator9* — training measurement).
+- **Skip fast:** anyone with Coach / Consultant / Advisor / Broker / Trainer / Speaker
+  / Association / Fractional in the title.
+- First validated fit found via this exact search: **Duncan Furrh / SeguroAmigo.app**.
+
+---
+
 ## 2. Sales Navigator filter setup
 
 ### 2a. Build the ACCOUNT search FIRST (this is the high-leverage move)
@@ -113,6 +158,11 @@ Rules of thumb:
   e.g. Personal Geography = "North America" silently excludes your Australia
   targets and leaks in offshore-based people (e.g. Pakistan-based founders).
   Keep **Company HQ location only**; clear Personal Geography.
+- **NEVER use a NOT-only query in the search-keywords box** (e.g.
+  `NOT (staffing OR ventures OR consultant …)`). Sales Nav zeroes the whole search
+  to ~0–2 results instead of just excluding. Positive queries
+  (`software OR platform OR app OR SaaS`) work fine — use those to bias, and exclude
+  the rest by eye. To drop a *specific* competitor, use Current company → **Exclude**.
 
 ---
 

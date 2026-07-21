@@ -103,6 +103,7 @@ software, they need outside dev. That is the whole thesis.
 
 ### Company-name red flags (skip on sight from the list view)
 - Ends in **`.ai`** or contains **"AI", "Labs", "Intelligence", "Technologies", "Analytics"** → AI-native own-core.
+- **Title tell (validated on v2 page 1):** headline says **"Chief AI Architect / Chief AI Officer / AI Architect / I architect AI systems / Chief Technology"** → technical AI founder, skip. At 1–10 headcount the noise shifts from "funded co w/ a CTO" to "solo technical AI founder" — this title pattern is the new #1 leak.
 - Contains **"Realty, Capital, Ventures, Partners, Properties, Development, Group, Advisors"** → RE broker/investor/consultant.
 - **Roofing / Concrete / HVAC / Painting / Homes / Construction (contractor, not software)** → physical trade.
 - **Foundation / Alliance / Ministries / Association / Collective** → nonprofit.

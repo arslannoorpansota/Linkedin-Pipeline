@@ -70,6 +70,59 @@ Buying signals, in priority order:
 
 ---
 
+## 1c. Search v2 — the HEADCOUNT-CAPPED recipe (REWORKED after ~1,050 leads, use this now)
+
+> Data from lists .6–.11 + "new lead list 1" (~1,050 leads triaged): **~1% true-buyer
+> yield.** The §1b search was still surfacing *builders*, not *buyers*. Root cause:
+> the **11–50 headcount bucket is where the CTOs, funded teams, and mature companies
+> live.** Every one of our real buyers/maybes was **≤6 employees**; almost every skip
+> ("builds in-house") was 18–94 employees with a CTO or a fresh raise.
+
+**The single biggest change: Company headcount → `Self-employed` + `1–10` ONLY. Drop 11–50.**
+This one filter removes the bulk of the noise. A company with a real software product AND
+≤10 people almost by definition has **no engineering bench**, so if they built/are building
+software, they need outside dev. That is the whole thesis.
+
+### The v2 LEAD search (Leads tab)
+- **Company headcount:** `Self-employed`, `1–10` — **ONLY** (this is the killer filter; do NOT add 11–50)
+- **Current job title:** Founder, Co-Founder, CEO, Owner — *only*
+- **Industry — VERTICALS ONLY, richest first:** Insurance, Real Estate, Construction, Utilities, Hospitals & Health Care, Retail, Transportation/Logistics/Supply Chain
+  - **NEVER include:** Technology/Information/Internet, Software Development, Media, Online Audio/Video, Internet Marketplace (= builders)
+- **Company HQ location:** United States (+ Canada, Australia, Saudi Arabia to widen)
+- **Recent updates → Posted on LinkedIn:** ON
+- **Search-keywords box:** `platform OR software OR app` (positive bias; NEVER NOT-only — it zeroes the search)
+- **Clear** every Seniority filter and any stray Function filter.
+
+### The three eyeball disqualifiers (apply BEFORE rating — these were ~99% of our skips)
+1. **Company has a CTO / Director of Engineering / Head of Engineering.** Check the account's
+   "Decision makers / CXO" panel on the company page. If a technical exec exists → **skip** (they build in-house).
+2. **Founder is technical.** Read the profile: engineer, ex-CTO, PhD, CS degree + eng career,
+   "built software as an engineer," "Director of Engineering" past roles → **skip** (they ARE the dev).
+3. **Funded or mature.** YC / Series A+ announced, OR 10+ years old with 15+ employees → **skip**
+   (they hire FTEs with the raise / already have a team). Watch for "$Xm Series A," "closed our round."
+
+### Company-name red flags (skip on sight from the list view)
+- Ends in **`.ai`** or contains **"AI", "Labs", "Intelligence", "Technologies", "Analytics"** → AI-native own-core.
+- Contains **"Realty, Capital, Ventures, Partners, Properties, Development, Group, Advisors"** → RE broker/investor/consultant.
+- **Roofing / Concrete / HVAC / Painting / Homes / Construction (contractor, not software)** → physical trade.
+- **Foundation / Alliance / Ministries / Association / Collective** → nonprofit.
+
+### What the KEEP actually looks like (validated buyers/maybes)
+- **Tiffany Mittal / Utility Ranger** (P7/C7) — utility-rates chair, 4-emp RUBS billing SaaS, no eng.
+- **George Genel / MySmartRenter** (P7/C7) — 25yr recruiter, rental-screening product, tiny team.
+- **Wilson Rosa / Nivel Risk** (P7/C6) — insurance lawyer, AI fleet-risk platform, ~solo.
+- **John Morlan / Smarter Risk** (P7/C6) — ISO/Verisk risk expert, 6-emp risk-control platform, no visible eng.
+- Common shape: **non-technical DOMAIN founder + ≤6 people + real vertical software product + NO CTO.**
+
+### Reality of v2
+- Expect the keep rate to roughly **double vs §1b** (from ~1% toward ~2–4%) because the 1–10 cap
+  strips the funded/CTO/mature companies. It will NOT hit 100% — insurance especially still leaks
+  agencies/brokers, and some 1–10 companies still have a technical solo-founder. Eyeball rules 1–3 catch those.
+- **Insurance was the richest vertical** in the data (insurtech domain founders). Lead with it.
+- Do NOT re-add 11–50 "to get more volume" — that volume is the noise we're removing on purpose.
+
+---
+
 ## 2. Sales Navigator filter setup
 
 ### 2a. Build the ACCOUNT search FIRST (this is the high-leverage move)

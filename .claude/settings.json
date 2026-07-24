@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c 'if ((.prompt // \"\") | ascii_downcase | test(\"pitch|cold ?email|follow.?up|outreach|linkedin (message|dm|note)|connection note|in.?mail|reach out|write.*(email|message|dm|note|proposal)|draft.*(email|message|dm|note)|submit.*proposal\")) then {hookSpecificOutput:{hookEventName:\"UserPromptSubmit\",additionalContext:\"OUTREACH DETECTED: before showing any DM, email, connection note, proposal, or message to the user, you MUST run the drafted copy through the humanizer skill and strip AI tells (em-dash overuse, rule-of-three, promotional adjectives, negative parallelisms, filler). Do not skip this step.\"}} else {} end' 2>/dev/null || true",
+            "statusMessage": "Checking for outreach (humanizer reminder)"
+          }
+        ]
+      }
+    ]
+  }
+}

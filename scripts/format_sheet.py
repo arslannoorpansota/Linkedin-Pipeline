@@ -49,6 +49,38 @@ STATUS_COLORS = {
     "Not Relevant": ("#CFCFCF", False),
 }
 
+# How many body rows get dropdowns / checkboxes (covers future appended rows).
+VALIDATION_ROWS = 2000
+
+# Header name -> allowed values. Every categorical column becomes a dropdown
+# chip. Free-text / date / URL columns are intentionally left as-is.
+DROPDOWNS = {
+    "Industry": ["SaaS", "Consulting / Agency", "Enterprise", "Startup",
+                 "Government", "Healthcare", "Finance", "Other"],
+    "Connection Degree": ["1st", "2nd", "3rd", "None"],
+    "Lead Type": ["Direct Client", "Agency Partner", "Anthropic Partner",
+                  "Hire (Arslan)"],
+    "Service Interest": ["Web Dev", "AI/ML", "Full-stack", "Managed IT",
+                         "Staff Aug", "Partnership", "Hire Arslan"],
+    "Deal Type": ["Project", "Retainer", "Staff Augmentation", "Partnership",
+                  "Remote Role"],
+    "Estimated Budget": ["<$5k", "$5k–$20k", "$20k–$50k", "$50k–$100k",
+                         "$100k+", "Unknown"],
+    "Priority": ["High", "Medium", "Low"],
+    "Outreach Channel": ["LinkedIn DM", "Email", "Both", "Referral", "Inbound"],
+    "From Email": ["arslan@electrocomit.com", "partnerships@electrocomit.com",
+                   "info@electrocomit.com", "N/A (LinkedIn)"],
+    "Outreach by": ["Arslan", "Faizan"],
+    "Status": list(STATUS_COLORS.keys()) + ["New"],
+    "Response Type": ["Positive", "Neutral", "Negative", "No Response"],
+    "Assigned To": ["Arslan", "Faizan", "Both"],
+    "Lead Source": ["LinkedIn Manual", "LinkedIn Sales Nav", "Job Board",
+                    "Upwork", "Referral", "Inbound", "Event"],
+}
+
+# Boolean columns -> real checkboxes instead of a text dropdown.
+CHECKBOX_COLS = {"Connection Note Sent"}
+
 # Wider columns (by header name) -> pixel width. Default is 130.
 WIDE = {
     "Company": 170, "Title": 170, "Hook / Why Outreach": 230,
@@ -184,6 +216,41 @@ def date_rules(sheet_id, date_col, base_index):
     ]
 
 
+def validation_rules(sheet_id, headers):
+    """Dropdown chips on categorical columns + checkboxes on boolean columns.
+
+    Applied to a generous row range so future appended rows inherit them.
+    Not strict, so multi-value entries (e.g. Service Interest) still fit.
+    """
+    reqs = []
+    for i, h in enumerate(headers):
+        rng = {"sheetId": sheet_id, "startRowIndex": 1,
+               "endRowIndex": VALIDATION_ROWS,
+               "startColumnIndex": i, "endColumnIndex": i + 1}
+        if h in CHECKBOX_COLS:
+            rule = {"condition": {"type": "BOOLEAN"}}
+        elif h in DROPDOWNS:
+            rule = {
+                "condition": {
+                    "type": "ONE_OF_LIST",
+                    "values": [{"userEnteredValue": v} for v in DROPDOWNS[h]]},
+                "showCustomUi": True,   # render as a dropdown chip
+                "strict": False,        # keep existing/multi values valid
+            }
+        else:
+            continue
+        reqs.append({"setDataValidation": {"range": rng, "rule": rule}})
+    return reqs
+
+
+def clear_validation(service, sid, sheet_id, n_cols):
+    """Strip any existing data validation so re-runs stay clean."""
+    service.spreadsheets().batchUpdate(spreadsheetId=sid, body={"requests": [
+        {"setDataValidation": {"range": {
+            "sheetId": sheet_id, "startRowIndex": 1, "endRowIndex": VALIDATION_ROWS,
+            "startColumnIndex": 0, "endColumnIndex": n_cols}}}]}).execute()
+
+
 def clear_existing(service, sid, info):
     """Delete existing bandings + conditional formats so re-runs stay clean."""
     reqs = []
@@ -229,11 +296,17 @@ def main() -> int:
     reqs += status_rules(p["id"], status_col)
     nad_col = PIPELINE_HEADERS.index("Next Action Date")
     reqs += date_rules(p["id"], nad_col, base_index=len(STATUS_COLORS))
+    reqs += validation_rules(p["id"], PIPELINE_HEADERS)
 
     # Activity Log tab
     a = info[ACTIVITY_TAB]
     a_rows = row_count(service, sid, ACTIVITY_TAB)
     reqs += style_tab(a["id"], len(ACTIVITY_HEADERS), a_rows, ACTIVITY_HEADERS)
+    reqs += validation_rules(a["id"], ACTIVITY_HEADERS)
+
+    # Wipe stale validation first (separate pass; ranges must exist).
+    clear_validation(service, sid, p["id"], len(PIPELINE_HEADERS))
+    clear_validation(service, sid, a["id"], len(ACTIVITY_HEADERS))
 
     service.spreadsheets().batchUpdate(
         spreadsheetId=sid, body={"requests": reqs}).execute()

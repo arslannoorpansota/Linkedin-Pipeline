@@ -15,7 +15,7 @@ Thank you for including ElectroCom, and for the FAQ. It made the intent behind e
 
 Two things up front, since you said an honest read is worth more than a polished bid. First, we recommend Tier 1 (Bootstrap MVP) with a pre-agreed phased upgrade to Tier 2 on your August funding close. We think that is the tier your requirements and funding reality call for, and we explain why in Section 2.8. Second, as I mentioned over email, healthcare is where my team works day to day: for the past two years we have modernized a legacy clinical platform into a live, cloud-based patient-management system now running across hospitals in Australia and the UK. We keep the client unnamed in this written response and can walk you through the engagement in full, including the client, at the demo stage.
 
-Where LORiMDT asks for something we would be building for the first time, we say so plainly.
+Where LORiMDT asks for something we would be building for the first time, we say so plainly. And because we would rather you test us than take our word, we have proposed a short paid discovery sprint (Section 2.7, Q36) so you can watch us work before the full build commits.
 
 Arslan
 
@@ -94,7 +94,7 @@ We build to the Tier 1 audit floor you set in your FAQ Q45: authentication event
 ## 2.4 Security and compliance
 
 **22. HIPAA compliance.**
-The platform runs in a US-based, HIPAA-eligible AWS environment with US data residency. We execute BAAs. PHI is encrypted, access is least-privilege and US or client-governed, and the audit trail (Q21) covers PHI access. Production PHI is processed only in the US environment.
+The platform runs in a US-based, HIPAA-eligible AWS environment with US data residency. We execute BAAs. PHI is encrypted, access is least-privilege and client-governed, and the audit trail (Q21) covers PHI access. Production PHI is processed only in the US environment.
 
 **23. Certifications.**
 We will be direct: ElectroCom does not currently hold SOC 2 Type II, HITRUST, or ISO 27001. What we do is build to the controls those frameworks specify (encryption, least-privilege access, audit logging, change management, and BAAs), and we will commit contractually to achieving SOC 2 Type II within 12 months of contract signing, with ISO 27001 for our delivery operations on a similar horizon. If a certification is a hard gate for you at pilot, tell us and we will scope the timeline and cost into the proposal directly rather than around it.
@@ -106,7 +106,17 @@ Encryption at rest (AES-256, KMS-managed keys) and in transit (TLS 1.2 or higher
 RBAC scoped by tenant and clinical role. Authentication via SSO and SMART on FHIR against each site's existing identity provider: SMART on FHIR for Epic sites, and SAML or OIDC federation to the site's enterprise IdP (Azure AD / Entra, Okta, or PingFederate) more generally. We maintain no separate password store (your FAQ Q41 and Q48). MFA is enforced at the IdP, with session management and re-authentication for sensitive actions. For patients, a stable internal patient identifier resolves site-specific MRNs via MPI-style matching, with human adjudication for uncertain matches, because in oncology a false merge is a patient-safety event (your FAQ Q31 and Q41).
 
 **26. Data residency.**
-Yes, we guarantee US-based data residency for production PHI: the application, its data, and its authentication endpoints reside in US AWS regions, enforced by hosting and network controls (your FAQ Q48). Disclosure, per your FAQ Q57 and Q59: production PHI is accessed only by US-based production and DevOps roles. Our development and testing team, which works from outside the United States, accesses only de-identified or synthetic data and never production PHI, under least-privilege controls and the confidentiality terms of the engagement. This is the onshore-production and offshore-development split your FAQ Q59 blesses, and we will document the technical and contractual controls that keep PHI onshore.
+Production PHI resides in US AWS regions. The application, its database, and its authentication endpoints deploy to your US-region AWS account, enforced by region restriction, network controls, and IAM policy (your FAQ Q48).
+
+Disclosure, per your FAQ Q57 and Q59: ElectroCom's engineering team works from our Multan, Pakistan office, and our US entity and engagement accountability sit at our Celina, Texas headquarters. We state that plainly rather than implying a US-resident engineering bench we do not have.
+
+The control that matters is not where engineers sit but who can reach production PHI:
+- No standing human access to production. Deployment is via CI/CD from version control, and engineers hold no interactive production credentials.
+- Development and testing run entirely against de-identified or synthetic data, never production PHI. That is the split your FAQ Q59 describes.
+- Break-glass access is time-boxed, individually attributed, Lucas Health Tech-approved, fully session-logged, and reachable only through a jump path you control.
+- Logs are PHI-scrubbed, so routine debugging never exposes patient data.
+
+If you require that every individual capable of break-glass access be US-resident, we will staff that role US-side and price it. Tell us and we will scope it directly rather than around it.
 
 ---
 
@@ -127,15 +137,22 @@ Agile, two-week sprints, with a fixed cadence of demo and retro and a clinical-r
 For LORiMDT we estimate roughly 55 to 65 percent custom build (the clinician-facing application, the FHIR integration layer, the App Orchard note-write certification, and the longitudinal governance model, which is a greenfield build per your FAQ Q15 and Q16) and 35 to 45 percent configuration (the workflow engine and rules engine configured to your defined workflows and guideline-anchored thresholds). We will refine this split during discovery.
 
 **30. Team composition.**
-A dedicated pod for the pilot duration, not a shared bench:
-- Engagement lead and solution architect: Arslan Noor, CTO (AI and full-stack, frontier-AI experience). US-accountable.
-- Senior full-stack engineers: Zain Goraya and Noman Aijaz.
-- Backend and FHIR integration engineer: Haseeb Ilyaas.
-- Data engineer for the longitudinal model and registry-quality capture: Muhammad Husnain.
-- Data scientist and AI for note generation and AI-assisted capture: Umar Farooq, with Arslan.
-- DevOps and security for the US AWS deployment, HIPAA controls, and HA/DR: Bilal Arshad.
-- QA and engineering: Aadil Saeed and Shayan Ali.
-- Clinical and product liaison working directly with your BA/product owner and Dr. Baker's group.
+A dedicated pod for the pilot. We name a core of six as fully dedicated and additional engineers as allocated, so the pilot is not exposed if another engagement lands.
+
+Core, dedicated to the pilot:
+- Arslan Noor, CTO. Engagement lead and solution architect (AI and full-stack, frontier-AI experience). United States.
+- Haseeb Ilyaas. Backend and FHIR integration. Multan, PK.
+- Muhammad Husnain. Data engineering (longitudinal model, registry-quality capture). Multan, PK.
+- Umar Farooq. Data science and AI (note generation, AI-assisted capture). Multan, PK.
+- Bilal Arshad. DevOps and security (US AWS deployment, HIPAA controls, HA/DR). Multan, PK.
+- Zain Goraya. Senior full-stack. Multan, PK.
+
+Allocated as the work requires:
+- Noman Aijaz. Full-stack. Multan, PK.
+- Aadil Saeed, Shayan Ali. QA. Multan, PK.
+- Clinical and product liaison, working directly with your BA/product owner and Dr. Baker's group.
+
+Contracting entity and engagement accountability are US-based (Celina, TX). The engagement lead is US-based; all other named engineers work from our Pakistan office against de-identified data, per Q26.
 
 **31. Day 1 structured data capture.**
 Yes, and it is central to the design. The clinical workflow generates registry-quality structured data as a byproduct of the work itself, not through a separate data-entry step. Because the platform is greenfield (your FAQ Q16 and Q52) there is no legacy migration at Tier 1: from go-live, a clinician initiates a case and the platform pulls that patient's current EHR data via FHIR to populate it, with the three-tier capture model and required-field enforcement making each case decision-ready. Tier 1 supports the human Certified Tumor Registrar workflow with a structured, complete case summary that reduces manual abstraction; direct NAACCR XML and RCRS export is a later phase (your FAQ Q53).
@@ -174,6 +191,8 @@ Yes. We propose milestone-based payments aligned to your funding-close dates, wi
 | Pilot go-live | January 2027 | 10% | $38,500 |
 
 The first three milestones (70%, roughly $269,500) fund the August to October build and are the committed floor. We can align the final two milestones (30%, roughly $115,500) to your capital close, so we carry that timing with you rather than requiring it on a fixed date. We would rather structure the shared risk as a modest payment deferral than as equity or a pure success fee, since a deferral keeps the engagement simple and our team fully staffed. If a small go-live success bonus fits your model better, we are open to it, but the deferral is our recommendation.
+
+Before you commit to the full build, we also offer a paid, fixed-scope discovery sprint of two to three weeks: a FHIR connectivity spike against a sandbox, the field-dictionary data model stood up, and one working clinical-handshake path. Fixed fee, and you can walk away at the end with the artifacts and no further obligation. Rather than ask you to take our references on faith, this lets you watch us work against your actual problem before the larger commitment. For a build with an August funding close and a January go-live, it de-risks the decision on both sides.
 
 ---
 

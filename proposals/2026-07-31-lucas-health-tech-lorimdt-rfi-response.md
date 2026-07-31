@@ -225,13 +225,14 @@ We build Tier 1 on a Tier 2-ready architecture. Multi-tenancy, the configurable 
 ## 2.9 References
 
 **41. References.**
-Our closest match to LORiMDT is the client behind the clinical-platform modernization described in Sections 2.1, 8, 9, and Appendix B. We keep that client unnamed in this written response and will make them available as a reference at the demo stage, which is where your process schedules reference checks (August 5 to 7).
+Healthcare-sector clients we can name now:
 
-A healthcare-sector client we can name now:
+1. **Sono Stat Imaging (Dallas-Fort Worth, Texas, US).** A US diagnostic medical-imaging provider covering cardiac, vascular, and general ultrasound. ElectroCom built and maintains their digital platform and operational systems. Contact: Iftikhar Saeed Khan, +1 210-422-0737, sonostatimaging@gmail.com.
+2. **The Islamia University of Bahawalpur (IUB), Faculty of Medicine and Allied Health Sciences.** A public university with a medical faculty and a teaching-hospital partnership (Nawab Sir Sadiq Muhammad Khan Abbasi Hospital). Engagement: ElectroCom built their patient-management system. Contact: IT Director, +92 300 9635022.
 
-1. **The Islamia University of Bahawalpur (IUB), Faculty of Medicine and Allied Health Sciences.** A public university with a medical faculty and a teaching-hospital partnership (Nawab Sir Sadiq Muhammad Khan Abbasi Hospital). Engagement: ElectroCom built their patient-management system. Contact: IT Director, +92 300 9635022.
+Our closest match to LORiMDT is the clinical-platform client described in Sections 2.1, 8, 9, and Appendix B. We keep that client unnamed in this written response and make them available as a reference at the demo stage, where your process schedules reference checks (August 5 to 7).
 
-We would rather offer two solid references than pad the list, and we can add the clinical-platform client above at the demo stage.
+We also design internal and manufacturing-accuracy systems for health-product manufacturers, including CoreSpeed and PharmaBuilt (nutraceutical and supplement manufacturers; contact John Linss, +1 770-630-9956, jlinss@corespeed.com). We name these as data-integrity and systems-engineering work rather than clinical-workflow references, so each is weighed for what it is. The relevance to LORiMDT is the discipline they share with registry-quality capture: structured data, validation, and traceable accuracy in a regulated setting.
 
 ---
 

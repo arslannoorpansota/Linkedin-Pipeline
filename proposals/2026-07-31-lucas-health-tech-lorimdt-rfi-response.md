@@ -5,8 +5,6 @@
 **Date:** July 31, 2026
 **Confidential. Prepared for Lucas Health Tech under the terms of the LORiMDT RFI.**
 
-> **DRAFT NOTE (remove before sending):** Two items left before send: confirm the IUB reference contact is briefed, and get Arslan's nod on the pricing numbers. See the checklist at the bottom. Delete this note and any remaining `[CONFIRM]` marker before sending.
-
 ---
 
 ## Cover note
@@ -155,20 +153,16 @@ We understand Open Evidence embedded in the MDT workflow is a Tier 3 capability 
 
 ## 2.7 Pricing structure
 
-> The figures below are our proposal. Confirm exact numbers with Arslan before sending. They sit inside your Tier 1 band and follow the three-component breakdown your FAQ Q62 asks for.
-
 **33. Pricing model.**
 Because LORiMDT is intended to be Lucas Health Tech-owned IP (your FAQ Q18 and Q62), we price predominantly as one-time build and implementation, with a modest recurring component limited to hosting, support, and maintenance, and no application-license fee that would amount to renting the product back to you (your FAQ Q63). The three components are separated below.
 
 **34. Implementation costs (Tier 1, 2 to 3-site MVP).**
-One-time build, implementation, and professional services: **$385,000**. This covers the multi-tenant US AWS foundation; the FHIR integration layer and the App Orchard note-write certification; structured capture to the field dictionary; the case lifecycle, clinical handshake, and Level 1 soft-stop; automated note generation; essential reporting (case volume, completion rate, time-to-decision); RBAC, SSO, and audit logging; and HIPAA controls. `[CONFIRM: final one-time figure with Arslan.]`
+One-time build, implementation, and professional services: **$385,000**. This covers the multi-tenant US AWS foundation; the FHIR integration layer and the App Orchard note-write certification; structured capture to the field dictionary; the case lifecycle, clinical handshake, and Level 1 soft-stop; automated note generation; essential reporting (case volume, completion rate, time-to-decision); RBAC, SSO, and audit logging; and HIPAA controls.
 
 **35. Ongoing costs (annual, post-go-live).**
 - Hosting on your AWS (HA/DR, multi-region): pass-through at cloud cost plus platform management of roughly $30,000 per year.
 - Support and maintenance: roughly $66,000 per year, about 17 percent of the build, covering monitoring, updates, bug fixes, and a defined support SLA.
 - Recurring software or application license: $0. The application IP is yours, so there is no application-rental license. This answers the concern your FAQ Q63 raises directly.
-
-`[CONFIRM: hosting and support figures with Arslan.]`
 
 **36. Startup-friendly terms.**
 Yes. We propose milestone-based payments aligned to your funding-close dates, with a committed minimum funding the early sprints so no vendor is asked to carry the full financial risk (your FAQ Q19). Proposed schedule against the $385,000 one-time build:
@@ -204,7 +198,7 @@ We are not bidding low to win. We believe Tier 1 is the right scope, and Q39 sta
 - Assumptions and exclusions: greenfield, so no legacy data migration at Tier 1 (your FAQ Q52); pilot sites and their Epic instance details confirmed during discovery, with Lucas Health Tech brokering site technical-team access (your FAQ Q50); Open Evidence, NLP-from-narrative, ePRO, multi-cancer expansion, and direct registry export are out of Tier 1 scope; clinician credential provisioning is an operational workstream, not a platform line item.
 
 **39. Alternative tier proposal (Tier 2, brief).**
-If your close lands early and you want the larger cohort from the start, Tier 2 (roughly $600,000, 3 to 5 sites) adds the full three-level escalation architecture (Level 2 execution monitoring on the 14, 21, and 28-day configurable default cadence, noting these are defaults and not guideline-mandated intervals, per your FAQ Q54; and Level 3 reassessment enforcement), ongoing bidirectional FHIR monitoring, advanced dashboards, broader multi-site support, and HITRUST-aligned security hardening. We would scope this as an increment on the Tier 1 build, not a rebuild. `[CONFIRM: Tier 2 figure with Arslan.]`
+If your close lands early and you want the larger cohort from the start, Tier 2 (roughly $600,000, 3 to 5 sites) adds the full three-level escalation architecture (Level 2 execution monitoring on the 14, 21, and 28-day configurable default cadence, noting these are defaults and not guideline-mandated intervals, per your FAQ Q54; and Level 3 reassessment enforcement), ongoing bidirectional FHIR monitoring, advanced dashboards, broader multi-site support, and HITRUST-aligned security hardening. We would scope this as an increment on the Tier 1 build, not a rebuild.
 
 **40. Phasing plan.**
 We build Tier 1 on a Tier 2-ready architecture. Multi-tenancy, the configurable rules and escalation engine, and the audit layer are all present from day one (your FAQ Q39 and Q23), so Tier 2 features switch on as configuration and incremental build rather than re-architecture. Concretely: start Tier 1 in August against the committed minimum; when your capital close completes, execute a pre-agreed Tier 2 change order that adds Level 2 and 3 escalation, the advanced dashboards, and the additional sites, with payments re-aligned to the new milestones.
@@ -218,7 +212,7 @@ Our closest match to LORiMDT is the client behind the clinical-platform moderniz
 
 A healthcare-sector client we can name now:
 
-1. **The Islamia University of Bahawalpur (IUB), Faculty of Medicine and Allied Health Sciences.** A public university with a medical faculty and a teaching-hospital partnership (Nawab Sir Sadiq Muhammad Khan Abbasi Hospital). Engagement: ElectroCom built their patient-management system. Contact: IT Director, +92 300 9635022. `[CONFIRM: contact name and email if available, and confirm the IT Director is expecting Casi's call.]`
+1. **The Islamia University of Bahawalpur (IUB), Faculty of Medicine and Allied Health Sciences.** A public university with a medical faculty and a teaching-hospital partnership (Nawab Sir Sadiq Muhammad Khan Abbasi Hospital). Engagement: ElectroCom built their patient-management system. Contact: IT Director, +92 300 9635022.
 
 We would rather offer two solid references than pad the list, and we can add the clinical-platform client above at the demo stage.
 
@@ -240,34 +234,3 @@ Multi-tenant US AWS deployment, FHIR integration layer, and the three-tier captu
 **Relevance to LORiMDT.** The same terrain: real clinical data, multi-hospital operation, modernization under live operational constraints, and a data model built to be vendor-neutral and standards-ready. The stack (React, TypeScript, containerized services, cloud deployment) is the one we propose for LORiMDT.
 
 Full detail, including the client, is available at the demo stage.
-
----
-
-## Short cover email to send with the response
-
-**From:** arslan@electrocomit.com
-**To:** casi@lucashealthtech.com
-**Subject:** ElectroCom response to the LORiMDT RFI
-
-Casi,
-
-Attached is our RFI response, in ahead of the July 31, 5:00 PM MT deadline. It follows your numbering and stays inside the 20-page limit.
-
-Two notes. We recommend Tier 1 with a pre-agreed phased upgrade to Tier 2 on your August close, and we explain why in Section 2.8. And our closest reference to LORiMDT is a health-tech client under confidentiality, which we can walk you through in full under the mutual NDA at the demo stage.
-
-Thanks again for including us. Happy to answer anything.
-
-Arslan Noor
-CTO, ElectroCom
-arslan@electrocomit.com
-
----
-
-## What still needs your sign-off before sending
-
-Two real items left, both quick:
-
-1. **IUB reference.** In as: IUB, ElectroCom built their patient-management system, contact IT Director +92 300 9635022. Before this goes out, make sure the IT Director knows Casi may call on August 5 to 7 and will speak well of us. A contact name and email would help but is not required.
-2. **Pricing nod from Arslan.** Suggested terms are in the draft ($385K one-time on a five-milestone schedule, 70% funding the Aug to Oct floor and the final 30% aligned to your close; ~$30K/yr hosting management; ~$66K/yr support; $0 app license; ~$600K Tier 2). Confirm the numbers.
-
-Already handled: certification (Q23 now commits to SOC 2 within 12 months of signing), case study (Appendix B, anonymized, no client or sister-company name), App Orchard (scoped as a Tier 1 build item), references trimmed to what is real (DHAB dropped). Carte Blanche and the client name are kept out of the written response per your call; Arslan covers the structure in the meeting.

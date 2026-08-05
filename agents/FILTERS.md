@@ -164,3 +164,47 @@ lead-count gain first. Loosen one at a time so you can see what each adds.
 6. [ ] Posted on LinkedIn → ON
 7. [ ] Save search per vertical → save qualified leads to a list
 8. [ ] Triage each lead via `SALES_NAV_PLAYBOOK.md` §4 (free path before InMail)
+
+---
+
+## 7. BUYING-SIGNAL Account search (higher-yield motion — USE THIS)
+
+> **Why:** the founder-scan searches (§1–§6) hit a hard ceiling — ~2–3 real fits per
+> page, the rest coaches/consultants/solo clinicians who say "app/platform." Proven
+> repeatedly on live searches. This motion fixes it structurally: filter for
+> **companies actively hiring engineers.** A coach/consultant/solo practitioner does
+> NOT post engineering jobs — so the noise is excluded by definition, and every result
+> is a company with a *demonstrated* dev need + budget.
+>
+> **Buyer shift:** this targets companies that already have a dev team but can't hire
+> fast enough → **staff-augmentation / dev-capacity** pitch ("I can place a senior
+> engineer in ~2 weeks while your search runs"). Here a **CTO/VP Eng is a valid target**
+> (they own the hiring pain), unlike the §1c domain-founder motion.
+
+### Step 1 — ACCOUNT tab (build the company list first)
+- **Job opportunities → Hiring on LinkedIn:** YES → **Department = Engineering** (the core signal)
+- **Company headcount:** `11–50` + `51–200` (big enough to have budget, small enough to feel the pain)
+- **Company headcount growth:** positive / high (optional — reinforces "building")
+- **Recent activities → Funding events:** raised in **last 12 months** (optional — budget confirmed)
+- **Headquarters location:** United States, Canada, Australia, Singapore, UAE, Saudi Arabia — **no UK, no India**
+- **Industry:** Software Development, Technology Information and Internet, Hospitals & Health Care, Financial Services, Internet Marketplace Platforms
+- → **Save as an Account list:** `Buying-Signal — Hiring Eng`
+
+### Step 2 — LEADS tab (pull the decision-maker inside those companies)
+- **Workflow → Account lists:** select `Buying-Signal — Hiring Eng` (every lead is now pre-qualified)
+- **Current job title:** CTO, VP Engineering, Head of Engineering, Founder, CEO, Co-Founder
+- **Seniority level:** CXO, Vice President, Owner/Partner
+- **Posted on LinkedIn:** ON (hook)
+- **Function:** clear (never Sales)
+
+### Why it beats founder-scanning
+- **Coaches/consultants/solo clinicians are gone** — they don't post engineering jobs.
+- **Concrete pain to pitch** — an open req they can't fill = the staff-aug opening.
+- **Budget confirmed** — hiring = allocated headcount budget.
+
+### Outreach angle (staff-aug)
+> "Saw you're hiring a [role] — I run a senior eng team and can place someone in ~2 weeks
+> while your own search runs. Worth a quick chat?"
+
+> ⚠️ Still eyeball-skip **competitor dev/IT agencies** (they also hire engineers). The
+> Industry + eyeball rules from §3 still apply.

@@ -110,11 +110,14 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 > **Geo is a filter, not a judgement call.** The canonical target-geography table
 > lives in `agents/CADENCE.md` §5 — use it verbatim. Do not decide geo per row.
 > (The pipeline had Australia marked `skip-geo` on 9 rows and `target geo` on 8;
-> Canada 12 vs 10. Same country, opposite verdicts.) **UK is currently excluded**
-> per `FILTERS.md` §2 — see CADENCE.md §5, pending Arslan's confirmation.
+> Canada 12 vs 10. Same country, opposite verdicts — and it cost 14 leads that were
+> killed on geo alone from list-view only.)
+>
+> **Settled by Arslan 2026-08-06:** target = **US, Canada, Australia, Singapore,
+> Gulf** (UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman). **UK is excluded.**
 
 ### Type A — Direct Client ✅ PRIMARY FOCUS
-Founders, CTOs, VPs Engineering at **Seed–Series B** companies in target geos (see `agents/CADENCE.md` §5) who:
+Founders, CTOs, VPs Engineering at **Seed–Series B** companies in the US, Canada, Australia, Singapore or the Gulf (no UK — see `agents/CADENCE.md` §5) who:
 - Are actively hiring engineers OR just raised capital with an explicit engineering build-out signal
 - Have an AI/ML or complex web product in flight
 - Have a team too small to execute the roadmap in-house (typically <50 engineers)

@@ -143,18 +143,22 @@ target on 10. That forces a judgement call on every row instead of a filter.
 
 **This table is the filter. No per-row judgement.**
 
+**Confirmed by Arslan 2026-08-06.** Target = US, Canada, Australia, Singapore, Gulf. UK excluded.
+
 | Geo | Verdict |
 |---|---|
 | United States | ✅ Target |
 | Canada | ✅ Target |
 | Australia | ✅ Target |
-| New Zealand | ✅ Target |
 | Singapore | ✅ Target |
-| UAE | ✅ Target |
-| Saudi Arabia | ✅ Target |
-| Ireland | ✅ Target |
-| **United Kingdom** | ⚠️ **Excluded by standing decision** (`FILTERS.md` §2). 26 rows already skipped on this basis. Note: `CLAUDE.md` §6 previously listed UK as target — the exclusion wins until Arslan says otherwise. |
-| India, Pakistan, LATAM, mainland Europe, everywhere else | ❌ Skip on geo |
+| **Gulf** — UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman | ✅ Target |
+| **United Kingdom** | ❌ **Excluded** — settled 2026-08-06, no longer an open question |
+| New Zealand, Ireland | ❌ Not in target (were listed as widen options before 2026-08-06; no rows affected) |
+| India, Pakistan, Israel, LATAM, mainland Europe, everywhere else | ❌ Skip on geo |
+
+> ⚠️ **Never match on the bare word "wales"** when filtering out the UK — it would
+> exclude **New South Wales, Australia** (Dom Gattellari, Leigh Caprile are both
+> Sydney/NSW and in target). Match `united kingdom`, `london`, `england`, `scotland`.
 
 Geo is a **company-HQ** test, not a personal-location test. A founder living
 elsewhere while running a US-HQ'd company is in target.

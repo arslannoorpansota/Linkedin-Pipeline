@@ -63,13 +63,18 @@ REPLIED_MARKERS = {"replied", "interested", "call scheduled", "negotiating",
 # Canonical target geography — CADENCE.md §5. Matched against the Location column
 # so an out-of-target lead can never reach the send queue on rating alone.
 TARGET_GEO = [
-    "united states", "usa", ", us", "u.s.", "canada", "australia", "new zealand",
-    "singapore", "united arab emirates", "uae", "dubai", "abu dhabi",
-    "saudi", "ksa", "riyadh", "ireland", "dublin",
+    "united states", "usa", ", us", "u.s.", "canada", "australia",
+    "singapore",
+    # Gulf
+    "united arab emirates", "uae", "dubai", "abu dhabi", "sharjah",
+    "saudi", "ksa", "riyadh", "jeddah", "qatar", "doha",
+    "kuwait", "bahrain", "manama", "oman", "muscat",
 ]
+# NOTE: never add bare "wales" here — it would exclude New South Wales, Australia.
 OFF_TARGET_GEO = [
     "pakistan", "karachi", "lahore", "islamabad", "india", "bengaluru", "bangalore",
     "mumbai", "delhi", "israel", "tel aviv", "united kingdom", "london", "england",
+    "scotland", "ireland", "dublin", "new zealand", "auckland", "wellington",
     "germany", "berlin", "france", "paris", "spain", "netherlands", "amsterdam",
     "poland", "ukraine", "romania", "brazil", "mexico", "argentina", "colombia",
     "guatemala", "panama", "nigeria", "kenya", "egypt", "philippines", "indonesia",

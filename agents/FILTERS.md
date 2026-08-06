@@ -61,10 +61,10 @@ Sales Nav uses specific label names — pick these from the **Industry** dropdow
 ### Company (left column)
 - **Company headcount:** `11–50` (sweet spot) + `51–200`
 - **Company HQ location:** per the canonical table in **`agents/CADENCE.md` §5** —
-  Tier 1: United States, Canada, Australia. Widen with Ireland / New Zealand /
-  UAE / Saudi Arabia / Singapore. **Do NOT include United Kingdom** (excluded by
-  decision). Geo is a filter, never a per-row judgement call — apply CADENCE.md §5
-  verbatim rather than re-deciding per lead.
+  United States, Canada, Australia, Singapore, and the Gulf (UAE, Saudi Arabia,
+  Qatar, Kuwait, Bahrain, Oman). **Do NOT include United Kingdom** (settled
+  2026-08-06). New Zealand and Ireland are no longer widen options. Geo is a filter,
+  never a per-row judgement call — apply CADENCE.md §5 verbatim.
 - **Industry:** the Media + E-commerce + SaaS/Software Development set from §1
 
 ### Role
@@ -140,7 +140,7 @@ lead-count gain first. Loosen one at a time so you can see what each adds.
 | 2 | **Company headcount** | Add `1–10` and `201–500` (and `501–1000`) | Opens early startups + larger mid-market |
 | 3 | **Current job title** | Add: Owner, President, Managing Director, Director of Engineering, Head of Product, VP Product, Founding Engineer | Captures buyers with non-standard titles |
 | 4 | **Seniority level** | Add **Director** | Directors often own vendor decisions in bigger orgs |
-| 5 | **Company HQ location** | Add Tier-2: Ireland, New Zealand, UAE, Saudi Arabia, Singapore | More in-budget English-first markets (still **no UK**) |
+| 5 | **Company HQ location** | Add the Gulf: UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman (Singapore is already core) | More in-budget English-first markets (still **no UK**; NZ/Ireland dropped 2026-08-06) |
 | 6 | **Industry** | Add adjacent: Financial Services, Marketing Services, Computer Games, Wellness & Fitness, Consumer Services | Widens beyond the 3 core verticals |
 | 7 | **Changed jobs 90d** | Run as a **separate** batch (new leaders = new budgets) | A whole second stream of fresh leads |
 

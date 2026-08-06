@@ -1,0 +1,437 @@
+cell,column,old_value,new_value
+Pipeline!T301,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T485,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T488,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T489,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T492,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T495,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T496,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T498,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T510,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T512,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T518,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T522,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T523,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T524,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T547,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T613,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T623,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T635,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T650,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T655,Outreach Channel,LinkedIn connection note,Connection Note
+Pipeline!T663,Outreach Channel,LinkedIn InMail,InMail
+Pipeline!T671,Outreach Channel,LinkedIn connection note,Connection Note
+Pipeline!T689,Outreach Channel,InMail (7+ rule),InMail
+Pipeline!T740,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T766,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T789,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T808,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T809,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T850,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T867,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T883,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T884,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1020,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T1021,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1022,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T1023,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1025,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T1028,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1029,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T1031,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1033,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1036,Outreach Channel,LinkedIn Connection Note,Connection Note
+Pipeline!T1037,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T1040,Outreach Channel,LinkedIn InMail (Sales Nav),InMail
+Pipeline!T1042,Outreach Channel,LinkedIn (connection note),Connection Note
+Pipeline!T1043,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1044,Outreach Channel,InMail (7+ rule; 2nd degree),InMail
+Pipeline!T1045,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1046,Outreach Channel,"InMail (7+ rule; 2nd degree, 1 mutual)",InMail
+Pipeline!T1047,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1048,Outreach Channel,"InMail (7+ rule; 2nd degree, 1 mutual)",InMail
+Pipeline!T1049,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1050,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1051,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1052,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1053,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1054,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1055,Outreach Channel,"LinkedIn (connection note - 2nd degree, 1 mutual)",Connection Note
+Pipeline!T1056,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1057,Outreach Channel,LinkedIn,LinkedIn DM
+Pipeline!T1058,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1059,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1060,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1061,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1062,Outreach Channel,InMail (7+ rule),InMail
+Pipeline!T1065,Outreach Channel,"LinkedIn (connection note - 2nd degree, 1 mutual)",Connection Note
+Pipeline!T1067,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1069,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1074,Outreach Channel,LinkedIn (connection note - 2nd degree),Connection Note
+Pipeline!T1077,Outreach Channel,InMail (7+ rule),InMail
+Pipeline!T1078,Outreach Channel,"LinkedIn (connection note - 2nd degree, 3 mutuals)",Connection Note
+Pipeline!T1079,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1082,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!T1088,Outreach Channel,LinkedIn (connection note - 3rd degree),Connection Note
+Pipeline!AB85,Status,Connection send,Connection Requested
+Pipeline!AB95,Status,Connection send,Connection Requested
+Pipeline!AB108,Status,Connection send,Connection Requested
+Pipeline!AB113,Status,Connection send,Connection Requested
+Pipeline!AB200,Status,Connection send,Connection Requested
+Pipeline!AB301,Status,InMail sent,InMail Sent
+Pipeline!AB484,Status,Connected - Accepted,Connected (No DM yet)
+Pipeline!AB493,Status,Connected,Connected (No DM yet)
+Pipeline!AB564,Status,Replied - Not a fit (network-only),Closed - Not Interested
+Pipeline!AB623,Status,"Connected - inbound (he requested, we accepted)",Connected (No DM yet)
+Pipeline!AB689,Status,InMail sent,InMail Sent
+Pipeline!AB748,Status,In conversation - pitched Meta auto-post agent (distribution),In Conversation
+Pipeline!AB808,Status,Connected - Accepted,Connected (No DM yet)
+Pipeline!AB1020,Status,InMail sent,InMail Sent
+Pipeline!AB1022,Status,InMail sent,InMail Sent
+Pipeline!AB1025,Status,InMail sent,InMail Sent
+Pipeline!AB1029,Status,InMail sent,InMail Sent
+Pipeline!AB1037,Status,InMail sent,InMail Sent
+Pipeline!AB1040,Status,InMail sent,InMail Sent
+Pipeline!AB1044,Status,InMail sent,InMail Sent
+Pipeline!AB1046,Status,InMail sent,InMail Sent
+Pipeline!AB1048,Status,InMail sent,InMail Sent
+Pipeline!AB1062,Status,InMail sent,InMail Sent
+Pipeline!AB1074,Status,Call scheduling,Call Scheduled
+Pipeline!AB1077,Status,InMail sent,InMail Sent
+Pipeline!AB1107,Status,Closed - InMail declined,Closed - Not Interested
+Pipeline!AD74,Response Type,Accepted (connection),Accepted
+Pipeline!AD463,Response Type,Not interested (keep-warm),Declined
+Pipeline!AD484,Response Type,Accepted (connection),Accepted
+Pipeline!AD493,Response Type,Accepted connection (network only),Accepted
+Pipeline!AD498,Response Type,Interested (not near-term dev buyer),Positive
+Pipeline!AD564,Response Type,Not a fit - builds in-house (network-only),Not a fit
+Pipeline!AD613,Response Type,Positive - RFI materials sent,Positive
+Pipeline!AD748,Response Type,Positive - not a services fit now,Positive
+Pipeline!AD808,Response Type,Connection accepted,Accepted
+Pipeline!AD1023,Response Type,Accepted + viewed profile,Accepted
+Pipeline!M619,Lead Type,Type A,Direct Client
+Pipeline!M620,Lead Type,Type A,Direct Client
+Pipeline!M621,Lead Type,Type A,Direct Client
+Pipeline!M622,Lead Type,Type A,Direct Client
+Pipeline!M623,Lead Type,Type A,Direct Client
+Pipeline!M624,Lead Type,Type A,Direct Client
+Pipeline!M625,Lead Type,Type A,Direct Client
+Pipeline!M626,Lead Type,Type A,Direct Client
+Pipeline!M627,Lead Type,Type A,Direct Client
+Pipeline!M628,Lead Type,Type A,Direct Client
+Pipeline!M629,Lead Type,Type A,Direct Client
+Pipeline!M630,Lead Type,Type A,Direct Client
+Pipeline!M631,Lead Type,Type A,Direct Client
+Pipeline!M632,Lead Type,Type A,Direct Client
+Pipeline!M633,Lead Type,Type A,Direct Client
+Pipeline!M634,Lead Type,Type A,Direct Client
+Pipeline!M635,Lead Type,Type A,Direct Client
+Pipeline!M636,Lead Type,Type A,Direct Client
+Pipeline!M637,Lead Type,Type A,Direct Client
+Pipeline!M638,Lead Type,Type A,Direct Client
+Pipeline!M639,Lead Type,Type A,Direct Client
+Pipeline!M640,Lead Type,Skip,
+Pipeline!M641,Lead Type,Type A,Direct Client
+Pipeline!M642,Lead Type,Type A,Direct Client
+Pipeline!M643,Lead Type,Type A,Direct Client
+Pipeline!M644,Lead Type,Type A,Direct Client
+Pipeline!M645,Lead Type,Type A,Direct Client
+Pipeline!M646,Lead Type,Type A,Direct Client
+Pipeline!M647,Lead Type,Type A,Direct Client
+Pipeline!M648,Lead Type,Type A,Direct Client
+Pipeline!M649,Lead Type,Type A,Direct Client
+Pipeline!M650,Lead Type,Type A,Direct Client
+Pipeline!M651,Lead Type,Type A,Direct Client
+Pipeline!M652,Lead Type,Type A,Direct Client
+Pipeline!M653,Lead Type,Type A,Direct Client
+Pipeline!M654,Lead Type,Type A,Direct Client
+Pipeline!M655,Lead Type,Type A,Direct Client
+Pipeline!M656,Lead Type,Type A,Direct Client
+Pipeline!M657,Lead Type,Type A,Direct Client
+Pipeline!M658,Lead Type,Type A,Direct Client
+Pipeline!M659,Lead Type,Type A,Direct Client
+Pipeline!M660,Lead Type,Type A,Direct Client
+Pipeline!M661,Lead Type,Type A,Direct Client
+Pipeline!M662,Lead Type,Type A,Direct Client
+Pipeline!M663,Lead Type,Type A,Direct Client
+Pipeline!M664,Lead Type,Type A,Direct Client
+Pipeline!M665,Lead Type,Type A,Direct Client
+Pipeline!M666,Lead Type,Type A,Direct Client
+Pipeline!M667,Lead Type,Type A,Direct Client
+Pipeline!M668,Lead Type,Type A,Direct Client
+Pipeline!M669,Lead Type,Type A,Direct Client
+Pipeline!M670,Lead Type,Type A,Direct Client
+Pipeline!M671,Lead Type,Type A,Direct Client
+Pipeline!M672,Lead Type,Type A,Direct Client
+Pipeline!M673,Lead Type,Type A,Direct Client
+Pipeline!M674,Lead Type,Type A,Direct Client
+Pipeline!M675,Lead Type,Type A,Direct Client
+Pipeline!M676,Lead Type,Type A,Direct Client
+Pipeline!M677,Lead Type,Type A,Direct Client
+Pipeline!M678,Lead Type,Type A,Direct Client
+Pipeline!M679,Lead Type,Type A,Direct Client
+Pipeline!M680,Lead Type,Type A,Direct Client
+Pipeline!M681,Lead Type,Type A,Direct Client
+Pipeline!M682,Lead Type,Type A,Direct Client
+Pipeline!M683,Lead Type,Type A,Direct Client
+Pipeline!M684,Lead Type,Type A,Direct Client
+Pipeline!M685,Lead Type,Type A,Direct Client
+Pipeline!M686,Lead Type,Type A,Direct Client
+Pipeline!M687,Lead Type,Type A,Direct Client
+Pipeline!M688,Lead Type,Type A,Direct Client
+Pipeline!M689,Lead Type,Type A,Direct Client
+Pipeline!M690,Lead Type,Type A,Direct Client
+Pipeline!M691,Lead Type,Type A,Direct Client
+Pipeline!M692,Lead Type,Type A,Direct Client
+Pipeline!M693,Lead Type,Type A,Direct Client
+Pipeline!M694,Lead Type,Type A,Direct Client
+Pipeline!M695,Lead Type,Type A,Direct Client
+Pipeline!M696,Lead Type,Type A,Direct Client
+Pipeline!M697,Lead Type,Type A,Direct Client
+Pipeline!M698,Lead Type,Type A,Direct Client
+Pipeline!M699,Lead Type,Type A,Direct Client
+Pipeline!M700,Lead Type,Type A,Direct Client
+Pipeline!M701,Lead Type,Type A,Direct Client
+Pipeline!M702,Lead Type,Type A,Direct Client
+Pipeline!M703,Lead Type,Type A,Direct Client
+Pipeline!M704,Lead Type,Type A,Direct Client
+Pipeline!M705,Lead Type,Type A,Direct Client
+Pipeline!M706,Lead Type,Type A,Direct Client
+Pipeline!M707,Lead Type,Type A,Direct Client
+Pipeline!M708,Lead Type,Type A,Direct Client
+Pipeline!M709,Lead Type,Type A,Direct Client
+Pipeline!M710,Lead Type,Type A,Direct Client
+Pipeline!M711,Lead Type,Type A,Direct Client
+Pipeline!M712,Lead Type,Type A,Direct Client
+Pipeline!M713,Lead Type,Type A,Direct Client
+Pipeline!M714,Lead Type,Type A,Direct Client
+Pipeline!M715,Lead Type,Type A,Direct Client
+Pipeline!M716,Lead Type,Type A,Direct Client
+Pipeline!M717,Lead Type,Type A,Direct Client
+Pipeline!M718,Lead Type,Type A,Direct Client
+Pipeline!M719,Lead Type,Type A,Direct Client
+Pipeline!M720,Lead Type,Type A,Direct Client
+Pipeline!M721,Lead Type,Type A,Direct Client
+Pipeline!M722,Lead Type,Type A,Direct Client
+Pipeline!M723,Lead Type,Type A,Direct Client
+Pipeline!M724,Lead Type,Type A,Direct Client
+Pipeline!M725,Lead Type,Type B,Agency Partner
+Pipeline!M726,Lead Type,Type B,Agency Partner
+Pipeline!M727,Lead Type,Type A,Direct Client
+Pipeline!M728,Lead Type,Type A,Direct Client
+Pipeline!M729,Lead Type,Type A,Direct Client
+Pipeline!M730,Lead Type,Type A,Direct Client
+Pipeline!M731,Lead Type,Type B,Agency Partner
+Pipeline!M732,Lead Type,Type A,Direct Client
+Pipeline!M733,Lead Type,Type A,Direct Client
+Pipeline!M734,Lead Type,Type A,Direct Client
+Pipeline!M735,Lead Type,Type A,Direct Client
+Pipeline!M736,Lead Type,Type A,Direct Client
+Pipeline!M737,Lead Type,Type A,Direct Client
+Pipeline!M738,Lead Type,Type A,Direct Client
+Pipeline!M739,Lead Type,Type A,Direct Client
+Pipeline!M740,Lead Type,Type A,Direct Client
+Pipeline!M741,Lead Type,Type A,Direct Client
+Pipeline!M742,Lead Type,Type A,Direct Client
+Pipeline!M743,Lead Type,Type A,Direct Client
+Pipeline!M744,Lead Type,Type A,Direct Client
+Pipeline!M745,Lead Type,Type A,Direct Client
+Pipeline!M746,Lead Type,Type A,Direct Client
+Pipeline!M747,Lead Type,Type A,Direct Client
+Pipeline!M748,Lead Type,Type A,Direct Client
+Pipeline!M749,Lead Type,Type A,Direct Client
+Pipeline!M750,Lead Type,Type A,Direct Client
+Pipeline!M751,Lead Type,Type A,Direct Client
+Pipeline!M752,Lead Type,Type A,Direct Client
+Pipeline!M753,Lead Type,Type A,Direct Client
+Pipeline!M754,Lead Type,Type A,Direct Client
+Pipeline!M755,Lead Type,Type A,Direct Client
+Pipeline!M756,Lead Type,Type A,Direct Client
+Pipeline!M757,Lead Type,Type A,Direct Client
+Pipeline!M758,Lead Type,Type A,Direct Client
+Pipeline!M759,Lead Type,Type A,Direct Client
+Pipeline!M760,Lead Type,Type A,Direct Client
+Pipeline!M761,Lead Type,Type A,Direct Client
+Pipeline!M762,Lead Type,Type A,Direct Client
+Pipeline!M763,Lead Type,Type A,Direct Client
+Pipeline!M764,Lead Type,Type A,Direct Client
+Pipeline!M765,Lead Type,Type A,Direct Client
+Pipeline!M766,Lead Type,Type A,Direct Client
+Pipeline!M767,Lead Type,Type A,Direct Client
+Pipeline!M768,Lead Type,Type A,Direct Client
+Pipeline!M769,Lead Type,Type A,Direct Client
+Pipeline!M770,Lead Type,Type A,Direct Client
+Pipeline!M771,Lead Type,Type A,Direct Client
+Pipeline!M772,Lead Type,Type A,Direct Client
+Pipeline!M773,Lead Type,Type A,Direct Client
+Pipeline!M774,Lead Type,Type A,Direct Client
+Pipeline!M775,Lead Type,Type A,Direct Client
+Pipeline!M776,Lead Type,Type A,Direct Client
+Pipeline!M777,Lead Type,Type A,Direct Client
+Pipeline!M778,Lead Type,Type A,Direct Client
+Pipeline!M779,Lead Type,Type A,Direct Client
+Pipeline!M780,Lead Type,Type A,Direct Client
+Pipeline!M781,Lead Type,Type A,Direct Client
+Pipeline!M782,Lead Type,Type A,Direct Client
+Pipeline!M783,Lead Type,Type A,Direct Client
+Pipeline!M784,Lead Type,Type A,Direct Client
+Pipeline!M785,Lead Type,Type A,Direct Client
+Pipeline!M786,Lead Type,Type A,Direct Client
+Pipeline!M787,Lead Type,Type A,Direct Client
+Pipeline!M788,Lead Type,Type A,Direct Client
+Pipeline!M789,Lead Type,Type A,Direct Client
+Pipeline!M790,Lead Type,Type A,Direct Client
+Pipeline!M791,Lead Type,Type A,Direct Client
+Pipeline!M792,Lead Type,Type A,Direct Client
+Pipeline!M793,Lead Type,Type A,Direct Client
+Pipeline!M794,Lead Type,Type A,Direct Client
+Pipeline!M795,Lead Type,Type A,Direct Client
+Pipeline!M796,Lead Type,Type A,Direct Client
+Pipeline!M797,Lead Type,Type A,Direct Client
+Pipeline!M798,Lead Type,Type A,Direct Client
+Pipeline!M799,Lead Type,Type A,Direct Client
+Pipeline!M800,Lead Type,Type A,Direct Client
+Pipeline!M801,Lead Type,Type A,Direct Client
+Pipeline!M802,Lead Type,Type A,Direct Client
+Pipeline!M803,Lead Type,Type A,Direct Client
+Pipeline!M804,Lead Type,Type A,Direct Client
+Pipeline!M805,Lead Type,Type A,Direct Client
+Pipeline!M806,Lead Type,Type A,Direct Client
+Pipeline!M807,Lead Type,Type A,Direct Client
+Pipeline!M808,Lead Type,Type A,Direct Client
+Pipeline!M809,Lead Type,Type A,Direct Client
+Pipeline!M810,Lead Type,Type A,Direct Client
+Pipeline!M811,Lead Type,Type A,Direct Client
+Pipeline!M812,Lead Type,Type A,Direct Client
+Pipeline!M813,Lead Type,Type A,Direct Client
+Pipeline!M814,Lead Type,Type A,Direct Client
+Pipeline!M815,Lead Type,Type A,Direct Client
+Pipeline!M816,Lead Type,Type A,Direct Client
+Pipeline!M817,Lead Type,Type A,Direct Client
+Pipeline!M818,Lead Type,Type A,Direct Client
+Pipeline!M819,Lead Type,Type A,Direct Client
+Pipeline!M820,Lead Type,Type A,Direct Client
+Pipeline!M821,Lead Type,Type A,Direct Client
+Pipeline!M822,Lead Type,Type A,Direct Client
+Pipeline!M823,Lead Type,Type A,Direct Client
+Pipeline!M824,Lead Type,Type A,Direct Client
+Pipeline!M825,Lead Type,Type A,Direct Client
+Pipeline!M826,Lead Type,Type A,Direct Client
+Pipeline!M827,Lead Type,Type A,Direct Client
+Pipeline!M828,Lead Type,Type A,Direct Client
+Pipeline!M829,Lead Type,Type A,Direct Client
+Pipeline!M830,Lead Type,Type A,Direct Client
+Pipeline!M831,Lead Type,Type A,Direct Client
+Pipeline!M832,Lead Type,Type A,Direct Client
+Pipeline!M833,Lead Type,Type A,Direct Client
+Pipeline!M834,Lead Type,Type A,Direct Client
+Pipeline!M835,Lead Type,Type A,Direct Client
+Pipeline!M836,Lead Type,Type A,Direct Client
+Pipeline!M837,Lead Type,Type A,Direct Client
+Pipeline!M838,Lead Type,Type A,Direct Client
+Pipeline!M839,Lead Type,Type A,Direct Client
+Pipeline!M840,Lead Type,Type A,Direct Client
+Pipeline!M841,Lead Type,Type A,Direct Client
+Pipeline!M842,Lead Type,Type A,Direct Client
+Pipeline!M843,Lead Type,Type A,Direct Client
+Pipeline!M844,Lead Type,Type A,Direct Client
+Pipeline!M845,Lead Type,Type A,Direct Client
+Pipeline!M846,Lead Type,Type A,Direct Client
+Pipeline!M847,Lead Type,Type A,Direct Client
+Pipeline!M848,Lead Type,Type A,Direct Client
+Pipeline!M849,Lead Type,Type A,Direct Client
+Pipeline!M850,Lead Type,Type A,Direct Client
+Pipeline!M851,Lead Type,Type A,Direct Client
+Pipeline!M852,Lead Type,Type A,Direct Client
+Pipeline!M853,Lead Type,Type A,Direct Client
+Pipeline!M854,Lead Type,Type A,Direct Client
+Pipeline!M855,Lead Type,Type A,Direct Client
+Pipeline!M856,Lead Type,Type A,Direct Client
+Pipeline!M857,Lead Type,Type A,Direct Client
+Pipeline!M858,Lead Type,Type A,Direct Client
+Pipeline!M859,Lead Type,Type A,Direct Client
+Pipeline!M860,Lead Type,Type A,Direct Client
+Pipeline!M861,Lead Type,Type A,Direct Client
+Pipeline!M862,Lead Type,Type A,Direct Client
+Pipeline!M863,Lead Type,Type A,Direct Client
+Pipeline!M864,Lead Type,Type A,Direct Client
+Pipeline!M865,Lead Type,Type A,Direct Client
+Pipeline!M866,Lead Type,Type A,Direct Client
+Pipeline!M867,Lead Type,Type A,Direct Client
+Pipeline!M868,Lead Type,Type A,Direct Client
+Pipeline!M869,Lead Type,Type A,Direct Client
+Pipeline!M870,Lead Type,Type A,Direct Client
+Pipeline!M871,Lead Type,Type A,Direct Client
+Pipeline!M872,Lead Type,Type A,Direct Client
+Pipeline!M873,Lead Type,Type A,Direct Client
+Pipeline!M874,Lead Type,Type A,Direct Client
+Pipeline!M875,Lead Type,Type A,Direct Client
+Pipeline!M876,Lead Type,Type A,Direct Client
+Pipeline!M877,Lead Type,Type A,Direct Client
+Pipeline!M878,Lead Type,Type A,Direct Client
+Pipeline!M879,Lead Type,Type A,Direct Client
+Pipeline!M880,Lead Type,Type A,Direct Client
+Pipeline!M881,Lead Type,Type A,Direct Client
+Pipeline!M882,Lead Type,Type A,Direct Client
+Pipeline!M883,Lead Type,Type A,Direct Client
+Pipeline!M884,Lead Type,Type A,Direct Client
+Pipeline!M885,Lead Type,Type A,Direct Client
+Pipeline!M886,Lead Type,Type A,Direct Client
+Pipeline!M887,Lead Type,Type A,Direct Client
+Pipeline!M888,Lead Type,Type A,Direct Client
+Pipeline!M889,Lead Type,Type A,Direct Client
+Pipeline!M890,Lead Type,Type A,Direct Client
+Pipeline!M891,Lead Type,Type A,Direct Client
+Pipeline!M892,Lead Type,Type A,Direct Client
+Pipeline!M1089,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1090,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1091,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1092,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1093,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1094,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1095,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1096,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1097,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1098,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1099,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1100,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1101,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1102,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1103,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1104,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1105,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1106,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1107,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1108,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1109,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1110,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1111,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1112,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1113,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1114,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1115,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1116,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1117,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1118,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1119,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1120,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1121,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1122,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1123,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1124,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1125,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1126,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1127,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1128,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1129,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1130,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1131,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1132,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1133,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1134,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1135,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1136,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1137,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1138,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1139,Lead Type,Direct Client (Type A),Direct Client
+Pipeline!M1140,Lead Type,Direct Client (Type A),Direct Client

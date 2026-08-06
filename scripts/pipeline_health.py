@@ -204,7 +204,11 @@ def last_touch(sh: Sheet, row, today: datetime.date | None = None):
 
 REAL_REPLY_RE = re.compile(r"positive|negative|neutral|not a fit", re.I)
 REPLIED_STATUS_RE = re.compile(
-    r"replied|interested|call scheduled|negotiating|proposal|in conversation", re.I)
+    r"replied|^interested|call sched|negotiating|proposal|in conversation", re.I)
+# Tested BEFORE replied: "Closed - Not Interested" must not match "interested".
+CLOSED_RE = re.compile(
+    r"^(skip|not relevant|lost|won|on hold|new)$|closed|not interested|declined|not a fit",
+    re.I)
 ACCEPTED_RE = re.compile(r"accept|^connected", re.I)
 
 
@@ -212,9 +216,16 @@ def has_replied(sh: Sheet, row) -> bool:
     """A genuine message reply. A connection ACCEPT is not a reply — it is the
     trigger for touch 2. Treating any Response Date as a reply hid 14 leads that
     accepted and never got a DM (some for 42 days)."""
+    if is_closed(sh, row):
+        return False
     if REAL_REPLY_RE.search(sh.get(row, "Response Type")):
         return True
     return bool(REPLIED_STATUS_RE.search(sh.get(row, "Status")))
+
+
+def is_closed(sh: Sheet, row) -> bool:
+    """Decided and done — skipped, declined, lost, won or parked."""
+    return bool(CLOSED_RE.search(sh.get(row, "Status")))
 
 
 def is_accepted(sh: Sheet, row) -> bool:
@@ -437,8 +448,9 @@ def fix_planned_fu(service, sid: str, sh: Sheet, today: datetime.date, apply: bo
             if c == "DM / Email Sent Date":
                 continue
             d = parse_date(sh.get(row, c))
-            if d and d > today and nad == d:      # safe: date preserved elsewhere
-                plan.append((n, c, d, sh.name(row)))
+            if d and d > today and (nad == d or is_closed(sh, row)):
+                why = "kept in Next Action Date" if nad == d else "row is closed"
+                plan.append((n, c, d, f"{sh.name(row)} [{why}]"))
 
     print(f"\n=== FIX PLANNED FOLLOW-UP DATES ({'APPLYING' if apply else 'DRY RUN'}) "
           f"— {len(plan)} cells ===")
@@ -468,6 +480,73 @@ def write_csv(path: Path, records: list[dict]):
 
 # ---------------------------------------------------------------- formulas
 
+def build_array_formulas(sh: Sheet, last_row: int) -> dict[str, str]:
+    """One MAP() formula per column instead of one formula per row.
+
+    3 formula cells instead of 3,417: a stray edit can no longer silently kill a
+    single row (it either fails loudly or is blocked), and the logic is readable.
+    """
+    def L(key: str) -> str:
+        return f"{col_letter(sh.idx[key])}2:{col_letter(sh.idx[key])}{last_row}"
+
+    sent, fu1, fu2, fu3 = (L(k) for k in TOUCH_DATE_COLS)
+    resp, status, rtype = L("Response Date"), L("Status"), L("Response Type")
+
+    # LAMBDA parameter names MUST NOT be readable as an A1 reference. "fu1" parses
+    # as column FU row 1 — past the grid's 61 columns — and the whole formula
+    # returns #NAME?. A trailing underscore makes them unambiguous.
+    params = "s_,f1_,f2_,f3_,r_"
+    params_full = params + ",st_,rt_"
+
+    # Shared preamble: dates may be stored as real dates OR as ISO text, so read
+    # both. p() drops future dates — a future date in a "sent" column is a PLANNED
+    # touch, not a completed one.
+    common = """
+   d,       LAMBDA(x, IF(x="",0,MAX(N(x),IFERROR(DATEVALUE(x),0)))),
+   p,       LAMBDA(x, IF(d(x)>TODAY(),0,d(x))),
+   last,    MAX(p(s_),p(f1_),p(f2_),p(f3_)),
+   lastAny, MAX(last,p(r_)),
+   planned, MAX(d(f1_),d(f2_),d(f3_)),
+   touch,   IF(p(s_)>0,1,0)+IF(p(f1_)>0,1,0)+IF(p(f2_)>0,1,0)+IF(p(f3_)>0,1,0),
+   gap,     IFS(touch<=1,3,touch=2,5,TRUE,7),"""
+
+    # A connection ACCEPT is not a reply — it is the trigger for touch 2.
+    # closed is tested before replied so "Closed - Not Interested" is not read as
+    # "interested".
+    flags = """
+   closed,  REGEXMATCH(LOWER(st_&""),"^(skip|not relevant|lost|won|on hold|new)$|closed|not interested|declined|not a fit"),
+   replied, OR(REGEXMATCH(LOWER(rt_&""),"^(positive|negative|neutral)"),
+               REGEXMATCH(LOWER(st_&""),"replied|^interested|call sched|negotiating|proposal|in conversation")),
+   accepted,REGEXMATCH(TRIM(LOWER(rt_&" "&st_&"")),"accept|^connected"),"""
+
+    bc = f"""=MAP({sent},{fu1},{fu2},{fu3},{resp},
+ LAMBDA({params},
+  LET({common}
+   IF(lastAny=0,"",TODAY()-lastAny))))"""
+
+    bd = f"""=MAP({sent},{fu1},{fu2},{fu3},{resp},{status},{rtype},
+ LAMBDA({params_full},
+  LET({common}{flags}
+   IFS(planned>TODAY(), planned,
+       OR(last=0,replied,closed,touch>=4), "",
+       AND(accepted,touch<=1), lastAny,
+       TRUE, last+gap))))"""
+
+    be = f"""=MAP({sent},{fu1},{fu2},{fu3},{resp},{status},{rtype},
+ LAMBDA({params_full},
+  LET({common}{flags}
+   IFS(closed,                  "—",
+       AND(last=0,planned<=TODAY()), "",
+       replied,                 "REPLIED",
+       planned>TODAY(),         "SCHEDULED "&TEXT(planned,"mmm d"),
+       touch>=4,                "PARK",
+       AND(accepted,touch<=1),  "ACCEPTED - SEND T2",
+       TODAY()-last>gap,        "OVERDUE T"&(touch+1),
+       TRUE,                    "T"&(touch+1)&" due "&TEXT(last+gap,"mmm d")))))"""
+
+    return {"Days Since Last Touch": bc, "Cadence Due": bd, "Cadence Stage": be}
+
+
 def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
     """Append three live formula columns so stalls surface without scanning rows."""
     need = ["Days Since Last Touch", "Cadence Due", "Cadence Stage"]
@@ -477,76 +556,23 @@ def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
     for i, h in enumerate(need):
         plan.append((h, existing[h] if h in existing else start + len(plan)))
 
-    def cell(key: str, r: int) -> str:
-        return f"{col_letter(sh.idx[key])}{r}"
-
-    # A date column may hold a real date OR ISO text, so take the max of both readings.
-    def dnum(key: str, r: int) -> str:
-        c = cell(key, r)
-        return f"MAX(N({c}),IFERROR(DATEVALUE({c}),0))"
-
     last_row = len(sh.rows) + 1
+    formulas = build_array_formulas(sh, last_row)
     updates = []
     for header, cidx in plan:
         letter = col_letter(cidx)
         updates.append({"range": f"{TAB}!{letter}1", "values": [[header]]})
-        col = []
-        for r in range(2, last_row + 1):
-            # A future date in a "sent" column is a PLANNED touch, not a completed
-            # one. Counting it made last-touch land in the future and BC go negative
-            # (16 rows had a planned FU1 of 2026-08-07/08-13). Only elapsed dates
-            # count as touches; the planned date surfaces as SCHEDULED instead.
-            def past(k, _r=r):
-                d = dnum(k, _r)
-                return f"IF({d}>TODAY(),0,{d})"
-
-            resp = dnum("Response Date", r)
-            status = cell("Status", r)
-            # last  = OUR last send — drives the cadence gap (BD/BE).
-            # last_any = last activity on the thread, including THEIR reply — drives
-            # BC. A reply is the most recent event, so it sets the staleness clock;
-            # 12 rows were counting from our older send date instead (Ryan Fortin
-            # showed 43 when the reply was 37 days ago).
-            last = f"MAX({','.join(past(k) for k in TOUCH_DATE_COLS)})"
-            last_any = f"MAX({last},{past('Response Date')})"
-            n_touch = "+".join(f"IF({past(k)}>0,1,0)" for k in TOUCH_DATE_COLS)
-            planned = f"MAX({','.join(dnum(k, r) for k in TOUCH_DATE_COLS)})"
-            rtype = cell("Response Type", r)
-            # A connection ACCEPT is not a reply. Keying off "any Response Date"
-            # marked 26 accepts as REPLIED and hid 14 leads that accepted and never
-            # got a DM. Only a real message reply takes a lead off cadence.
-            replied = (f'OR(REGEXMATCH(LOWER({rtype}&""),"positive|negative|neutral|not a fit"),'
-                       f'REGEXMATCH(LOWER({status}&""),'
-                       f'"replied|interested|call scheduled|negotiating|proposal|in conversation"))')
-            accepted = f'REGEXMATCH(LOWER({rtype}&" "&{status}&""),"accept|connected")'
-            closed = f"REGEXMATCH(LOWER({status}&\"\"),\"^(skip|not relevant|lost|won|on hold|new)?$|^skip|not relevant|lost|won|on hold\")"
-
-            if header == "Days Since Last Touch":
-                f = f'=IF({last_any}=0,"",TODAY()-{last_any})'
-            elif header == "Cadence Due":
-                # A planned date beats the computed one — it's the operator's intent.
-                # An accept with no DM yet is due immediately (gap 0).
-                f = (f'=IF({planned}>TODAY(),{planned},'
-                     f'IF(OR({last}=0,{replied},{closed},({n_touch})>=4),"",'
-                     f'IF(AND({accepted},({n_touch})<=1),{last_any},'
-                     f'{last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7))))')
-            else:  # Cadence Stage
-                f = (f'=IF(AND({last}=0,NOT({planned}>TODAY())),"",'
-                     f'IF({replied},"REPLIED",IF({closed},"—",'
-                     f'IF({planned}>TODAY(),"SCHEDULED "&TEXT({planned},"mmm d"),'
-                     f'IF(({n_touch})>=4,"PARK",'
-                     # Accepted but no DM yet: T2 is due now, however long it has sat.
-                     f'IF(AND({accepted},({n_touch})<=1),"ACCEPTED - SEND T2",'
-                     f'IF(TODAY()-{last}>IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),'
-                     f'"OVERDUE T"&(({n_touch})+1),"T"&(({n_touch})+1)&" due "&TEXT({last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),"mmm d"))))))))')
-            col.append([f])
-        updates.append({"range": f"{TAB}!{letter}2:{letter}{last_row}", "values": col})
+        # Clear any leftover per-row formulas so the array can spill down.
+        updates.append({"range": f"{TAB}!{letter}2:{letter}{last_row}",
+                        "values": [[""] for _ in range(last_row - 1)]})
+        updates.append({"range": f"{TAB}!{letter}2", "values": [[formulas[header]]]})
 
     cols = ", ".join(f"{h} -> {col_letter(i)}" for h, i in plan)
     print(f"\n=== INSTALL FORMULAS ({'DRY RUN' if dry_run else 'WRITING'}) ===")
     print(f"  columns: {cols}")
-    print(f"  rows 2..{last_row}")
-    print(f"  sample: {updates[1]['values'][0][0][:150]}…")
+    print(f"  one array formula per column, spilling rows 2..{last_row}")
+    print(f"  {sum(len(v) for v in formulas.values())} chars of formula total "
+          f"(was ~{(last_row - 1) * 3} separate cells)")
     if dry_run:
         print("  (no write — drop --dry-run to apply)")
         return

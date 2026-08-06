@@ -28,14 +28,14 @@ you never type in them.
 | `SCHEDULED Aug 13` | Next touch already booked | Nothing — it's planned |
 | `REPLIED` | They answered | Off cadence. Handle as a conversation (`FOLLOW_UP.md`) |
 | `PARK` | All 4 touches used | Stop. Re-engagement pool |
-| `—` | Skipped / closed | Nothing |
+| `—` | Skipped / closed / declined | Nothing |
 | *(blank)* | Never contacted | Not on cadence yet |
 
 **Your daily routine:** filter BE on `OVERDUE`, sort BC descending, work top-down.
 Do this *before* adding new leads.
 
-Today: **147 overdue** — 15 `ACCEPTED - SEND T2` (work these first), 117 `OVERDUE T2`,
-15 `OVERDUE T3`. Oldest untouched is 43 days.
+Today: **155 need action** — 15 `ACCEPTED - SEND T2` (work these first),
+125 `OVERDUE T2`, 15 `OVERDUE T3`. Oldest untouched is 43 days.
 
 **An accept is not a reply.** Someone accepting your connection request is the
 trigger for touch 2, not the end of the sequence. 14 leads had accepted and never
@@ -97,18 +97,29 @@ python pipeline_health.py --install-formulas
 
 ---
 
-## 5. Known issue: the dropdowns are wrong
+## 5. Dropdowns (fixed 2026-08-06)
 
-26 columns have strict data validation that was auto-generated from whatever was
-in the cells. It is inconsistent with reality:
+The sheet used to carry auto-generated dropdowns built from whatever happened to be
+in the cells — `Status` permitted only 3 values while 24 were in use, and
+`Internal Notes` / `Rating Reason` had whole message blobs as options. That is fixed:
 
-- **`Status` allows only 3 values** (`DM Sent`, `New`, `Connection Requested`) while
-  the sheet contains ~20. Most rows already violate their own dropdown.
-- `Internal Notes`, `Rating Reason`, `Lead Name`, `Company Name` have dropdowns
-  whose options are whole pasted message blobs.
-- `Date Added`, `Next Action Date`, `Response Date` are dropdowns of literal dates.
-- `Outreach Channel` has 12 spellings for 4 real channels, which is why reply-rate
-  analysis needs normalising before it reads correctly.
+- **Dropdowns removed** from every free-text, date and formula column (14 of them).
+- **Canonical lists installed** on the 6 real dropdown columns: Status (17 values in
+  use), Outreach Channel (5), Response Type, Priority, Lead Type, Assigned To.
+- Lists are **warn-not-reject**, so a legitimate value is never blocked — you get a
+  flag, not a wall.
+- **Label variants collapsed** — 436 cells. Outreach Channel went from 18 spellings
+  to 5, so reply rates read correctly with no normalising:
+  Connection Note **27.3%**, LinkedIn DM **23.5%**, InMail **7.9%**, Both 36.4%.
+
+Every original value is recorded in `scripts/label_normalization_log.csv`.
+
+Re-run the checks any time:
+
+```bash
+python sheet_audit.py            # every consistency check, worst first
+python sheet_fix.py --all        # dry-run of any dropdown/label repair needed
+```
 
 **Do not put a dropdown on BC/BD/BE.** A dropdown is for typing in; picking a value
 **overwrites the formula** and that row stops updating forever.
@@ -131,3 +142,32 @@ Fix pending: strip validation from formula/free-text/date columns, install canon
 lists on the real dropdowns (Status, Outreach Channel, Response Type, Priority),
 and protect BC–BE. This should happen **before** `--decide --apply`, otherwise the
 `Skip` / `On Hold` values it writes land flagged as invalid.
+
+---
+
+## 6. What this means for NEW leads
+
+The columns are calculated for every row, including rows added later — the array
+formula covers the whole column, so a new lead is picked up automatically. What you
+must fill by hand is the input that drives them:
+
+| You fill | Then BC/BD/BE do this |
+|---|---|
+| Nothing yet (just researched) | All three stay blank — the lead is not on cadence |
+| `DM / Email Sent Date` = the day you sent T1 | Cadence starts. BD = that date + 3, BE counts down to T2 |
+| `Response Type` = `Accepted` (they accepted) | BE flips to **`ACCEPTED - SEND T2`** — send the DM now |
+| `Follow-up 1 Date` = the day you actually sent T2 | Touch count goes to 2, BD = that date + 5, BE tracks T3 |
+| `Response Type` = `Positive` / `Negative` / `Neutral` | BE reads `REPLIED` — off cadence, it is a conversation |
+| `Status` = `Skip` / `Closed - Not Interested` | BE reads `—`, the lead leaves the queue |
+
+Three rules keep it accurate:
+
+1. **Log the date on the day you send.** A blank sent date means the lead never
+   enters the queue and gets silently forgotten.
+2. **Follow-up columns take the date it was SENT.** Planned dates go in
+   `Next Action Date`, or the lead reads as having an extra touch (§3).
+3. **An accept is not a reply.** Mark `Accepted`, not `Positive`, or the lead drops
+   off cadence before it has been pitched.
+
+Adding rows below the last row is fine. If you ever add a row *above* the current
+last row or extend past it, re-run `--install-formulas` to restretch the columns.

@@ -8,14 +8,18 @@ Implements the enforcement side of agents/CADENCE.md:
   --check-dupes       name / LinkedIn-URL / company collisions (pre-research gate)
   --install-formulas  add the live "Days Since Last Touch" / "Cadence Due" /
                       "Cadence Stage" formula columns to the Pipeline tab
+  --decide            attach a decision to every status=New row
+  --fix-planned-fu    clear future dates parked in a "Follow-up N Date" column
   --all               every read-only report above
 
-Read-only by default. Only --install-formulas writes to the sheet.
+Read-only by default. --install-formulas writes; --decide and --fix-planned-fu
+are dry-run until you add --apply.
 
 Usage:
     python pipeline_health.py --all
     python pipeline_health.py --overdue --csv /tmp/overdue.csv
     python pipeline_health.py --install-formulas
+    python pipeline_health.py --fix-planned-fu --apply
 """
 from __future__ import annotations
 
@@ -172,15 +176,27 @@ def parse_date(s: str):
     return None
 
 
-def touches(sh: Sheet, row) -> list[datetime.date]:
+def touches(sh: Sheet, row, today: datetime.date | None = None) -> list[datetime.date]:
+    """Completed touches only. A future date in a 'sent' column is a PLANNED touch
+    (it belongs in Next Action Date) and must not count, or last-touch lands in the
+    future and days-since-touch goes negative."""
+    today = today or datetime.date.today()
     got = [parse_date(sh.get(row, c)) for c in TOUCH_DATE_COLS]
-    return sorted(d for d in got if d)
+    return sorted(d for d in got if d and d <= today)
 
 
-def last_touch(sh: Sheet, row):
-    t = touches(sh, row)
+def planned_touch(sh: Sheet, row, today: datetime.date | None = None):
+    """A future-dated follow-up column = a scheduled touch that hasn't happened."""
+    today = today or datetime.date.today()
+    got = [parse_date(sh.get(row, c)) for c in TOUCH_DATE_COLS]
+    future = [d for d in got if d and d > today]
+    return max(future) if future else None
+
+
+def last_touch(sh: Sheet, row, today: datetime.date | None = None):
+    t = touches(sh, row, today)
     resp = parse_date(sh.get(row, "Response Date"))
-    if resp:
+    if resp and resp <= (today or datetime.date.today()):
         t.append(resp)
     return max(t) if t else None
 
@@ -223,10 +239,12 @@ def report_overdue(sh: Sheet, today: datetime.date, out_csv: Path | None):
         status = sh.get(row, "Status")
         if status.strip().lower() in CLOSED_STATUSES or has_replied(sh, row):
             continue
-        lt = last_touch(sh, row)
+        if planned_touch(sh, row, today):
+            continue          # next touch already scheduled — not overdue
+        lt = last_touch(sh, row, today)
         if not lt:
             continue
-        done = len(touches(sh, row))
+        done = len(touches(sh, row, today))
         age = (today - lt).days
         if done >= 4 or age >= PARK_AFTER_DAYS:
             stage, due_in = "PARK", 0
@@ -385,6 +403,42 @@ def decide_undecided(service, sid: str, sh: Sheet, today: datetime.date, apply: 
     print("  done")
 
 
+def fix_planned_fu(service, sid: str, sh: Sheet, today: datetime.date, apply: bool):
+    """Clear future dates wrongly parked in a 'Follow-up N Date' column.
+
+    Those columns mean "FU was SENT on this date". A planned date there makes the
+    lead look like it has an extra completed touch. Only clears when the same date
+    is already recorded in Next Action Date, so no information is lost. Follow-up
+    Notes are left untouched.
+    """
+    plan = []
+    for n, row in enumerate(sh.rows, start=2):
+        nad = parse_date(sh.get(row, "Next Action Date"))
+        for c in TOUCH_DATE_COLS:
+            if c == "DM / Email Sent Date":
+                continue
+            d = parse_date(sh.get(row, c))
+            if d and d > today and nad == d:      # safe: date preserved elsewhere
+                plan.append((n, c, d, sh.name(row)))
+
+    print(f"\n=== FIX PLANNED FOLLOW-UP DATES ({'APPLYING' if apply else 'DRY RUN'}) "
+          f"— {len(plan)} cells ===")
+    for n, c, d, nm in plan:
+        print(f"  row {n:5} clear {c} = {d}  ({nm[:24]}) — kept in Next Action Date")
+    if not plan:
+        return
+    if not apply:
+        print("  (no write — add --apply to clear these cells)")
+        return
+    data = [{"range": f"{TAB}!{col_letter(sh.idx[c])}{n}", "values": [[""]]}
+            for n, c, _, _ in plan]
+    service.spreadsheets().values().batchUpdate(
+        spreadsheetId=sid,
+        body={"valueInputOption": "USER_ENTERED", "data": data},
+    ).execute()
+    print(f"  cleared {len(data)} cells")
+
+
 def write_csv(path: Path, records: list[dict]):
     with path.open("w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(records[0].keys()))
@@ -419,24 +473,36 @@ def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
         updates.append({"range": f"{TAB}!{letter}1", "values": [[header]]})
         col = []
         for r in range(2, last_row + 1):
-            touch_terms = ",".join(dnum(k, r) for k in TOUCH_DATE_COLS)
+            # A future date in a "sent" column is a PLANNED touch, not a completed
+            # one. Counting it made last-touch land in the future and BC go negative
+            # (16 rows had a planned FU1 of 2026-08-07/08-13). Only elapsed dates
+            # count as touches; the planned date surfaces as SCHEDULED instead.
+            def past(k, _r=r):
+                d = dnum(k, _r)
+                return f"IF({d}>TODAY(),0,{d})"
+
             resp = dnum("Response Date", r)
             status = cell("Status", r)
-            last = f"MAX({touch_terms})"
-            n_touch = "+".join(f"IF({dnum(k, r)}>0,1,0)" for k in TOUCH_DATE_COLS)
+            last = f"MAX({','.join(past(k) for k in TOUCH_DATE_COLS)})"
+            n_touch = "+".join(f"IF({past(k)}>0,1,0)" for k in TOUCH_DATE_COLS)
+            planned = f"MAX({','.join(dnum(k, r) for k in TOUCH_DATE_COLS)})"
             replied = f"OR({resp}>0,REGEXMATCH(LOWER({status}&\"\"),\"replied|interested|call scheduled|negotiating|proposal|conversation\"))"
             closed = f"REGEXMATCH(LOWER({status}&\"\"),\"^(skip|not relevant|lost|won|on hold|new)?$|^skip|not relevant|lost|won|on hold\")"
 
             if header == "Days Since Last Touch":
                 f = f'=IF({last}=0,"",TODAY()-{last})'
             elif header == "Cadence Due":
-                f = (f'=IF(OR({last}=0,{replied},{closed},({n_touch})>=4),"",'
-                     f'{last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7))')
+                # A planned date beats the computed one — it's the operator's intent.
+                f = (f'=IF({planned}>TODAY(),{planned},'
+                     f'IF(OR({last}=0,{replied},{closed},({n_touch})>=4),"",'
+                     f'{last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7)))')
             else:  # Cadence Stage
-                f = (f'=IF({last}=0,"",IF({replied},"REPLIED",IF({closed},"—",'
+                f = (f'=IF(AND({last}=0,NOT({planned}>TODAY())),"",'
+                     f'IF({replied},"REPLIED",IF({closed},"—",'
+                     f'IF({planned}>TODAY(),"SCHEDULED "&TEXT({planned},"mmm d"),'
                      f'IF(({n_touch})>=4,"PARK",'
                      f'IF(TODAY()-{last}>IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),'
-                     f'"OVERDUE T"&(({n_touch})+1),"T"&(({n_touch})+1)&" due "&TEXT({last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),"mmm d"))))))')
+                     f'"OVERDUE T"&(({n_touch})+1),"T"&(({n_touch})+1)&" due "&TEXT({last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),"mmm d")))))))')
             col.append([f])
         updates.append({"range": f"{TAB}!{letter}2:{letter}{last_row}", "values": col})
 
@@ -491,6 +557,8 @@ def main() -> int:
     ap.add_argument("--undecided", action="store_true")
     ap.add_argument("--check-dupes", action="store_true")
     ap.add_argument("--install-formulas", action="store_true")
+    ap.add_argument("--fix-planned-fu", action="store_true",
+                    help="clear future dates parked in Follow-up N Date (dry-run unless --apply)")
     ap.add_argument("--decide", action="store_true",
                     help="attach a decision to every status=New row (dry-run unless --apply)")
     ap.add_argument("--apply", action="store_true", help="with --decide: actually write")
@@ -501,7 +569,7 @@ def main() -> int:
     args = ap.parse_args()
 
     if not any([args.overdue, args.undecided, args.check_dupes,
-                args.install_formulas, args.decide, args.all]):
+                args.install_formulas, args.decide, args.fix_planned_fu, args.all]):
         ap.print_help()
         return 1
 
@@ -520,6 +588,8 @@ def main() -> int:
         report_dupes(sh)
     if args.install_formulas:
         install_formulas(service, cfg["spreadsheet_id"], sh, args.dry_run)
+    if args.fix_planned_fu:
+        fix_planned_fu(service, cfg["spreadsheet_id"], sh, today, args.apply)
     if args.decide:
         decide_undecided(service, cfg["spreadsheet_id"], sh, today, args.apply)
     return 0

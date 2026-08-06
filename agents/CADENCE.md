@@ -86,6 +86,18 @@ Rules:
 - **Vary structure, not just the first line** across T2–T4 (`CLAUDE.md` §9).
 - **T4 is the last touch.** No touch 5. Park it and move on.
 
+### Sent dates vs planned dates (do not mix these up)
+
+- **`Follow-up N Date` = the date that follow-up was actually SENT.** Past dates only.
+- **`Next Action Date` = when the next touch is DUE.** This is where a planned date goes.
+
+Putting a planned date in `Follow-up 1 Date` makes the lead look like it has an
+extra completed touch, which pushes it to the wrong cadence stage and drives
+`Days Since Last Touch` negative. It happened on 16 rows (planned FU1 of
+2026-08-07 / 08-13 while the note had only just gone out). The formulas now ignore
+future dates and show `SCHEDULED <date>` instead, but log the date in the right
+column. `--fix-planned-fu` cleans up existing cases.
+
 ### Overdue definition (what the sheet flags red)
 
 A lead is **overdue** when it has no reply and

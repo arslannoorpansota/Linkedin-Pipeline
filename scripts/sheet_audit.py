@@ -163,7 +163,8 @@ def main() -> int:
         u = ph.norm_url(sh.get(row, "LinkedIn URL"))
         if u:
             by_url[u].append(i)
-        if sh.company(row) and sh.get(row, "Status").lower() not in ("skip", "not relevant"):
+        if sh.company(row) and sh.get(row, "Status").lower() not in (
+                "skip", "not relevant", "on hold", "lost", "closed - not interested"):
             by_comp[ph.norm(sh.company(row))].append(i)
     for label, d, sev in (("duplicate person rows (same name)", by_name, "MED"),
                           ("duplicate LinkedIn URLs", by_url, "MED"),

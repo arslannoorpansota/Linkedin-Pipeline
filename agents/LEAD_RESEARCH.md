@@ -8,6 +8,17 @@
 
 ---
 
+## Step 0 — Gate checks (run BEFORE anything else)
+
+Two filters that never require a judgement call — apply them first and stop if either fails:
+
+1. **Dedupe** (`agents/CADENCE.md` §4) — check the sheet by LinkedIn URL → name → company. Already `Skip` → reply `dup — already skipped [date]`. Already live → reply `dup — already in play, status X`. Company already has a live contact → note it on that row, do not open a second thread. Do not research a lead that's already decided.
+2. **Geo** (`agents/CADENCE.md` §5, the canonical table — no per-row judgement) — target = **US, Canada, Australia, Singapore, Gulf** (UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman). **UK is excluded.** Geo is a company-HQ test, not a personal-location test. Off-geo → `[SKIP]` and stop.
+
+**Priority verticals** (`agents/FILTERS.md` §1): **Media, E-commerce, SaaS / Software Development.** For Media, lead with Arslan's OpenAI video-model credential. Other verticals still qualify, but the pool is built around these three.
+
+---
+
 ## Step 1 — Qualification Filter
 
 Apply this before researching anyone at the company. If it fails, output `[SKIP]` with one reason and stop.
@@ -84,7 +95,7 @@ After qualifying, score the lead. Be honest — most leads are 5–7. Reserve 9�
 | Anthropic / Claude partner network member | +2 |
 | Decision-maker is 2nd-degree connection | +1 |
 | Decision-maker posted recently (active on LinkedIn) | +1 |
-| Company in US / UK / Canada / Australia / Saudi Arabia | +1 |
+| Company in a priority vertical (Media / E-commerce / SaaS-Software Dev) | +1 |
 | Clear budget signals ($50k+ project or 10+ eng team) | +1 |
 | They're actively running AI transformation projects | +1 |
 
@@ -92,8 +103,10 @@ After qualifying, score the lead. Be honest — most leads are 5–7. Reserve 9�
 |---|---|
 | No recent LinkedIn activity (company or person) | −1 |
 | Decision-maker is 3rd degree, no mutual connections | −1 |
-| Company in a region with low contract rates (outside target) | −1 |
+| Technical / self-building founder or full in-house eng team (no build gap) | −1 |
 | Vague pain / no obvious hook | −1 |
+
+> Geo is not a scoring signal — it's a hard gate at Step 0 (`agents/CADENCE.md` §5). Off-target companies are skipped, not docked.
 
 ---
 
@@ -138,10 +151,18 @@ Fill these fields in the Google Sheet:
 - Lead Type: 
 - Hook / Why Outreach: 
 - Priority: <High (8–10) / Medium (5–7) / Low (1–4)>
+- Outreach Channel: <per CADENCE.md §2 — 6+ = Connection note; InMail only via §2a; <6 = Skip>
 - Status: New
 - Assigned To: Arslan
-- Next Action: Send DM / Send connection request
+- Next Action: Send connection note (or DM if 1st-degree)
+- Next Action Date: <day 0 — set it, never leave blank (CADENCE.md §3)>
 ```
+
+> **Channel & cadence are governed by `agents/CADENCE.md`, not this file.** In short:
+> rating **6 or 7+ → connection note** (≤200 chars) then a DM proof point on accept;
+> **InMail is a last-resort fallback** (§2a), never a reward for a high rating;
+> **<6 → Skip the same day.** Then the 4-touch cadence runs day 0 / +3 / +8 / +15,
+> park at +45, with `Next Action Date` never blank.
 
 ---
 

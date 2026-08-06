@@ -60,9 +60,11 @@ Sales Nav uses specific label names — pick these from the **Industry** dropdow
 
 ### Company (left column)
 - **Company headcount:** `11–50` (sweet spot) + `51–200`
-- **Company HQ location:** United States, Canada, Australia (Tier 1).
-  Add Ireland / New Zealand / UAE / Saudi Arabia / Singapore to widen.
-  **Do NOT include United Kingdom** (excluded by decision).
+- **Company HQ location:** per the canonical table in **`agents/CADENCE.md` §5** —
+  Tier 1: United States, Canada, Australia. Widen with Ireland / New Zealand /
+  UAE / Saudi Arabia / Singapore. **Do NOT include United Kingdom** (excluded by
+  decision). Geo is a filter, never a per-row judgement call — apply CADENCE.md §5
+  verbatim rather than re-deciding per lead.
 - **Industry:** the Media + E-commerce + SaaS/Software Development set from §1
 
 ### Role

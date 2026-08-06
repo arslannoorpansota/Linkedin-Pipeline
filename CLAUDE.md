@@ -107,8 +107,14 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 
 ## 6. Target Lead Profiles
 
+> **Geo is a filter, not a judgement call.** The canonical target-geography table
+> lives in `agents/CADENCE.md` §5 — use it verbatim. Do not decide geo per row.
+> (The pipeline had Australia marked `skip-geo` on 9 rows and `target geo` on 8;
+> Canada 12 vs 10. Same country, opposite verdicts.) **UK is currently excluded**
+> per `FILTERS.md` §2 — see CADENCE.md §5, pending Arslan's confirmation.
+
 ### Type A — Direct Client ✅ PRIMARY FOCUS
-Founders, CTOs, VPs Engineering at **Seed–Series B** companies in the US/UK/Canada/Australia/Saudi Arabia who:
+Founders, CTOs, VPs Engineering at **Seed–Series B** companies in target geos (see `agents/CADENCE.md` §5) who:
 - Are actively hiring engineers OR just raised capital with an explicit engineering build-out signal
 - Have an AI/ML or complex web product in flight
 - Have a team too small to execute the roadmap in-house (typically <50 engineers)
@@ -137,6 +143,7 @@ Companies in the Claude partner network who need AI engineering capacity for cli
 | `agents/EMAIL_OUTREACH.md` | Paste a company/person page → get a cold email (subject + body) |
 | `agents/FOLLOW_UP.md` | Paste thread history → get the right follow-up message |
 | `agents/SALES_NAV_PLAYBOOK.md` | Sales Navigator targeting + channel strategy (free DM vs InMail vs email) under the 50-InMail/mo cap |
+| `agents/CADENCE.md` | **Authoritative:** channel routing by rating, the enforced 4-touch cadence, the pre-research dedupe gate, and the canonical target-geo table |
 
 **Daily reporting is mandatory — for ALL work, not just outreach.** After any substantive task in this workspace (outreach agent runs AND profile/company-page setup, generated assets, infra/ops, research — anything that changes a file or produces output), append a dated entry to that day's report in `reports/YYYY-MM-DD.md` before ending the session. The protocol, activity types, and entry format live in `reports/README.md`. Every entry is date-stamped, there is one report file per day, and the Summary counters at the top of the day file are updated after each entry. Trivial chit-chat with no output does not need an entry.
 
@@ -155,7 +162,6 @@ All outreach is logged in Google Sheets. Schema defined in `sheets/SCHEMA.md`.
 ## 9. Tone Rules (apply to ALL outreach)
 
 - **Never lead with a pitch.** Lead with what you noticed about THEM.
-- **Never lead with a pitch.** Lead with what you noticed about THEM.
 - **Be specific.** Reference their actual recent post, company news, or role change.
 - **Hooks must be verifiable.** Only reference a post, talk, or article you can actually link to. If someone replies "which post?" and it doesn't exist, credibility is gone. When no verifiable hook exists, anchor on a company signal (funding round, job posting) instead.
 - **Vary message structure, not just the hook.** Swapping the first line while keeping the same body is still a template. Change the CTA, the value frame, and the body structure across different recipients.
@@ -165,3 +171,27 @@ All outreach is logged in Google Sheets. Schema defined in `sheets/SCHEMA.md`.
 - **Soft ask.** "Worth a 20-min call?" not "Please respond ASAP."
 - **No superlatives.** Never say "we're the best" or "world-class."
 - Write as Arslan (CTO), not as a company. "I" not "we" in DMs.
+
+---
+
+## 10. Channel & Cadence (measured rules — `agents/CADENCE.md`)
+
+Three rules that changed on 2026-08-06 after reading the live sheet. Full detail
+and the numbers behind them are in `agents/CADENCE.md`.
+
+1. **InMail is a fallback, never a reward for a high rating.** Measured reply
+   rates: connection note **27.3%** (44 sent), LinkedIn DM **23.5%** (102),
+   InMail **5.3%** (38 sent, 2 replies). The old "7+ → InMail" rule sent our best
+   leads down our worst channel. **Default for every rating 6+ is a connection
+   note**; InMail only when no free route exists (CADENCE.md §2a).
+2. **Follow-ups are date-enforced, 4 touches: day 0 / +3 / +8 / +15, park at +45.**
+   `Next Action Date` is never blank while a lead is on cadence. 124 leads had gone
+   >5 days with no touch and no reply; the oldest sat 43 days.
+3. **Dedupe before researching, never after.** Check LinkedIn URL, then name, then
+   company against the sheet *before* spending analysis (CADENCE.md §4).
+
+**Run `python scripts/pipeline_health.py --all` at the start of any outreach
+session.** It prints the overdue queue, the undecided queue, and dupe collisions.
+The sheet also carries live `Days Since Last Touch` / `Cadence Due` /
+`Cadence Stage` columns (BC–BE) — filter `Cadence Stage` on `OVERDUE` to see what
+is late without scanning rows. **Work the overdue queue before adding new leads.**

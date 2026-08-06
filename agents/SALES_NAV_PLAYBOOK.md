@@ -181,6 +181,12 @@ Set **Company HQ location** (not Personal Geography — see §5) to:
 
 ## 4. Channel decision tree — which path: free vs InMail vs email
 
+> ⚠️ **`agents/CADENCE.md` is authoritative on channel choice.** The table below
+> is consistent with it and stays as the working triage order. What changed
+> (2026-08-06): a **high rating no longer routes to InMail.** Measured on 195 sent
+> leads — connection note replied **27.3%**, DM **23.5%**, **InMail 5.3%**. Rating
+> 6+ defaults to a connection note; InMail is the fallback at step 6 only.
+
 **Never spend an InMail where a free path exists.** Triage every lead in this
 order and stop at the first match:
 

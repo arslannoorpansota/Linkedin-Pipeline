@@ -21,6 +21,7 @@ you never type in them.
 
 | Value | Meaning | Do what |
 |---|---|---|
+| `ACCEPTED - SEND T2` | They accepted, no DM sent yet | **Highest priority — send now** |
 | `OVERDUE T2` | Touch 2 is late | **Send it today** |
 | `OVERDUE T3` | Touch 3 is late | **Send it today** |
 | `T3 due Aug 11` | On track, not due yet | Nothing — come back on that date |
@@ -33,7 +34,12 @@ you never type in them.
 **Your daily routine:** filter BE on `OVERDUE`, sort BC descending, work top-down.
 Do this *before* adding new leads.
 
-Today: **118 leads need T2, 3 need T3.** Oldest untouched is 43 days.
+Today: **147 overdue** — 15 `ACCEPTED - SEND T2` (work these first), 117 `OVERDUE T2`,
+15 `OVERDUE T3`. Oldest untouched is 43 days.
+
+**An accept is not a reply.** Someone accepting your connection request is the
+trigger for touch 2, not the end of the sequence. 14 leads had accepted and never
+received a DM, two of them sitting 42 days.
 
 ---
 

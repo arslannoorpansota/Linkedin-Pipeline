@@ -201,12 +201,25 @@ def last_touch(sh: Sheet, row, today: datetime.date | None = None):
     return max(t) if t else None
 
 
+REAL_REPLY_RE = re.compile(r"positive|negative|neutral|not a fit", re.I)
+REPLIED_STATUS_RE = re.compile(
+    r"replied|interested|call scheduled|negotiating|proposal|in conversation", re.I)
+ACCEPTED_RE = re.compile(r"accept|^connected", re.I)
+
+
 def has_replied(sh: Sheet, row) -> bool:
-    if sh.get(row, "Response Date"):
+    """A genuine message reply. A connection ACCEPT is not a reply — it is the
+    trigger for touch 2. Treating any Response Date as a reply hid 14 leads that
+    accepted and never got a DM (some for 42 days)."""
+    if REAL_REPLY_RE.search(sh.get(row, "Response Type")):
         return True
-    if sh.get(row, "Response Type") in ("Positive", "Negative", "Neutral"):
-        return True
-    return sh.get(row, "Status").strip().lower() in REPLIED_MARKERS
+    return bool(REPLIED_STATUS_RE.search(sh.get(row, "Status")))
+
+
+def is_accepted(sh: Sheet, row) -> bool:
+    """They accepted the connection request -> T2 is due immediately (CADENCE.md §3)."""
+    blob = f"{sh.get(row, 'Response Type')} {sh.get(row, 'Status')}"
+    return bool(ACCEPTED_RE.search(blob.strip()))
 
 
 # A rating justified mainly by network/referral value is a Type-B/C partner lead, not
@@ -245,9 +258,12 @@ def report_overdue(sh: Sheet, today: datetime.date, out_csv: Path | None):
         if not lt:
             continue
         done = len(touches(sh, row, today))
+        accepted = is_accepted(sh, row)
         age = (today - lt).days
         if done >= 4 or age >= PARK_AFTER_DAYS:
             stage, due_in = "PARK", 0
+        elif accepted and done <= 1:
+            stage, due_in = "T2 (ACCEPTED)", 0   # accept means send it now
         else:
             gap = CADENCE_GAPS.get(done, 7)
             stage, due_in = f"T{done + 1}", gap
@@ -258,7 +274,9 @@ def report_overdue(sh: Sheet, today: datetime.date, out_csv: Path | None):
                 "rating": sh.rating(row) or "", "status": status,
                 "linkedin": sh.get(row, "LinkedIn URL"),
             })
-    late.sort(key=lambda r: (-(r["rating"] or 0), -r["days_since_touch"]))
+    # Accepted-and-never-DM'd first: warmest leads in the pipeline.
+    late.sort(key=lambda r: (r["next_touch"] != "T2 (ACCEPTED)",
+                             -(r["rating"] or 0), -r["days_since_touch"]))
 
     print(f"\n=== OVERDUE — no reply, next touch past due ({len(late)} leads) ===")
     print(f"{'row':>5} {'days':>5} {'next':>5} {'r':>2}  {'name':26} {'company':24} status")
@@ -483,26 +501,43 @@ def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
 
             resp = dnum("Response Date", r)
             status = cell("Status", r)
+            # last  = OUR last send — drives the cadence gap (BD/BE).
+            # last_any = last activity on the thread, including THEIR reply — drives
+            # BC. A reply is the most recent event, so it sets the staleness clock;
+            # 12 rows were counting from our older send date instead (Ryan Fortin
+            # showed 43 when the reply was 37 days ago).
             last = f"MAX({','.join(past(k) for k in TOUCH_DATE_COLS)})"
+            last_any = f"MAX({last},{past('Response Date')})"
             n_touch = "+".join(f"IF({past(k)}>0,1,0)" for k in TOUCH_DATE_COLS)
             planned = f"MAX({','.join(dnum(k, r) for k in TOUCH_DATE_COLS)})"
-            replied = f"OR({resp}>0,REGEXMATCH(LOWER({status}&\"\"),\"replied|interested|call scheduled|negotiating|proposal|conversation\"))"
+            rtype = cell("Response Type", r)
+            # A connection ACCEPT is not a reply. Keying off "any Response Date"
+            # marked 26 accepts as REPLIED and hid 14 leads that accepted and never
+            # got a DM. Only a real message reply takes a lead off cadence.
+            replied = (f'OR(REGEXMATCH(LOWER({rtype}&""),"positive|negative|neutral|not a fit"),'
+                       f'REGEXMATCH(LOWER({status}&""),'
+                       f'"replied|interested|call scheduled|negotiating|proposal|in conversation"))')
+            accepted = f'REGEXMATCH(LOWER({rtype}&" "&{status}&""),"accept|connected")'
             closed = f"REGEXMATCH(LOWER({status}&\"\"),\"^(skip|not relevant|lost|won|on hold|new)?$|^skip|not relevant|lost|won|on hold\")"
 
             if header == "Days Since Last Touch":
-                f = f'=IF({last}=0,"",TODAY()-{last})'
+                f = f'=IF({last_any}=0,"",TODAY()-{last_any})'
             elif header == "Cadence Due":
                 # A planned date beats the computed one — it's the operator's intent.
+                # An accept with no DM yet is due immediately (gap 0).
                 f = (f'=IF({planned}>TODAY(),{planned},'
                      f'IF(OR({last}=0,{replied},{closed},({n_touch})>=4),"",'
-                     f'{last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7)))')
+                     f'IF(AND({accepted},({n_touch})<=1),{last_any},'
+                     f'{last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7))))')
             else:  # Cadence Stage
                 f = (f'=IF(AND({last}=0,NOT({planned}>TODAY())),"",'
                      f'IF({replied},"REPLIED",IF({closed},"—",'
                      f'IF({planned}>TODAY(),"SCHEDULED "&TEXT({planned},"mmm d"),'
                      f'IF(({n_touch})>=4,"PARK",'
+                     # Accepted but no DM yet: T2 is due now, however long it has sat.
+                     f'IF(AND({accepted},({n_touch})<=1),"ACCEPTED - SEND T2",'
                      f'IF(TODAY()-{last}>IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),'
-                     f'"OVERDUE T"&(({n_touch})+1),"T"&(({n_touch})+1)&" due "&TEXT({last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),"mmm d")))))))')
+                     f'"OVERDUE T"&(({n_touch})+1),"T"&(({n_touch})+1)&" due "&TEXT({last}+IFS(({n_touch})=1,3,({n_touch})=2,5,TRUE,7),"mmm d"))))))))')
             col.append([f])
         updates.append({"range": f"{TAB}!{letter}2:{letter}{last_row}", "values": col})
 

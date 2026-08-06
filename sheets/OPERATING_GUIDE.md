@@ -124,6 +124,15 @@ python sheet_fix.py --all        # dry-run of any dropdown/label repair needed
 **Do not put a dropdown on BC/BD/BE.** A dropdown is for typing in; picking a value
 **overwrites the formula** and that row stops updating forever.
 
+### Reading the sheet
+
+Columns **A–C are frozen**, so the lead name stays on screen when you scroll right
+to BC–BE. Every cell is set to **CLIP**, so long text (Rating Reason runs to 916
+characters) stays inside its own column instead of painting over its neighbours —
+1,114 rows had inherited `OVERFLOW_CELL` and were covering Days Since Last Touch and
+Cadence Due. The full text is still there: click the cell and read the formula bar,
+or widen the column.
+
 ### If you click into BC/BD/BE
 
 Those cells hold a formula, so clicking one shows a long expression in the formula

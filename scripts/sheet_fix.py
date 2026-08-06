@@ -5,7 +5,9 @@ Repair sheet hygiene: bad dropdowns and fragmented label values.
   --validation   remove auto-generated dropdowns from free-text / date / formula
                  columns, and install canonical lists on the real dropdown columns
   --labels       collapse label variants to one canonical value per meaning
-  --all          both
+  --tidy         CLIP overflowing text so no column paints over its neighbour,
+                 and freeze through the name column
+  --all          all three
 
 Dry-run unless --apply. Run --labels BEFORE --validation so no value is left
 outside its new list.
@@ -208,14 +210,58 @@ def fix_validation(svc, sid, sh, apply: bool) -> None:
     print(f"  applied {len(reqs)} validation changes")
 
 
+def tidy_layout(svc, sid, sh, apply: bool) -> None:
+    """Stop long text spilling across columns, and keep the lead name visible.
+
+    Rows added by later batches inherited OVERFLOW_CELL, so Rating Reason (up to 916
+    chars) painted straight over Days Since Last Touch and Cadence Due wherever those
+    were blank. CLIP confines every cell to its own column; the full value is still
+    there, visible in the formula bar or by widening the column.
+    """
+    meta = svc.spreadsheets().get(
+        spreadsheetId=sid, ranges=[f"{TAB}!A1:BE2"], includeGridData=True,
+        fields="sheets(properties(sheetId,gridProperties(frozenColumnCount)),"
+               "data(rowData(values(effectiveFormat(wrapStrategy)))))").execute()
+    tab = meta["sheets"][0]
+    gid = tab["properties"]["sheetId"]
+    frozen = tab["properties"]["gridProperties"].get("frozenColumnCount", 0)
+    last_row = len(sh.rows) + 1
+    ncols = len(sh.headers)
+    name_col = sh.idx.get("Full Name", 2)
+
+    print(f"\n=== TIDY LAYOUT ({'APPLYING' if apply else 'DRY RUN'}) ===")
+    print(f"  set wrapStrategy=CLIP on A2:{ph.col_letter(ncols - 1)}{last_row} "
+          f"(no cell paints over its neighbour)")
+    print(f"  freeze columns A..{ph.col_letter(name_col)} so the lead name stays "
+          f"visible when scrolled right (currently frozen: {frozen})")
+    if not apply:
+        print("  (no write — add --apply)")
+        return
+
+    svc.spreadsheets().batchUpdate(spreadsheetId=sid, body={"requests": [
+        {"repeatCell": {
+            "range": {"sheetId": gid, "startRowIndex": 1, "endRowIndex": last_row,
+                      "startColumnIndex": 0, "endColumnIndex": ncols},
+            "cell": {"userEnteredFormat": {"wrapStrategy": "CLIP"}},
+            "fields": "userEnteredFormat.wrapStrategy"}},
+        {"updateSheetProperties": {
+            "properties": {"sheetId": gid,
+                           "gridProperties": {"frozenColumnCount": name_col + 1}},
+            "fields": "gridProperties.frozenColumnCount"}},
+    ]}).execute()
+    print("  applied")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--validation", action="store_true")
     ap.add_argument("--labels", action="store_true")
+    ap.add_argument("--tidy", action="store_true",
+                    help="CLIP overflowing text + freeze the name column")
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--apply", action="store_true")
     args = ap.parse_args()
-    if not any([args.validation, args.labels, args.all]):
+    if not any([args.validation, args.labels, args.tidy, args.all]):
         ap.print_help()
         return 1
 
@@ -227,6 +273,8 @@ def main() -> int:
 
     if args.labels or args.all:
         fix_labels(svc, sid, sh, args.apply)
+    if args.tidy or args.all:
+        tidy_layout(svc, sid, sh, args.apply)
     if args.validation or args.all:
         if args.apply and (args.labels or args.all):
             headers, rows = ph.fetch_rows(svc, sid)      # re-read after label writes

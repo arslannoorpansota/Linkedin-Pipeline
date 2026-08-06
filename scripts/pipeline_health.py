@@ -452,7 +452,35 @@ def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
         spreadsheetId=sid,
         body={"valueInputOption": "USER_ENTERED", "data": updates},
     ).execute()
+    set_number_formats(service, sid, {h: i for h, i in plan}, last_row)
     print("  done — sort or filter on 'Cadence Stage' to work the queue")
+
+
+def set_number_formats(service, sid: str, cols: dict[str, int], last_row: int):
+    """Without this, the day-count in 'Days Since Last Touch' inherits a date format
+    and renders as 2/10/1900, and 'Cadence Due' renders as the raw serial 46201."""
+    meta = service.spreadsheets().get(spreadsheetId=sid, fields="sheets.properties").execute()
+    gid = next(s["properties"]["sheetId"] for s in meta["sheets"]
+               if s["properties"]["title"] == TAB)
+    want = {
+        "Days Since Last Touch": {"type": "NUMBER", "pattern": "0"},
+        "Cadence Due": {"type": "DATE", "pattern": "yyyy-mm-dd"},
+        "Cadence Stage": {"type": "TEXT", "pattern": "@"},
+    }
+    reqs = []
+    for header, fmt in want.items():
+        if header not in cols:
+            continue
+        reqs.append({"repeatCell": {
+            "range": {"sheetId": gid, "startRowIndex": 1, "endRowIndex": last_row,
+                      "startColumnIndex": cols[header], "endColumnIndex": cols[header] + 1},
+            "cell": {"userEnteredFormat": {"numberFormat": fmt}},
+            "fields": "userEnteredFormat.numberFormat",
+        }})
+    if reqs:
+        service.spreadsheets().batchUpdate(
+            spreadsheetId=sid, body={"requests": reqs}).execute()
+        print(f"  number formats applied to {len(reqs)} columns")
 
 
 # ---------------------------------------------------------------- main

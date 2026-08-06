@@ -10,10 +10,11 @@ Implements the enforcement side of agents/CADENCE.md:
                       "Cadence Stage" formula columns to the Pipeline tab
   --decide            attach a decision to every status=New row
   --fix-planned-fu    clear future dates parked in a "Follow-up N Date" column
+  --protect           warn-on-edit protection for the BC-BE formula columns
   --all               every read-only report above
 
-Read-only by default. --install-formulas writes; --decide and --fix-planned-fu
-are dry-run until you add --apply.
+Read-only by default. --install-formulas writes; --decide, --fix-planned-fu and
+--protect are dry-run until you add --apply.
 
 Usage:
     python pipeline_health.py --all
@@ -557,6 +558,42 @@ def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
     print("  done — sort or filter on 'Cadence Stage' to work the queue")
 
 
+def protect_formula_cols(service, sid: str, sh: Sheet, apply: bool):
+    """Warn-on-edit protection for the formula columns.
+
+    A single stray keystroke in one of these cells deletes the formula and that row
+    silently stops reporting — it happened to BE808. warningOnly keeps them editable
+    (so --install-formulas can still write) but prompts a human first.
+    """
+    meta = service.spreadsheets().get(
+        spreadsheetId=sid, fields="sheets(properties(title,sheetId),protectedRanges)").execute()
+    tab = next(s for s in meta["sheets"] if s["properties"]["title"] == TAB)
+    gid = tab["properties"]["sheetId"]
+    cols = [sh.idx[h] for h in ("Days Since Last Touch", "Cadence Due", "Cadence Stage")
+            if h in sh.idx]
+    if not cols:
+        print("\n  formula columns not found — run --install-formulas first")
+        return
+    rng = {"sheetId": gid, "startColumnIndex": min(cols), "endColumnIndex": max(cols) + 1}
+    already = [p for p in tab.get("protectedRanges", [])
+               if p.get("range", {}).get("startColumnIndex") == min(cols)]
+
+    print(f"\n=== PROTECT FORMULA COLUMNS ({'APPLYING' if apply else 'DRY RUN'}) ===")
+    print(f"  {col_letter(min(cols))}:{col_letter(max(cols))} on tab {TAB} — warn before edit")
+    if already:
+        print("  already protected — nothing to do")
+        return
+    if not apply:
+        print("  (no write — add --apply to protect)")
+        return
+    service.spreadsheets().batchUpdate(spreadsheetId=sid, body={"requests": [{
+        "addProtectedRange": {"protectedRange": {
+            "range": rng, "warningOnly": True,
+            "description": "Auto-calculated cadence columns - see sheets/OPERATING_GUIDE.md",
+        }}}]}).execute()
+    print("  protected — edits now prompt a confirmation")
+
+
 def set_number_formats(service, sid: str, cols: dict[str, int], last_row: int):
     """Without this, the day-count in 'Days Since Last Touch' inherits a date format
     and renders as 2/10/1900, and 'Cadence Due' renders as the raw serial 46201."""
@@ -592,6 +629,8 @@ def main() -> int:
     ap.add_argument("--undecided", action="store_true")
     ap.add_argument("--check-dupes", action="store_true")
     ap.add_argument("--install-formulas", action="store_true")
+    ap.add_argument("--protect", action="store_true",
+                    help="warn-on-edit protection for BC-BE (dry-run unless --apply)")
     ap.add_argument("--fix-planned-fu", action="store_true",
                     help="clear future dates parked in Follow-up N Date (dry-run unless --apply)")
     ap.add_argument("--decide", action="store_true",
@@ -604,7 +643,8 @@ def main() -> int:
     args = ap.parse_args()
 
     if not any([args.overdue, args.undecided, args.check_dupes,
-                args.install_formulas, args.decide, args.fix_planned_fu, args.all]):
+                args.install_formulas, args.decide, args.fix_planned_fu,
+                args.protect, args.all]):
         ap.print_help()
         return 1
 
@@ -623,6 +663,8 @@ def main() -> int:
         report_dupes(sh)
     if args.install_formulas:
         install_formulas(service, cfg["spreadsheet_id"], sh, args.dry_run)
+    if args.protect:
+        protect_formula_cols(service, cfg["spreadsheet_id"], sh, args.apply)
     if args.fix_planned_fu:
         fix_planned_fu(service, cfg["spreadsheet_id"], sh, today, args.apply)
     if args.decide:

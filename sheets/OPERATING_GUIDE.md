@@ -113,6 +113,20 @@ in the cells. It is inconsistent with reality:
 **Do not put a dropdown on BC/BD/BE.** A dropdown is for typing in; picking a value
 **overwrites the formula** and that row stops updating forever.
 
+### If you click into BC/BD/BE
+
+Those cells hold a formula, so clicking one shows a long expression in the formula
+bar. That is normal — it is the source, not a value. **Press `Esc` to leave, never
+`Enter`**: Enter commits whatever is in the edit box and can wipe the formula. It
+already happened once to BE808, which sat empty until it was restored.
+
+BC:BE now carry warn-on-edit protection, so Sheets prompts before an edit lands.
+To repair a damaged column at any time:
+
+```bash
+python pipeline_health.py --install-formulas   # rewrites all three columns
+```
+
 Fix pending: strip validation from formula/free-text/date columns, install canonical
 lists on the real dropdowns (Status, Outreach Channel, Response Type, Priority),
 and protect BC–BE. This should happen **before** `--decide --apply`, otherwise the

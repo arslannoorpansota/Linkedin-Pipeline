@@ -27,6 +27,10 @@ REMINDER_TAB = 'Cadence Reminders'
 # statuses that are OFF the active cadence — never need a touch
 INACTIVE = {'on hold', 'skip', 'not relevant', 'won', 'lost', 'nurture'}
 
+# Only remind about leads worth chasing. Per Arslan (2026-08-08): leave the old
+# sub-7 leads alone. Set to 6 to include rating-6 leads; 0 to remind on all.
+MIN_RATING = 7
+
 def today():
     for i, a in enumerate(sys.argv):
         if a == '--date' and i + 1 < len(sys.argv):
@@ -64,6 +68,12 @@ def main():
         if 'curation' in low or low.startswith('lead list') or not g(r, idx('Company')):
             continue
         stage = g(r, idx('Cadence Stage')) if 'Cadence Stage' in hdr else ''
+        try:
+            rating = int(g(r, idx('Profile Rating (/10)')) or 0)
+        except ValueError:
+            rating = 0
+        if rating < MIN_RATING:
+            continue
         if needs_touch(stage, g(r, idx('Status')), g(r, idx('Next Action Date')), td):
             days = g(r, idx('Days Since Last Touch')) if 'Days Since Last Touch' in hdr else ''
             due.append((nm, g(r, idx('Company')), stage or g(r, idx('Status')),

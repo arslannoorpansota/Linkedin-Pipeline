@@ -69,7 +69,16 @@ If a lead reaches step 6 with a rating of 6, it is a park, not an InMail.
 
 ## 3. The 4-touch cadence — enforced dates
 
-Every contacted lead is on this cadence until it replies, parks, or dies. Gaps are
+**Cadence is Profile-7+ only (Arslan 2026-08-11).** The enforced T2/T3 chase runs
+only for leads rated **Profile 7 or above** (our InMail leads). A **P6** keep gets its
+T1 connection note but is *not* put on the enforced cadence — no T2/T3 chase, its
+cadence columns stay blank. **Carve-out:** any lead that has **replied or accepted**
+stays on the cadence radar regardless of rating, so a warm/in-conversation lead
+below 7 (e.g. an unrated referral who accepted) still shows `REPLIED`/its stage and
+does not fall off. The live `Cadence Stage` column enforces this
+(`show = OR(profile>=7, replied, accepted)`).
+
+Every contacted **P7+** lead is on this cadence until it replies, parks, or dies. Gaps are
 capped at 5 days early on because that is where we were leaking: follow-ups
 stopped happening after day 5.
 

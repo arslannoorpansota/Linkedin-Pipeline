@@ -42,12 +42,15 @@ Also measured, and the reason §3 exists:
 
 | Profile rating | Default channel | InMail allowed? |
 |---|---|---|
-| **7+** | **Connection note** (≤200 chars) → DM with the proof point the moment they accept | Only via §2a |
+| **7+** | **Connection note** (≤200 chars, lead channel) → DM the proof point on accept, **and draft an InMail alongside it** | InMail drafted proactively for 7+ (Arslan 2026-08-10) — send the note first; the InMail is a ready backup |
 | **6** | **Connection note** (≤200 chars) | Only via §2a |
 | **<6** | **Skip** — set status `Skip` the same day, do not leave at `New` | Never |
 
-A high rating buys **more personalisation effort and a faster follow-up**, not a
-more expensive channel. The warmest path goes to the best leads.
+A high rating buys **more personalisation effort and a faster follow-up**. The
+connection note stays the lead channel at every rating (it out-converts InMail
+5x). **New (Arslan 2026-08-10): for a 7+ lead, also draft an InMail so it is
+ready** — send the free connection note first, keep the InMail as a prepared
+fallback if no free route lands. Do not lead with the InMail.
 
 ### 2a. When InMail is actually correct
 

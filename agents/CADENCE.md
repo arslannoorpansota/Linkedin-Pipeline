@@ -40,10 +40,10 @@ Also measured, and the reason §3 exists:
 
 ## 2. Channel routing — by rating
 
-| Profile rating | Default channel | InMail allowed? |
+| Profile rating | Default channel | Second channel |
 |---|---|---|
-| **7+** | **Connection note** (≤200 chars, lead channel) → DM the proof point on accept, **and draft an InMail alongside it** | InMail drafted proactively for 7+ (Arslan 2026-08-10) — send the note first; the InMail is a ready backup |
-| **6** | **Connection note** (≤200 chars) | Only via §2a |
+| **7+** | **Connection note** (≤200 chars, lead channel) → DM the proof point on accept | **Email** from `arslan@` (draft it). **No email? → InMail.** (Arslan 2026-08-11: email replaces InMail as the default 2nd channel for 7+ — free, uncapped, better-converting; InMail only when no email exists.) |
+| **6** | **Connection note** (≤200 chars) | None — and not on enforced cadence (P7+ only) |
 | **<6** | **Skip** — set status `Skip` the same day, do not leave at `New` | Never |
 
 A high rating buys **more personalisation effort and a faster follow-up**. The
@@ -153,20 +153,12 @@ The pipeline was applying opposite rules to the same country — Australia was
 `SKIP: skip-geo` on 9 rows and `AU (target geo)` on 8; Canada was skip on 12 and
 target on 10. That forces a judgement call on every row instead of a filter.
 
-**This table is the filter. No per-row judgement.**
-
-**Confirmed by Arslan 2026-08-06.** Target = US, Canada, Australia, Singapore, Gulf. UK excluded.
+**REVERSED by Arslan 2026-08-12.** Skip ONLY China, Pakistan, India, Thailand. **Every other country is eligible** if the profile is worth keeping (non-technical founder + real software product). The old "US/Canada/Australia/Singapore/Gulf only, UK excluded" table no longer applies — UK, Europe, LATAM, Mexico, Türkiye, Cayman, etc. are back in play.
 
 | Geo | Verdict |
 |---|---|
-| United States | ✅ Target |
-| Canada | ✅ Target |
-| Australia | ✅ Target |
-| Singapore | ✅ Target |
-| **Gulf** — UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman | ✅ Target |
-| **United Kingdom** | ❌ **Excluded** — settled 2026-08-06, no longer an open question |
-| New Zealand, Ireland | ❌ Not in target (were listed as widen options before 2026-08-06; no rows affected) |
-| India, Pakistan, Israel, LATAM, mainland Europe, everywhere else | ❌ Skip on geo |
+| **China, Pakistan, India, Thailand** | ❌ **Hard skip on geo** |
+| Everywhere else (US, Canada, Australia, Singapore, Gulf, UK, Europe, LATAM, etc.) | ✅ Eligible — judge on the profile, not geo |
 
 > ⚠️ **Never match on the bare word "wales"** when filtering out the UK — it would
 > exclude **New South Wales, Australia** (Dom Gattellari, Leigh Caprile are both

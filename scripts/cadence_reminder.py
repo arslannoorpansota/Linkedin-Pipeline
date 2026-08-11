@@ -47,7 +47,15 @@ def needs_touch(stage, status, nad, td):
     st = (status or '').strip().lower()
     if any(k in st for k in INACTIVE) or st.startswith('closed'):
         return False
-    return (stage or '').strip().upper().startswith('OVERDUE')
+    # 1) cadence stage is past due
+    if (stage or '').strip().upper().startswith('OVERDUE'):
+        return True
+    # 2) a planned Next Action Date has arrived. Catches cases the Cadence Stage
+    #    never marks OVERDUE — e.g. an accepted lead parked at "ACCEPTED - SEND T2"
+    #    whose T2 was deliberately deferred to a future date (Jimmy/Frazer: T2 on
+    #    Monday because the InMail already went out with the connection request).
+    d = parse_d(nad)
+    return d is not None and d <= td
 
 def main():
     creds = Credentials.from_authorized_user_file(TOKEN, SCOPES)

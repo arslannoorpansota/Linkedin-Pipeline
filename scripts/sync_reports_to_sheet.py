@@ -341,12 +341,26 @@ def ensure_tab_and_header(service, sid: str, tab: str, headers: list[str]) -> No
 
 
 def append_rows(service, sid: str, tab: str, rows: list[list[str]]) -> None:
+    """Append rows at the true bottom of the tab, deterministically.
+
+    values().append() with an A1 anchor + INSERT_ROWS is unreliable on this
+    sheet because column A is intentionally blank: its table detection can
+    misfire and insert rows at the TOP (this once shoved 59 rows above the
+    header and pushed every lead down). Instead we compute the next empty row
+    ourselves and write there with values().update() — it can never insert at
+    the top, shift existing rows, or misalign columns.
+    """
     if not rows:
         return
-    service.spreadsheets().values().append(
-        spreadsheetId=sid, range=f"'{tab}'!A1",
-        valueInputOption="RAW", insertDataOption="INSERT_ROWS",
-        body={"values": rows}).execute()
+    # Last used row = max populated length across the first few columns
+    # (col A is blank on Pipeline, so we can't rely on it alone).
+    cols = service.spreadsheets().values().get(
+        spreadsheetId=sid, range=f"'{tab}'!A:D",
+        majorDimension="COLUMNS").execute().get("values", [])
+    next_row = max((len(c) for c in cols), default=0) + 1
+    service.spreadsheets().values().update(
+        spreadsheetId=sid, range=f"'{tab}'!A{next_row}",
+        valueInputOption="RAW", body={"values": rows}).execute()
 
 
 # ---------------------------------------------------------------------------

@@ -124,6 +124,43 @@ software, they need outside dev. That is the whole thesis.
 
 ---
 
+## 1d. Search v3 — the VERTICAL-KEYWORD + GEO-LOCKED recipe (2026-08-19, CURRENT — use this)
+
+> Built live on 2026-08-19 while re-tuning a search that was returning ~1 fit per
+> 25 results (a full page of VCs, GPs, advisors, and Pakistan/UK/Spain founders).
+> After the changes below the first 14 results held **4 real ICP candidates**
+> (Pav Gill / Confide regtech Singapore, Alfy Louis / Iden2 identity, Steve Iskander
+> / Intrepid Finance, Omar Youssef / JUSTECH Gulf legaltech). This is the current
+> working recipe for the **vertical-tech** angle (healthtech / insurtech / legaltech
+> / fintech / govtech), complementary to the §1c physical-vertical angle.
+
+### The exact search (Leads tab)
+
+**Search-keywords box** — paste verbatim (positive-anchored, then exclusions):
+```
+(healthtech OR insurtech OR legaltech OR fintech OR govtech) NOT investor NOT "general partner" NOT "managing partner" NOT ventures NOT "venture capital" NOT advisor NOT consultant NOT "board member" NOT broker NOT agency NOT consultancy NOT "IT services" NOT outsourcing NOT outstaffing NOT "software company" NOT "sovereign AI" NOT "development studio" NOT "token" NOT "crypto" NOT "blockchain" NOT "web3"
+```
+- **Current job title:** Founder, Co-Founder, Owner, President, Chief Executive Officer
+- **Company headcount:** `1–10` + `11–50`
+- **Company HQ location** AND **Personal Geography** — set BOTH to the SAME list: United States, Canada, Australia, Singapore, Saudi Arabia, UAE (Dubai), Qatar, Kuwait, Bahrain, Oman
+- **Industry:** Technology Information and Internet, Software Development, Insurance, Legal Services, Home Health Care Services, Medical Device, Biotechnology
+- **Recent updates → Posted on LinkedIn:** ON
+
+### Why this DIFFERS from §5's two "bug" rules (both are intentional here, and validated)
+
+1. **§5 says "don't set both Company HQ + Personal Geography."** That rule was written against setting Personal Geography to a *broad* region ("North America") that fights the HQ list. Here we set **both to the identical target-country list**, which is not a conflict — it's the fix for the exact leak §5 itself names: **Company-HQ-only lets an offshore-resident founder through** (their company is HQ'd in-target, they live in Pakistan/UK). Adding Personal Geography = same countries closed that leak on 2026-08-19 (removed a Karachi founder sitting at result #1). **Set both, to the same list.**
+2. **§5 says "never use a NOT-only query."** Still true. This query is **positive-anchored** — it opens with `(healthtech OR … OR govtech)` and only *then* appends NOTs. It returned 1.5K+ results, so the NOTs are subtractive, not zeroing. The rule is against `NOT (…)`-only queries with no positive term.
+
+### The keyword-exclusion ceiling (don't keep re-tuning past this)
+`NOT` in the keyword box only reads the **person's headline/about, NOT their company name.** So a fund named "AlphaBerry **Capital**", a "RockStable **Token** Inc", or a "Bluetelecast **Software Company**" will still appear even with `NOT "capital"` / `NOT token` / `NOT "software company"` — the disqualifying word lives only in the employer name. **These are hand-skips, not a filter failure.** After the vertical + geo + NOT layers, they're a small minority (~3 in 25). Stop tuning there.
+
+### Watch-outs specific to v3
+- `NOT "capital"` was **removed** — it can't catch fund company-names anyway (see ceiling above) and it wrongly drops legit fintech founders who write "access to capital." Leave it out.
+- `fintech` + the finance world is the noisiest input. If a page comes back investor-heavy, the fastest clean-up is to drop `fintech` and run health/legal/gov/insur alone for that pass.
+- Company-name matches that still leak (Capital / Token / Software Company / Labs / .ai) → skip by eye from list view.
+
+---
+
 ## 2. Sales Navigator filter setup
 
 ### 2a. Build the ACCOUNT search FIRST (this is the high-leverage move)
@@ -214,15 +251,20 @@ Rules of thumb:
 - **Function must NOT be "Sales."** Setting Function = Sales while job titles are
   CTO/VP Eng contradicts itself and dilutes every result. Use Engineering + IT,
   or clear Function entirely (job titles already target it).
-- **Don't set both Company HQ location AND Personal Geography.** They fight:
-  e.g. Personal Geography = "North America" silently excludes your Australia
-  targets and leaks in offshore-based people (e.g. Pakistan-based founders).
-  Keep **Company HQ location only**; clear Personal Geography.
+- **Don't set both Company HQ location AND Personal Geography *to different scopes*.**
+  They fight: e.g. Personal Geography = "North America" silently excludes your
+  Australia targets and leaks in offshore-based people (e.g. Pakistan-based founders).
+  **Exception (see §1d):** setting BOTH to the *same explicit country list* is the
+  correct fix for the offshore-resident leak — that's what v3 does. The rule is
+  against mismatched scopes, not against using both fields.
 - **NEVER use a NOT-only query in the search-keywords box** (e.g.
   `NOT (staffing OR ventures OR consultant …)`). Sales Nav zeroes the whole search
   to ~0–2 results instead of just excluding. Positive queries
   (`software OR platform OR app OR SaaS`) work fine — use those to bias, and exclude
   the rest by eye. To drop a *specific* competitor, use Current company → **Exclude**.
+  **A positive-anchored query WITH trailing NOTs is fine** (see §1d):
+  `(healthtech OR … OR govtech) NOT investor NOT advisor …` subtracts correctly
+  because it opens with a positive term. Only a *NOT-only* query zeroes the search.
 
 ---
 

@@ -1,4 +1,14 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(.venv/bin/python format_sheet.py --dry-run)",
+      "Bash(.venv/bin/python sync_reports_to_sheet.py --dry-run)",
+      "Bash(echo \"--- exit:$? ---\")",
+      "Bash(.venv/bin/python -c \"import ast;ast.parse\\(open\\('format_sheet.py'\\).read\\(\\)\\);print\\('SYNTAX OK'\\)\")"
+    ]
+  },
   "hooks": {
     "UserPromptSubmit": [
       {

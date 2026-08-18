@@ -261,6 +261,7 @@ def collect_entries(only_date: str | None) -> list[dict]:
 # Google Sheets I/O
 # ---------------------------------------------------------------------------
 def get_service(force_reauth: bool = False):
+    from google.auth.exceptions import RefreshError
     from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
     from google_auth_oauthlib.flow import InstalledAppFlow
@@ -268,11 +269,20 @@ def get_service(force_reauth: bool = False):
 
     creds = None
     if TOKEN_FILE.exists() and not force_reauth:
-        creds = Credentials.from_authorized_user_file(str(TOKEN_FILE), SCOPES)
+        # Load with the scopes the token was actually GRANTED, not SCOPES.
+        # Forcing a wider scope list here makes the refresh request ask for a
+        # scope the user never consented to, and Google rejects the whole
+        # refresh with "invalid_scope" — which silently broke the daily cron.
+        creds = Credentials.from_authorized_user_file(str(TOKEN_FILE))
     if not creds or not creds.valid:
+        refreshed = False
         if creds and creds.expired and creds.refresh_token and not force_reauth:
-            creds.refresh(Request())
-        else:
+            try:
+                creds.refresh(Request())
+                refreshed = True
+            except RefreshError:
+                creds = None  # fall through to a fresh consent flow
+        if not refreshed:
             if not CREDENTIALS_FILE.exists():
                 sys.exit(
                     f"ERROR: {CREDENTIALS_FILE} not found.\n"

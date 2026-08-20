@@ -401,10 +401,15 @@ def main() -> int:
     cfg = load_config()
     service = get_service(force_reauth=args.reauth)
     sid = ensure_spreadsheet(service, cfg)
-    ensure_tab_and_header(service, sid, PIPELINE_TAB, PIPELINE_HEADERS)
     ensure_tab_and_header(service, sid, ACTIVITY_TAB, ACTIVITY_HEADERS)
 
-    append_rows(service, sid, PIPELINE_TAB, [entry_to_pipeline_row(e) for e in pipeline_new])
+    # NOTE: This sync NO LONGER writes to the Pipeline tab.
+    # The Pipeline tab is the lead system-of-record and must contain ONLY real
+    # shortlisted leads, logged explicitly during rating sessions. Report
+    # entries are batch summaries (e.g. "aug 20 list 3 triaged"), not leads —
+    # they were being mis-parsed as leads (agent matched LEAD_AGENTS) and
+    # appended as junk rows, which had to be cleared repeatedly. Report entries
+    # now sync ONLY to the "Activity Log" tab.  (Faizan, 2026-08-20)
     append_rows(service, sid, ACTIVITY_TAB, [entry_to_activity_row(e) for e in new])
 
     for e in new:
@@ -412,7 +417,7 @@ def main() -> int:
     save_state(state)
 
     url = cfg.get("spreadsheet_url", "")
-    print(f"Synced {len(pipeline_new)} lead rows + {len(new)} activity rows.")
+    print(f"Synced {len(new)} activity rows (Pipeline tab intentionally not touched).")
     if url:
         print(f"Sheet: {url}")
     return 0

@@ -161,6 +161,100 @@ software, they need outside dev. That is the whole thesis.
 
 ---
 
+## 1e. Search v4 — the SHORT-KEYWORD recipe (2026-08-22, CURRENT — use this)
+
+> Built live on 2026-08-22 after the aug-21 lists converted badly (~2/10 keeps).
+> The v3 vertical/industry mix (Legal Services, Insurance, Hospitals, Medical
+> Device, Biotech) was pulling ~85% services/practices, not software companies.
+> While re-tuning we discovered a hard property of the keyword field that changes
+> the whole approach: **Sales Nav silently ignores long boolean NOT chains.**
+
+### The keyword-length finding (proven today, 4 live re-runs)
+- A 30+ NOT string let a founder whose title literally reads **"Business Growth
+  Consultant" (Sam Kasgorgis / Fusionary)** through, even though the string
+  contained `NOT consultant`.
+- Typing **`NOT consultant` alone** removed him instantly and dropped the count.
+- **The positive OR-group does the real filtering; the NOTs only work when few.**
+  Measured counts (Tech + HR industries): positive group + 5 NOTs = **10K**;
+  `NOT consultant` alone = **27K**; the 30-NOT mega-string = **18K** (the positive
+  group cut it, the NOTs were ignored — which is why the "Consultant" survived).
+
+**Rule: keep the positive product-word group, keep NOTs ≤ 5. A short string that
+is honored beats a long one that is silently dropped.**
+
+### The exact v4 search (Leads tab)
+
+**Search-keywords box** — paste verbatim:
+```
+(SaaS OR platform OR "software product") NOT consultant NOT agency NOT staffing NOT clinic NOT "dev team"
+```
+- **Current job title:** Founder, Co-Founder, Owner, President, Chief Executive Officer
+- **Company headcount:** `1–10` + `11–50`
+- **Company HQ location** AND **Personal Geography** — BOTH set to the same list:
+  United States, Canada, Australia, Singapore, Saudi Arabia, UAE (Dubai), Qatar,
+  Kuwait, Bahrain, Oman (per §5 offshore-leak fix; no UK)
+- **Industry — PRIMARY (run first):** Technology, Information and Internet + Human
+  Resources Services **only**. These two have the highest software density with
+  non-technical founders and the least services noise.
+- **Industry — OPTIONAL gated passes (run SEPARATELY, one at a time):** Insurance,
+  then Hospitals and Health Care. High noise — only worth it with the keyword gate
+  above, and never stacked with the primaries (running 4 industries at once means
+  page 1 is all Tech volume and you can't measure per-vertical yield).
+- **Recent updates → Posted on LinkedIn:** ON
+
+### Industries DROPPED from v3 (and why)
+- **Legal Services** — ~95% law firms / solo attorneys; legaltech that IS software
+  almost always has a technical or lawyer-who-codes founder. Converted ~0% for us.
+- **Financial Services** — mostly advisors / agents (same law-firm problem).
+- **Software Development, IT Services** — competitors, dev shops, technical founders.
+- **Medical Device, Biotechnology, Home Health** — hardware / care-delivery services.
+
+### The keyword ceiling — everything past here is an EYEBALL skip (not fixable by filter)
+`NOT` only reads the person's headline/about, never the company name, and can't
+read a founder's background. So these always leak and must be hand-skipped:
+- **AI-native own-core** founders with a real platform (Stello AI, intervu.ai, U2XAI)
+- **Competitors by brand name** (TeamStation AI = nearshore staffing; Fusionary = agency)
+- **Technical founders** (CS degree, ex-CTO, "Platform OS CTO", data scientist)
+
+Full eyeball-skip checklist:
+
+**Skip on the FOUNDER:**
+- Technical founder — CS/eng degree, ex-CTO, software engineer/developer, data
+  scientist, "Systems/Solutions Architect", ML/video engineer. If they can build it,
+  they won't hire us.
+- Engineer or CTO co-founder — in-house build capacity even if your person isn't technical.
+- Board member / advisor / "Director, Board of Directors" — not the operating decision-maker.
+- Exited / serial founder now investing — not a buyer.
+
+**Skip on the COMPANY:**
+- AI-native own-core with its own eng team.
+- Competitor / dev shop / staffing — agency, WordPress/custom dev team, nearshore/
+  offshore staffing, "we build for clients," recruitment agency, IT services firm.
+- Service business, not software — clinic, practice, home/senior care, telehealth
+  practice, law firm, insurance brokerage, coaching, courses/education/newsletter.
+- Mature / self-sufficient SaaS with its own engineering org.
+- In M&A / exit via banker.
+
+**The KEEP shape (add these):** non-technical **domain-expert** founder (lawyer,
+compliance/HR pro, clinician-operator, ops/industry veteran) + real **vertical
+software product** + **no/thin in-house engineering** + a build signal. Non-technical
+seats help (COO / President / CEO without an eng background). Validated fit this
+session: **Jeff Esposito / VeraAI** — non-technical COO, AI remodeling-decisions
+product, no eng signal.
+
+**Rule of thumb:** *"Could this founder build the product without us?"* Yes
+(technical / has eng team / AI-native / dev shop) → skip. No (domain expert, thin/no
+eng, real product need) → add.
+
+### Reality of v4 (don't over-tune)
+- Expect page 1 to be meaningfully cleaner than v3, but the eyeball category above is
+  the floor — no keyword string removes AI-native/technical founders or brand-name
+  competitors. Stop tuning once the count is ~10K on Tech + HR; the rest is manual triage.
+- Already-Saved leads sort to the top of the results regardless of filter — they're
+  pinned, not new hits. Start triage from the first un-saved name down.
+
+---
+
 ## 2. Sales Navigator filter setup
 
 ### 2a. Build the ACCOUNT search FIRST (this is the high-leverage move)

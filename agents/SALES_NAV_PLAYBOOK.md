@@ -161,7 +161,79 @@ software, they need outside dev. That is the whole thesis.
 
 ---
 
-## 1e. Search v4 — the SHORT-KEYWORD recipe (2026-08-22, CURRENT — use this)
+## 1f. Search v5 — the NO-TECH VERTICAL recipe (2026-08-25, CURRENT — use this)
+
+> Built live on 2026-08-25 after two v4 lists (aug 25) converted ~5% and a
+> hand-rated 8-lead shortlist went **0 keeps / 8 skips**. v4 kept the
+> "Technology, Information and Internet" industry, which is *where AI-native
+> startups file themselves* — so the lists flooded with technical/CTO/YC/AI-native
+> founders that no keyword can remove. v5's fix: drop Tech, run pure verticals,
+> and use experience + headcount to squeeze out the young/funded technical founder.
+> Result: 17K -> **956**, and page 1 changed from AI-native founders to **MDs and
+> industry-veteran founders** (the domain-expert pool we actually want).
+
+### The exact v5 search (Leads tab)
+
+**Search-keywords box** — paste verbatim:
+```
+(SaaS OR platform OR "software product") NOT consultant NOT agency NOT staffing NOT labs NOT CTO
+```
+- Keep NOTs at **5 max** (Sales Nav ignores longer boolean chains — proven in v4).
+  `NOT labs` kills the "X Labs" AI companies; `NOT CTO` catches "Co-Founder & CTO" profiles.
+- **Current job title:** Founder, Co-Founder, Owner, Chief Executive Officer
+- **Company headcount:** `1-10` ONLY (drop 11-50 — that bucket is where CTOs, funded
+  teams, and mature companies with their own eng cluster; biggest single lever).
+- **Years of experience:** `More than 10 years` (Sales Nav's top bucket; there is no
+  15+/20+ option). Biases toward career domain-experts who founded late, away from
+  young technical/YC founders.
+- **Industry — DROP Technology; run the pure verticals:** Human Resources Services,
+  Insurance, Hospitals and Health Care. (Add other non-tech verticals — Real Estate,
+  Construction, Financial Services — to widen; NEVER re-add Technology/Software Development.)
+- **Company HQ location** AND **Personal Geography** — both set to the target-country list
+  (per §5 offshore-leak fix; no UK).
+- **Recent updates → Posted on LinkedIn:** ON
+
+### Why dropping "Technology, Information and Internet" is the key move
+Technology is where AI-native startups self-classify. Cutting it removed the flood
+wholesale — the same page that was Nyotta AI / SWAT.AI / Cohort AI founders became
+Michelle Flemmings MD / Ardeshir Khademi MD / Stephen Brown (market access) / Dinup
+(an existing keep). The vertical-SaaS keeps we want often classify under their vertical
+(Insurance, HR, Health), not Tech, so we lose almost no real targets by dropping Tech.
+
+### SHORTLISTING LESSON — prioritize domain-title founders, not polished products
+Hard-won on 2026-08-25 (0/8): from list-view, **shortlist on the FOUNDER signal, not the
+company polish.** A recognizable, polished vertical product (Roompact, CourtReserve,
+Manage Petro, Logical Health) is *evidence the founder could build it* — those had
+ex-developers, dev-shop owners, ex-Google engineers, and CTOs. The keeps (Dinup, Frank,
+Peter, the whole P6 pipeline) were messier: a **domain title** at a thinner company.
+- **Prioritize:** MD, JD/lawyer, "20 yrs in insurance/HR/compliance", clinician-operator,
+  ex-industry-exec — a founder whose identity is the DOMAIN, not the software.
+- **Deprioritize / eyeball hard:** clean one-word product names, "…AI/Labs/Tech" companies,
+  anything that looks like a finished, polished platform.
+- **Fastest full-profile tell:** check the founder's **skills + past roles for
+  "developer / engineer / CTO / software"** BEFORE reading the company. If present, skip.
+
+### v5 eyeball-skip additions (on top of the v4 checklist)
+- **Founder who builds with AI coding tools** (posts about Claude Code / Cursor / "most of
+  our engineering") = they self-build = skip (Salim/Consent).
+- **Serial software-company CEO with prior exits in the same category** = has the playbook
+  + own eng, not a domain-expert-who-cant-build = skip (Boyd/Payfederate).
+- **Non-technical founder BUT the company names a CTO / "our engineering team"** = in-house
+  build capacity = skip (Anand/Access2Pay, Tim/CourtReserve).
+- **Services business dressed as a "platform"** (broker, agency, clinic) = skip (Spencer/Beneple).
+- **Mature bootstrapped shop, 10+ yrs, own dev, flat/declining headcount** = self-sufficient,
+  no dev need = skip (Matt/Roompact).
+
+### Reality of v5 (don't over-tune past this)
+956 on Tech-dropped verticals is a workable, high-quality volume. This is the tightest the
+FILTERS go — 1-10 headcount + 10+ years + no Tech + labs/CTO excluded. Everything past here
+is the eyeball read on each founder. Expect a real keep rate only once shortlisting is done
+on the domain-founder signal above, not on product polish. InMail is ephemeral (lost on
+unsubscribe) but P7+ still gets note + InMail per Faizan — see `memory/inmail-inbox-is-ephemeral`.
+
+---
+
+## 1e. Search v4 — the SHORT-KEYWORD recipe (2026-08-22, SUPERSEDED by v5 §1f)
 
 > Built live on 2026-08-22 after the aug-21 lists converted badly (~2/10 keeps).
 > The v3 vertical/industry mix (Legal Services, Insurance, Hospitals, Medical

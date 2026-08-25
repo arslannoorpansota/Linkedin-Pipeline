@@ -6,8 +6,9 @@
 **Valid until:** September 25, 2026
 
 > ⚠️ INTERNAL NOTE — CONFIRM BEFORE SENDING:
-> 1. **Pricing needs Arslan's sign-off.** Figures below are benchmarked against the Kiwanis proposal ($14,500 / $250mo for a larger association build) and scaled down for an 8-page marketing site with heavy positioning/copy content. Adjust before sending.
-> 2. **Currency.** Quoted in USD to match house standard (ElectroCom is the US entity). Client is Australian — confirm whether we invoice USD or AUD before this goes out.
+> 1. **Pricing needs Arslan's sign-off.** Now priced at **$40/hr with hours disclosed**, per Faizan's instruction, and conditional on the engagement being scoped as a longer-term relationship rather than a one-off build. Earlier figures ($5,900 / $9,800 / $15,500 at ~$49/hr) are superseded.
+> 2. **Currency.** Now quoted in **AUD**, fixed at 1 USD = 1.396 AUD (24 Aug 2026, cross-checked against two sources). Hourly rate set at **A$56** (US$40 × 1.396 = A$55.84, rounded up to protect margin over a 6-week build). We carry the FX risk for the life of the quote; confirm Arslan accepts that before sending.
+> 3. **GST.** The doc states we add no Australian GST because we invoice from the US. That is a statement about what we charge, not advice about Carlo's obligations. **Have this confirmed by whoever does ElectroCom's accounting before sending.**
 > 3. **Section 8 (Experience)** has `[FILL IN]` placeholders. Real ElectroCom projects only. Do not invent clients.
 > 4. Do not send the "one recommendation" in §3 as a hard push. He explicitly invited recommendations, but the positioning call is his.
 
@@ -154,8 +155,13 @@ Included in the recommended option:
 | Interactive diagnostic tool | — | — | Yes |
 | Replacement articles | — | — | 6 articles |
 | LinkedIn-to-site content system | — | — | Yes |
-| **Investment (one-time)** | **$5,900** | **$9,800** | **$15,500** |
+| **Estimated hours** | 118 | 264 | ~364 |
+| **Investment (one-time, at A$56/hr)** | **A$6,600** | **A$14,800** | **~A$20,400** |
 | **Timeline** | 3–4 weeks | 6 weeks | 9–10 weeks |
+
+All work is billed at **A$56 per hour**, with the hour allocation disclosed per phase so you can see what you are paying for and remove anything you do not want. Figures above are hours multiplied by that rate, rounded to the nearest hundred. This rate is set on the basis of a longer-term working relationship rather than a single build; a one-off project would be priced differently, and we would say so upfront.
+
+**Currency and tax.** All amounts are in Australian dollars, held at a fixed exchange rate for the life of this quotation (valid to 25 September 2026), so your price does not move with the currency market. We invoice from the United States, so no Australian GST is added to these amounts.
 
 **Option B is what we'd recommend**, because your brief asks for a repositioning and Option A can only reposition the surface — it inherits the current one-page architecture, which is the single biggest constraint on the site.
 
@@ -163,8 +169,8 @@ Included in the recommended option:
 
 ### Ongoing care (optional)
 
-- **Standard — $250/month:** managed hosting, updates, backups, uptime monitoring, minor content support.
-- **Plus — $450/month:** everything in Standard, plus faster response, more monthly support hours, and a quarterly performance and search review.
+- **Standard — A$350/month:** managed hosting, updates, backups, uptime monitoring, minor content support.
+- **Plus — A$630/month:** everything in Standard, plus faster response, more monthly support hours, and a quarterly performance and search review.
 
 ### Payment schedule
 

@@ -60,60 +60,42 @@ CLOSED_STATUSES = {
 REPLIED_MARKERS = {"replied", "interested", "call scheduled", "negotiating",
                    "proposal sent", "in conversation"}
 
-# Canonical target geography — CADENCE.md §5. Matched against the Location column
-# so an out-of-target lead can never reach the send queue on rating alone.
-TARGET_GEO = [
-    "united states", "usa", ", us", "u.s.", "canada", "australia",
-    "singapore",
-    # Gulf
-    "united arab emirates", "uae", "dubai", "abu dhabi", "sharjah",
-    "saudi", "ksa", "riyadh", "jeddah", "qatar", "doha",
-    "kuwait", "bahrain", "manama", "oman", "muscat",
-]
-# NOTE: never add bare "wales" here — it would exclude New South Wales, Australia.
+# Off-target geography — CADENCE.md §5. Permissive rule (Arslan 2026-08-26):
+# everything is IN-TARGET except these five — India, Pakistan, China, Thailand, UK.
+# Matched against the Location column so an out-of-target lead can never reach the
+# send queue on rating alone.
 OFF_TARGET_GEO = [
-    "pakistan", "karachi", "lahore", "islamabad", "india", "bengaluru", "bangalore",
-    "mumbai", "delhi", "israel", "tel aviv", "united kingdom", "london", "england",
-    "scotland", "ireland", "dublin", "new zealand", "auckland", "wellington",
-    "germany", "berlin", "france", "paris", "spain", "netherlands", "amsterdam",
-    "poland", "ukraine", "romania", "brazil", "mexico", "argentina", "colombia",
-    "guatemala", "panama", "nigeria", "kenya", "egypt", "philippines", "indonesia",
-    "vietnam", "malaysia", "china", "japan", "korea", "turkey", "italy", "sweden",
-    "switzerland", "portugal", "greece", "czech", "hungary", "bulgaria",
+    # India ("indiana"/"indianapolis" don't match — word-boundary guarded below)
+    "india", "bengaluru", "bangalore", "mumbai", "delhi", "hyderabad", "chennai",
+    "kolkata", "pune", "gurgaon", "gurugram", "noida", "ahmedabad",
+    # Pakistan
+    "pakistan", "karachi", "lahore", "islamabad", "rawalpindi", "faisalabad", "multan",
+    # China
+    "china", "beijing", "shanghai", "shenzhen", "guangzhou", "hangzhou", "chengdu",
+    # Thailand
+    "thailand", "bangkok", "phuket", "chiang mai",
+    # United Kingdom — anchor on country/region words, NOT bare city names, to avoid
+    # US/Canada collisions (London ON, Manchester NH, Birmingham AL). NEVER add bare
+    # "wales" — it would exclude New South Wales, Australia (in-target).
+    "united kingdom", "uk", "england", "scotland", "greater london", "london area",
+    "northern ireland",
 ]
-# LinkedIn often gives a metro instead of a state ("Greater Boston", "SF Bay Area").
-US_METROS = [
-    "san francisco bay area", "greater boston", "greater cleveland", "greater chicago",
-    "greater seattle", "greater houston", "greater philadelphia", "greater pittsburgh",
-    "greater minneapolis", "greater indianapolis", "greater sacramento",
-    "greater phoenix", "greater tampa", "greater orlando", "greater st. louis",
-    "miami-fort lauderdale", "dallas-fort worth", "new york city metropolitan area",
-    "washington dc-baltimore area", "los angeles metropolitan area",
-    "atlanta metropolitan area", "denver metropolitan area", "austin, texas metropolitan",
-    "greater toronto area", "greater vancouver", "greater montreal", "greater sydney",
-    "greater melbourne", "greater brisbane", "greater perth",
-]
-# Two-letter US/CA state or province suffix, e.g. "Austin, TX" / "Toronto, ON".
-US_CA_STATE = re.compile(
-    r",\s*(a[klrzb]|c[aot]|d[ce]|fl|ga|hi|i[adln]|k[sy]|la|m[adeinost]|"
-    r"n[cdehjmvy]|o[hkr]|pa|ri|s[cd]|t[nx]|ut|v[at]|w[aivy]|"
-    r"ab|bc|mb|nb|nl|ns|nt|nu|on|pe|qc|sk|yt)\b", re.I)
 
 
 def geo_verdict(location: str) -> str:
-    """'target' | 'off-target' | 'unknown' — company-HQ test, per CADENCE.md §5."""
+    """'off-target' | 'target' | 'unknown' — company-HQ test, per CADENCE.md §5.
+    Permissive rule (Arslan 2026-08-26): every location is in-target EXCEPT India,
+    Pakistan, China, Thailand, and the UK. Only a blank location is 'unknown'."""
     loc = location.strip().lower()
     if not loc:
         return "unknown"
-    # Word-boundary match: plain substrings put "Indiana"/"Indianapolis" in India
-    # and "Greater Boston" nowhere.
+    # Word-boundary match: plain substrings put "Indiana"/"Indianapolis" in India,
+    # and stop "uk" from matching inside "ukraine".
     def hit(terms):
         return any(re.search(rf"(?<![a-z]){re.escape(t)}(?![a-z])", loc) for t in terms)
     if hit(OFF_TARGET_GEO):
         return "off-target"
-    if hit(TARGET_GEO) or US_CA_STATE.search(loc) or hit(US_METROS):
-        return "target"
-    return "unknown"
+    return "target"
 
 
 # ---------------------------------------------------------------- sheet access

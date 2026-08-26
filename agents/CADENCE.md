@@ -153,12 +153,20 @@ The pipeline was applying opposite rules to the same country — Australia was
 `SKIP: skip-geo` on 9 rows and `AU (target geo)` on 8; Canada was skip on 12 and
 target on 10. That forces a judgement call on every row instead of a filter.
 
-**REVERSED by Arslan 2026-08-12.** Skip ONLY China, Pakistan, India, Thailand. **Every other country is eligible** if the profile is worth keeping (non-technical founder + real software product). The old "US/Canada/Australia/Singapore/Gulf only, UK excluded" table no longer applies — UK, Europe, LATAM, Mexico, Türkiye, Cayman, etc. are back in play.
+**SETTLED (Arslan 2026-08-26).** Skip on geo ONLY these five: **India, Pakistan,
+China, Thailand, and the UK.** **Everywhere else is eligible** — judge on the
+profile (non-technical founder + real software product), not geo. So US, Canada,
+Australia, Singapore, Gulf, plus Europe, Ireland, LATAM, Mexico, Türkiye, etc. are
+all in play. This is the single source of truth. *(History: the original 2026-08-06
+list was restrictive — US/CA/AU/SG/Gulf only, UK excluded. A 2026-08-12 note opened
+everything except China/Pakistan/India/Thailand. Arslan's 2026-08-26 call is that
+plus UK on the skip list — the permissive rule with five hard exclusions. Enforced
+in `scripts/pipeline_health.py` `geo_verdict()` / `OFF_TARGET_GEO`.)*
 
 | Geo | Verdict |
 |---|---|
-| **China, Pakistan, India, Thailand** | ❌ **Hard skip on geo** |
-| Everywhere else (US, Canada, Australia, Singapore, Gulf, UK, Europe, LATAM, etc.) | ✅ Eligible — judge on the profile, not geo |
+| **India, Pakistan, China, Thailand, UK** | ❌ **Hard skip on geo** |
+| **Everywhere else** (US, Canada, Australia, Singapore, Gulf, Europe, Ireland, LATAM, etc.) | ✅ **Eligible — judge on the profile, not geo** |
 
 > ⚠️ **Never match on the bare word "wales"** when filtering out the UK — it would
 > exclude **New South Wales, Australia** (Dom Gattellari, Leigh Caprile are both

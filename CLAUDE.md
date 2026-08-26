@@ -113,11 +113,13 @@ Frame ElectroCom as an **AI + Development partner** — not a vendor or subcontr
 > Canada 12 vs 10. Same country, opposite verdicts — and it cost 14 leads that were
 > killed on geo alone from list-view only.)
 >
-> **Settled by Arslan 2026-08-06:** target = **US, Canada, Australia, Singapore,
-> Gulf** (UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman). **UK is excluded.**
+> **Settled by Arslan 2026-08-26:** skip on geo ONLY **India, Pakistan, China,
+> Thailand, and the UK**. **Everywhere else is eligible** (US, Canada, Australia,
+> Singapore, Gulf, plus Europe, Ireland, LATAM, Mexico, Türkiye, etc.) — judge on
+> the profile, not geo. See `agents/CADENCE.md` §5.
 
 ### Type A — Direct Client ✅ PRIMARY FOCUS
-Founders, CTOs, VPs Engineering at **Seed–Series B** companies in the US, Canada, Australia, Singapore or the Gulf (no UK — see `agents/CADENCE.md` §5) who:
+Founders, CTOs, VPs Engineering at **Seed–Series B** companies anywhere except India, Pakistan, China, Thailand and the UK (see `agents/CADENCE.md` §5) who:
 - Are actively hiring engineers OR just raised capital with an explicit engineering build-out signal
 - Have an AI/ML or complex web product in flight
 - Have a team too small to execute the roadmap in-house (typically <50 engineers)

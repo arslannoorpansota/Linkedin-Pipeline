@@ -174,12 +174,24 @@ software, they need outside dev. That is the whole thesis.
 
 ### The exact v5 search (Leads tab)
 
-**Search-keywords box** — paste verbatim:
+**Search-keywords box** — paste verbatim (v6 keyword line, updated 2026-08-26):
 ```
-(SaaS OR platform OR "software product") NOT consultant NOT agency NOT staffing NOT labs NOT CTO
+(SaaS OR "software platform" OR "software product") NOT consultant NOT agency NOT clinic NOT practice NOT CTO
 ```
 - Keep NOTs at **5 max** (Sales Nav ignores longer boolean chains — proven in v4).
-  `NOT labs` kills the "X Labs" AI companies; `NOT CTO` catches "Co-Founder & CTO" profiles.
+- **v6 change (2026-08-26, keyword-only — industries unchanged):** after "Aug 26 list 1"
+  (a Health-heavy pass) rated 150 → **10 keeps / ~7%**, flooded with care-delivery operators
+  (home care, clinics, medical practices, senior living, diagnostic-report shops). Keyword fixes:
+  (a) bare `platform` → `"software platform"` — every service business says "our platform";
+  requiring *software* adjacency biases toward product-builders. (b) dropped `NOT staffing`
+  (rare in HR/Insurance/Health headlines) and `NOT labs` (lives in the company *name*, which the
+  NOT box can't read anyway). (c) added `NOT clinic` + `NOT practice` — the two care-operator
+  words that DO appear in headlines ("Practice Owner", "Clinic Founder"), the exact list-1 flood.
+  Runner-up NOTs to rotate one in if health still leaks: `"senior living"`, `nursing`.
+- **Prior v5 line (superseded):** `(SaaS OR platform OR "software product") NOT consultant NOT agency NOT staffing NOT labs NOT CTO`.
+- **Ceiling:** the NOT box reads only the person's headline/about, NOT the company name. A care
+  operator with a clean "Founder & CEO" headline and "Health" only in the company name (609 Health,
+  Carna Health) still leaks — that stays an eyeball skip via the care-delivery-operator shortlist rule.
 - **Current job title:** Founder, Co-Founder, Owner, Chief Executive Officer
 - **Company headcount:** `1-10` ONLY (drop 11-50 — that bucket is where CTOs, funded
   teams, and mature companies with their own eng cluster; biggest single lever).

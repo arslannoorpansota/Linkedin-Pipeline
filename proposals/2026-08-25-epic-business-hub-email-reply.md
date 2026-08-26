@@ -3,7 +3,7 @@
 **From:** Faizan Nadeem
 **To:** Carlo Guzzi, Epic Business Hub
 **Date:** 25 August 2026
-**Status:** FINAL copy, approved by Faizan. Cleared to send once Arslan signs off on four things: the A$56/hr rate, the long-term scoping condition, the fixed-FX commitment to 25 September, and the agent scope question flagged below.
+**Status:** FINAL copy, approved by Faizan. Cleared to send once Arslan signs off on the A$60/hr rate, the long-term scoping condition, the fixed-FX commitment to 25 September, and the agent scope question flagged below.
 
 ---
 
@@ -17,19 +17,19 @@ We've been through the site from the link you sent, and I have a clear picture o
 
 The only time we'd need access is at kickoff, on a staging copy, with a single account you can revoke whenever you like. Your live site gets touched once, at go live, after a backup.
 
-On rate, we work at A$56 an hour and show you the hours behind every figure, so you can cut anything you don't want. Prices are rounded to the nearest hundred, held at a fixed exchange rate until 25 September, and invoiced from the US, so no GST is added.
+On rate, we work at A$60 an hour and show you the hours behind every figure, so you can cut anything you don't want. The numbers below are estimates and will firm up once we've agreed the structure. Everything is held at a fixed exchange rate until 25 September and invoiced from the US, so no GST is added.
 
 That rate assumes this is the start of a longer working relationship rather than a single job. A standalone project I'd price differently, and I'd tell you so.
 
 **Option A. Reposition your existing site.**
-118 hours, A$6,600, 3 to 4 weeks.
+100 to 115 hours, roughly A$6,000 to A$7,000, 3 to 4 weeks.
 
 The positioning workshop, new messaging, a rewritten homepage plus two pages, a design refresh using what you already have, and a caching fix for the load time.
 
 What it won't fix is the architecture. Your navigation points at anchors rather than real pages, so the improvement has a ceiling.
 
 **Option B. Reposition and rebuild.**
-264 hours, A$14,800, 6 weeks.
+250 to 265 hours, roughly A$15,000 to A$16,000, 6 to 8 weeks.
 
 We redesign the site around the brief you set out, so the positioning drives the structure rather than just how it looks.
 
@@ -37,15 +37,31 @@ Real pages instead of anchor links, all the copy rewritten, a design system, a l
 
 There's one idea I'd like to put in front of you here.
 
-An agent that sits across a client's Slack, email and project tools. It tracks who owns what after a meeting, flags anything that has stalled with nobody on it, chases vendors for updates, and sends leadership a weekly status digest.
+An agent that sits across a client's Slack, email and project board, so the coordination layer runs itself. That's your Leadership Bottleneck, Project Delays and Lost Focus, handled by software instead of headcount, and it could become part of what you deliver rather than just something sitting on your website.
 
-That's your Leadership Bottleneck, Project Delays and Lost Focus, handled by software instead of headcount. It could become part of what you deliver, not just something sitting on your website.
+Phase 1 runs 4 to 6 weeks and covers:
+
+- The agent connected to your core tools for one live pilot engagement
+- Action items and owners captured automatically from meetings and threads
+- Stalled task flagging, for example no movement in two weeks with nobody assigned
+- A weekly execution digest generated for leadership, replacing manual check-ins
+- Vendor follow ups chased and consolidated into a single view
+
+Not in Phase 1:
+
+- A multi client or white label version for rolling this out across your whole client base
+- Predictive flagging of which pilots will stall before they do
+- The agent acting on its own without a human sign off
+- A custom analytics dashboard, since Phase 1 is digest based rather than a UI
+- CRM or reporting integrations beyond the ones we confirm in week one
+
+All of that is buildable once Phase 1 proves the workflow.
 
 It's included in Option B.
 
 Both options run in the same order: positioning, copy, design, then build, with sign off at the end of weeks two and four. Nothing gets built before you've approved what it says.
 
-We've also scoped a third option but haven't quoted it. It adds an interactive diagnostic that scores a visitor's situation before they ever speak to you, along with six replacement articles. About A$5,600 on top of Option B, and only worth doing once the core site is right.
+We've also scoped a third option but haven't quoted it. It adds an interactive diagnostic that scores a visitor's situation before they ever speak to you, along with six replacement articles. Roughly A$5,500 to A$6,000 on top of Option B, and only worth doing once the core site is right.
 
 One decision I'd rather make with you at kickoff than assume now. Option B is priced on moving you off Beaver Builder, which is where most of the speed comes from. If your licences are current we can keep it and drop only the add on packs and the mega menu instead. A screenshot of your Plugins page would tell us which way to go.
 
@@ -58,55 +74,55 @@ Faizan
 
 ## Internal notes
 
-- **Rate needs Arslan's approval.** A$56/hr with hours disclosed is a transparency play, not a discount play. The long-term scoping condition is stated explicitly so the rate isn't treated as a one off benchmark.
-- **Currency.** Quoted in AUD, fixed at 1 USD = 1.396 AUD (24 Aug 2026, cross-checked against two independent sources: open.er-api 1.3952, frankfurter.dev 1.3963). A$56/hr = US$40 x 1.396 = A$55.84, rounded up to protect margin across a six week build. We carry the FX risk until 25 September; Arslan needs to accept that.
-- **Numbers (rounded to the nearest hundred, per Faizan):** A = 118h, A$6,600 (exact A$6,608). B = 264h, A$14,800 (exact A$14,784). C = ~364h, ~A$20,400 (exact A$20,384), which is ~A$5,600 on top of B. Care plans A$350 / A$630 per month.
-- Because prices are rounded, the email says "rounded to the nearest hundred" rather than claiming the figures multiply out exactly. Effective rates are A$55.93 (A) and A$56.06 (B).
-- Supersedes the earlier US$5,900 / $9,800 / $15,500 set (~$49/hr) and the interim US$40/hr set. `2026-08-25-epic-business-hub-website-reposition.md` matches.
+- **Rate needs Arslan's approval. Now A$60/hr** (raised from A$56 on Faizan's 11th-pass instruction). Hours disclosed alongside it, so this is a transparency play rather than a discount play. The long-term scoping condition is stated explicitly so the rate isn't treated as a one off benchmark.
+- **Currency.** Quoted in AUD, fixed at 1 USD = 1.396 AUD (24 Aug 2026, cross-checked against open.er-api 1.3952 and frankfurter.dev 1.3963). At A$60/hr the implied USD rate is about US$43. We carry the FX risk until 25 September; Arslan needs to accept that.
+- **Numbers — prices held, hours recalculated to the new rate.** Faizan's instruction was to raise the rate without moving the Option A or B prices, so the hour counts came down to keep the arithmetic honest:
+  - A = **100–115h, roughly A$6,000–7,000**, 3–4 weeks. (100 × 60 = 6,000; 115 × 60 = 6,900.)
+  - B = **250–265h, roughly A$15,000–16,000**, **6 to 8 weeks** (extended from 6 on Faizan's instruction, which makes sense now the agent sits inside B).
+  - C = roughly A$5,500–6,000 on top of B.
+  - Care plans A$350 / A$630 per month.
 - **GST:** the email says we invoice from the US so no GST is added. That describes what we charge, not Carlo's own obligations. Confirm with ElectroCom's accountant before sending.
 
-### Execution Ownership Agent pitch (in Option B)
+### Execution Ownership Agent — Phase 1 scope (in Option B)
 
-- Condensed from Faizan's longer spec. Framing choices retained:
-  - **Quotes his own three homepage headings back at him** (Leadership Bottleneck, Project Delays, Lost Focus). Strongest line in the paragraph. It proves we read the site and maps the idea onto language he already chose.
-  - **"Handled by software instead of headcount"** mirrors his own promise ("without adding headcount"). His words, our mechanism.
-  - **"Part of what you deliver, not just something sitting on your website"** is the real pitch: agent as his product, not our tooling. Bigger margin for him, bigger engagement for us.
+- Full Phase 1 / Phase 2 split supplied by Faizan and rendered into the email.
+- **Emoji stripped.** Faizan's source used tick and cross marks; the email carries no emoji anywhere else and they read as a tell. Rendered as two plain lists headed "Phase 1 runs 4 to 6 weeks and covers" and "Not in Phase 1".
+- **Five items in each list**, so neither falls into the three-beat cadence.
+- Framing retained from earlier passes: quotes Carlo's own three homepage H2s back at him (Leadership Bottleneck, Project Delays, Lost Focus), mirrors his own "without adding headcount" promise, and positions the agent as *his product* rather than our tooling.
+- The exclusion list does real commercial work. It names Phase 2 without pricing it, which sets up the next engagement while keeping this quote bounded.
 
-> ### ⚠️ SCOPE WARNING — READ BEFORE SENDING
+> ### ⚠️ SCOPE WARNING — ARSLAN MUST RULE BEFORE SENDING
 >
-> Faizan's 9th-pass instruction moved the agent **into Option B's scope** ("That's included
-> in Option B") and removed the "not in this quote" disclaimer. **The 264 hours and A$14,800
-> do not cover building this agent.** Those hours were estimated for a website repositioning
-> and rebuild only. Nothing in them pays for integration work, action-item extraction,
-> stall detection, or a digest pipeline.
+> The agent now sits **inside Option B** ("It's included in Option B") with a **fully specified
+> Phase 1 deliverable**. That makes the commitment concrete rather than conversational, which
+> raises the stakes on the underlying problem.
 >
-> A workable first version (Slack plus email plus one project tool, action-item capture,
-> stall flagging, weekly digest) is realistically **120 to 200 hours on its own**. That takes
-> Option B to roughly **384 to 464 hours, or A$21,500 to A$26,000**.
+> **250 to 265 hours cannot cover a full website rebuild plus this agent.** The website rebuild
+> alone was estimated at 264 hours. Phase 1 as specified (live tool integrations, action-item
+> extraction, stall detection, digest generation, vendor status consolidation) is realistically
+> **120 to 200 hours on its own**. Honest combined scope is closer to **370 to 465 hours**,
+> or **A$22,000 to A$28,000** at A$60/hr.
 >
-> Sending as-is commits us in writing to delivering a software product inside a website
-> price. Three ways to resolve it, in order of preference:
-> 1. **Reprice Option B** to include a scoped first version of the agent. Honest, and it is
->    a much larger and more interesting engagement.
-> 2. **Scope it down in the email** to a pilot or prototype rather than the full product,
->    and price that increment separately.
-> 3. **Restore the "not in this quote" line** and keep the agent as a call topic.
+> Raising the rate to A$60 while holding the price actually *reduced* the hours we are promising,
+> from 265–285 down to 250–265, so this pass moved us further from covering the work, not closer.
 >
-> **Do not send until Arslan has ruled on this.**
-- The OpenAI video-model credential paragraph stays cut. The agent idea does the same job better because it is about his business rather than our CV. Save the credential for the call.
-
-### Wording decisions (8th pass)
-
-- **"Eight pages" removed** at Faizan's instruction. Now "real pages instead of anchor links", which is the contrast that actually matters and avoids committing to a page count before the IA is agreed. Also removes a number he could hold us to later.
-- The brief-alignment line stays as one plain statement rather than listing his four requirements back at him. Performance figures stay out of the email; the measured numbers live in the proposal doc.
-- **Closing** carries the warmth Faizan asked for without tipping into sales language: "Hope we can get a call in soon" plus the offer of more ideas. One ask only, per the tone rules.
+> Three ways to resolve it:
+> 1. **Reprice Option B** to A$22,000–28,000 and present it as website plus agent Phase 1.
+>    Recommended. It is an honest number and a far bigger engagement.
+> 2. **Split them.** Quote the website at A$15,000–16,000 and the agent Phase 1 as its own
+>    line item. Cleanest commercially, and the 4 to 6 week Phase 1 timeline already implies
+>    a separate track.
+> 3. **Move the agent back out of Option B** and keep it as a call topic.
+>
+> Flagged on three separate passes. Faizan has instructed to proceed regardless, so the copy
+> ships as written. **Arslan should see this before it goes to the client.**
 
 ### Formatting and humanising
 
 - Deliberate white space: short paragraphs, option headings on their own line with hours, price and timeline beneath.
-- No em dashes anywhere. Lists run to four and seven items so nothing falls into the three-beat cadence that reads as machine-written. The single group of three is the quotation of Carlo's own headings, which is his copy.
-- No superlatives, no "seamless / robust / cutting-edge" register. Claims are stated plainly or as contrasts.
+- No em dashes anywhere. No emoji. Straight quotes. Lists run to five and seven items so nothing falls into the three-beat cadence.
+- No superlatives and none of the "seamless / robust / cutting-edge" register. Claims are stated plainly or as contrasts.
 
 ### Open item
 
-- **The one-page brief and the LinkedIn content themes never arrived.** Carlo said he attached them. Both are week-one inputs for the positioning phase, and the email no longer asks for them (the six-item ask list was cut in the 3rd pass). Only the plugins screenshot survives, folded into the Beaver Builder paragraph where it is motivated. **Chase the brief and the LinkedIn themes on the call.**
+- **The one-page brief and the LinkedIn content themes never arrived.** Carlo said he attached them. Both are week-one inputs for the positioning phase, and the email no longer asks for them (the six-item ask list was cut earlier). Only the plugins screenshot survives, folded into the Beaver Builder paragraph where it is motivated. **Chase the brief and the LinkedIn themes on the call.**

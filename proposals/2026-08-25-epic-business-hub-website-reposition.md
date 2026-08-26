@@ -155,11 +155,11 @@ Included in the recommended option:
 | Interactive diagnostic tool | — | — | Yes |
 | Replacement articles | — | — | 6 articles |
 | LinkedIn-to-site content system | — | — | Yes |
-| **Estimated hours** | 118 | 264 | ~364 |
-| **Investment (one-time, at A$56/hr)** | **A$6,600** | **A$14,800** | **~A$20,400** |
-| **Timeline** | 3–4 weeks | 6 weeks | 9–10 weeks |
+| **Estimated hours** | 100–115 | 250–265 | ~345–365 |
+| **Investment (one-time, at A$60/hr)** | **A$6,000–7,000** | **A$15,000–16,000** | **~A$20,500–21,500** |
+| **Timeline** | 3–4 weeks | 6–8 weeks | 9–10 weeks |
 
-All work is billed at **A$56 per hour**, with the hour allocation disclosed per phase so you can see what you are paying for and remove anything you do not want. Figures above are hours multiplied by that rate, rounded to the nearest hundred. This rate is set on the basis of a longer-term working relationship rather than a single build; a one-off project would be priced differently, and we would say so upfront.
+All work is billed at **A$60 per hour**, with the hour allocation disclosed per phase so you can see what you are paying for and remove anything you do not want. Figures above are estimates and will firm up once the structure is agreed. This rate is set on the basis of a longer-term working relationship rather than a single build; a one-off project would be priced differently, and we would say so upfront.
 
 **Currency and tax.** All amounts are in Australian dollars, held at a fixed exchange rate for the life of this quotation (valid to 25 September 2026), so your price does not move with the currency market. We invoice from the United States, so no Australian GST is added to these amounts.
 

@@ -148,7 +148,8 @@ Companies in the Claude partner network who need AI engineering capacity for cli
 | `agents/EMAIL_OUTREACH.md` | Paste a company/person page → get a cold email (subject + body) |
 | `agents/FOLLOW_UP.md` | Paste thread history → get the right follow-up message |
 | `agents/SALES_NAV_PLAYBOOK.md` | Sales Navigator targeting + channel strategy (free DM vs InMail vs email) under the 50-InMail/mo cap |
-| `agents/CADENCE.md` | **Authoritative:** channel routing by rating, the enforced 4-touch cadence, the pre-research dedupe gate, and the canonical target-geo table |
+| `agents/CADENCE.md` | Channel routing by rating, the enforced 4-touch cadence, the pre-research dedupe gate, and the canonical target-geo table. **NOTE: §2a (InMail as fallback-only) is SUPERSEDED — see `agents/LIST_LOGGING.md` "Channel by PROFILE rating".** |
+| `agents/LIST_LOGGING.md` | **Authoritative for list triage:** the full-list logging protocol (log every lead, skips first with `[LIST-VIEW ONLY]` reasons, shortlist after), THE CONFIDENCE RULE (never skip on a guess), the channel-by-profile-rating table (P7+ = note **and** InMail), and the next-pair page-number format |
 
 **Daily reporting is mandatory — for ALL work, not just outreach.** After any substantive task in this workspace (outreach agent runs AND profile/company-page setup, generated assets, infra/ops, research — anything that changes a file or produces output), append a dated entry to that day's report in `reports/YYYY-MM-DD.md` before ending the session. The protocol, activity types, and entry format live in `reports/README.md`. Every entry is date-stamped, there is one report file per day, and the Summary counters at the top of the day file are updated after each entry. Trivial chit-chat with no output does not need an entry.
 

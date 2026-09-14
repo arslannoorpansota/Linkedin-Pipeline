@@ -16,12 +16,12 @@
 > Three topics were given, the month has four Saturdays. Week 4 is a synthesis post that
 > ties the other three together and points back at them.
 
-| Week | Date | Topic | Status |
-|---|---|---|---|
-| 1 | 2026-08-29 | AWS Bedrock AgentCore | **posted** |
-| 2 | 2026-09-04 | In-house CAD engineers for AI model evaluation | ready |
-| 3 | 2026-09-11 | Oracle Integration Cloud | ready |
-| 4 | 2026-09-18 | Synthesis: the three layers under every AI project | ready |
+| Week | Date | Topic | Status | Note |
+|---|---|---|---|---|
+| 1 | 2026-08-29 | AWS Bedrock AgentCore | posted | 176 impressions |
+| 2 | 2026-09-04 | In-house CAD engineers for AI model evaluation | posted | ran 09-08; 278 impressions, 2 reactions |
+| 3 | 2026-09-15 | Oracle Integration Cloud | posted | slipped from 09-11 |
+| 4 | 2026-09-25 | Synthesis: the three layers under every AI project | ready | slipped from 09-18; MUST run after wk3 |
 
 ---
 
@@ -79,7 +79,7 @@ Your real benchmark is the person who signs off in production.
 
 ---
 
-## Week 3 — 2026-09-11 — Oracle Integration Cloud (545 chars)
+## Week 3 — 2026-09-15 — Oracle Integration Cloud (545 chars)
 
 ```
 Oracle Integration Gen 2 died on 31 August 2025.
@@ -100,7 +100,7 @@ Migration was the deadline. The rebuild is the part that pays.
 
 ---
 
-## Week 4 — 2026-09-18 — The three layers (556 chars)
+## Week 4 — 2026-09-25 — The three layers (556 chars)
 
 ```
 Most AI projects stall for the same three reasons. None of them is the model.
@@ -278,7 +278,7 @@ Name the person who reviews your model's output in production. Put them in the e
 
 ---
 
-## Week 3 — 2026-09-11 — Oracle Integration Cloud
+## Week 3 — 2026-09-15 — Oracle Integration Cloud
 
 **Audience:** IT directors, integration leads and enterprise architects who moved to OIC Gen 3 under the deadline.
 **Goal:** Read ElectroCom as the team that does the second pass, and connect OIC work to AI readiness. Reply or DM.
@@ -351,7 +351,7 @@ Retire the agents. Split Process out. Replace polling with events. Instrument th
 
 ---
 
-## Week 4 — 2026-09-18 — Synthesis: the three layers under every AI project
+## Week 4 — 2026-09-25 — Synthesis: the three layers under every AI project
 
 **Audience:** Founders and CTOs with an AI project that has not reached customers.
 **Goal:** Position ElectroCom across all three capabilities in one post, and pull replies naming which layer is stuck. DM.
@@ -420,9 +420,9 @@ Fill this in and the next month's topics pick themselves. Without it we are gues
 
 | Week | Topic | Posted | Impressions | Reactions | Comments | Profile views / connects | Notes |
 |---|---|---|---|---|---|---|---|
-| 1 | AgentCore | 2026-08-29 | | | | | first post of the run, no baseline yet |
-| 2 | CAD eval | | | | | | |
-| 3 | Oracle OIC | | | | | | |
+| 1 | AgentCore | 2026-08-29 | 176 | 0 | 0 | | lowest of the run; narrowest topic |
+| 2 | CAD eval | 2026-09-08 | 278 | 2 | 0 | | +58% over wk1; only post in the run with reactions |
+| 3 | Oracle OIC | 2026-09-15 | | | | | fill ~17 Sep |
 | 4 | Three layers | | | | | | |
 
 ---

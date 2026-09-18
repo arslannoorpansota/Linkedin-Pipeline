@@ -73,8 +73,33 @@ See `CADENCE.md` §5.
 ## 3. The founder gate — the decisive keep/skip test
 
 > **Technical founder = skip. Non-technical founder with a real build need = keep.**
+>
+> ### Set by Faizan 2026-09-19 — FINAL, and it comes FIRST
+> *"Keep all the non-technical who do not have a CTO and any engineering team."*
+>
+> A KEEP needs **all three**: the **founder is non-technical**, the company has **no CTO**,
+> and the company has **no engineers at all**. **Any engineer on staff is a SKIP** —
+> confirmed explicitly, a single hired developer with no CTO still counts as covered.
+>
+> This **supersedes the 2026-09-09 override** that treated a CTO or dev arrangement as a
+> caveat to verify on accept. A company with engineers can handle dev in-house, so there is
+> nothing to sell. The line below under "Fails the gate" (*the company employs a CTO or
+> CPO*) is therefore **correct and back in force**.
+>
+> **Scan All Employees, not just the CXO panel.** Senior Engineer, Infrastructure Engineer,
+> Cybersecurity Analyst, UI/UX QA and Product Designer all count as engineering.
+>
+> The website gap (`WEBSITE_GAP_TRIAGE.md`) decides **what to build and what to say**, and
+> makes the hook verifiable. It does not decide the verdict on its own.
+>
+> Worked example: **Blake Stevenson / Clear Health (row 2460)** flipped twice on 2026-09-19
+> and settled on **SKIP**. Non-technical founder (BBA Marketing, sales career, zero
+> technical endorsements), live ML product, 17% six-month growth, but the company employs a
+> CTO, a Senior Engineer, a Cybersecurity Analyst and a UI/UX QA. The two keeps from the
+> same day both have **zero engineers**: Kayla Sol / RY Services and Larisa Krichevsky /
+> Launch To Wellness.
 
-Extended in practice to: **does the COMPANY already own its engineering?**
+Extended in practice to: **does the COMPANY already own its engineering?** — yes, and per the box above that now includes *any* engineer on staff, not only a CTO.
 
 ### Fails the gate (skip)
 

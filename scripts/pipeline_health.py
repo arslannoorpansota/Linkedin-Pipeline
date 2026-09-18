@@ -534,6 +534,106 @@ def build_array_formulas(sh: Sheet, last_row: int) -> dict[str, str]:
     return {"Days Since Last Touch": bc, "Cadence Due": bd, "Cadence Stage": be}
 
 
+CADENCE_COLS = ["Days Since Last Touch", "Cadence Due", "Cadence Stage"]
+
+# The profile rating at/above which a lead is worth surfacing on the cadence board.
+# Mirrors the `show` gate in build_array_formulas: P7+, or anyone who replied or
+# accepted regardless of rating.
+SHOW_RATING_MIN = 7
+
+
+def _show_on_board(sh: Sheet, row) -> bool:
+    try:
+        rating = float(str(sh.get(row, "Profile Rating (/10)")).strip() or 0)
+    except ValueError:
+        rating = 0
+    return rating >= SHOW_RATING_MIN or has_replied(sh, row) or is_accepted(sh, row)
+
+
+def cadence_values(sh: Sheet, row, today: datetime.date) -> list:
+    """Static equivalent of the BC/BD/BE array formulas, one row at a time.
+
+    The MAP()/LAMBDA() versions call TODAY() and 3-4 REGEXMATCH per row across the
+    whole sheet. Volatile + regex-heavy = the grid recalculates all three columns on
+    every edit and repaints them on every scroll, which locked the browser around the
+    AZ/BA columns. Same semantics, computed once here and written as plain values.
+    """
+    if not _show_on_board(sh, row):
+        return ["", "", ""]
+
+    completed = touches(sh, row, today)
+    last = max(completed) if completed else None
+    last_any = last_touch(sh, row, today)
+    planned = planned_touch(sh, row, today)
+    touch = len(completed)
+    gap = CADENCE_GAPS.get(touch, CADENCE_GAPS[1] if touch == 0 else 7)
+    closed = is_closed(sh, row)
+    replied = has_replied(sh, row)
+    accepted = is_accepted(sh, row)
+
+    days = (today - last_any).days if last_any else ""
+
+    if planned:
+        due = planned
+    elif last is None or replied or closed or touch >= 4:
+        due = ""
+    elif accepted and touch <= 1:
+        due = last_any
+    else:
+        due = last + datetime.timedelta(days=gap)
+
+    if closed:
+        stage = "—"
+    elif last is None and not planned:
+        stage = ""
+    elif replied:
+        stage = "REPLIED"
+    elif planned:
+        stage = f"SCHEDULED {planned:%b %-d}"
+    elif touch >= 4:
+        stage = "PARK"
+    elif accepted and touch <= 1:
+        stage = "ACCEPTED - SEND T2"
+    elif (today - last).days > gap:
+        stage = f"OVERDUE T{touch + 1}"
+    else:
+        stage = f"T{touch + 1} due {last + datetime.timedelta(days=gap):%b %-d}"
+
+    return [days, due.isoformat() if isinstance(due, datetime.date) else "", stage]
+
+
+def freeze_cadence(service, sid: str, sh: Sheet, today: datetime.date, apply: bool):
+    """Replace the volatile BC/BD/BE array formulas with static computed values."""
+    missing = [h for h in CADENCE_COLS if h not in sh.idx]
+    if missing:
+        print(f"\n  missing columns {missing} — run --install-formulas first")
+        return
+
+    cols = [sh.idx[h] for h in CADENCE_COLS]
+    if cols != list(range(min(cols), min(cols) + 3)):
+        print(f"\n  {CADENCE_COLS} are not adjacent — refusing to write a block")
+        return
+
+    last_row = len(sh.rows) + 1
+    values = [cadence_values(sh, row, today) for row in sh.rows]
+    filled = sum(1 for v in values if any(str(x).strip() for x in v))
+    first, last_col = col_letter(min(cols)), col_letter(max(cols))
+
+    print(f"\n=== FREEZE CADENCE ({'APPLYING' if apply else 'DRY RUN'}) ===")
+    print(f"  {first}2:{last_col}{last_row} — {len(values)} rows, {filled} on the board")
+    print(f"  replaces 3 volatile MAP()/TODAY() formulas with static values")
+    if not apply:
+        print("  (no write — add --apply to freeze)")
+        return
+
+    service.spreadsheets().values().update(
+        spreadsheetId=sid, range=f"{TAB}!{first}2:{last_col}{last_row}",
+        valueInputOption="USER_ENTERED", body={"values": values},
+    ).execute()
+    set_number_formats(service, sid, {h: sh.idx[h] for h in CADENCE_COLS}, last_row)
+    print(f"  done — re-run after any touch to refresh")
+
+
 def install_formulas(service, sid: str, sh: Sheet, dry_run: bool):
     """Append three live formula columns so stalls surface without scanning rows."""
     need = ["Days Since Last Touch", "Cadence Due", "Cadence Stage"]
@@ -642,6 +742,9 @@ def main() -> int:
     ap.add_argument("--undecided", action="store_true")
     ap.add_argument("--check-dupes", action="store_true")
     ap.add_argument("--install-formulas", action="store_true")
+    ap.add_argument("--freeze-cadence", action="store_true",
+                    help="write BC-BE as static values instead of volatile array "
+                         "formulas (dry-run unless --apply)")
     ap.add_argument("--protect", action="store_true",
                     help="warn-on-edit protection for BC-BE (dry-run unless --apply)")
     ap.add_argument("--fix-planned-fu", action="store_true",
@@ -657,7 +760,7 @@ def main() -> int:
 
     if not any([args.overdue, args.undecided, args.check_dupes,
                 args.install_formulas, args.decide, args.fix_planned_fu,
-                args.protect, args.all]):
+                args.protect, args.freeze_cadence, args.all]):
         ap.print_help()
         return 1
 
@@ -676,6 +779,8 @@ def main() -> int:
         report_dupes(sh)
     if args.install_formulas:
         install_formulas(service, cfg["spreadsheet_id"], sh, args.dry_run)
+    if args.freeze_cadence:
+        freeze_cadence(service, cfg["spreadsheet_id"], sh, today, args.apply)
     if args.protect:
         protect_formula_cols(service, cfg["spreadsheet_id"], sh, args.apply)
     if args.fix_planned_fu:

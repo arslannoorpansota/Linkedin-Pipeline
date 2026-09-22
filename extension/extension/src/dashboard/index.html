@@ -238,10 +238,6 @@ details.help b { color:var(--fg); }
   .bar { padding:0 14px; gap:10px; }
   .wrap { padding:0 14px 60px; }
 }
-  .filebtn { display:inline-flex; align-items:center; cursor:pointer;
-    padding:6px 12px; border:1px solid var(--line,#d0d0d0); border-radius:6px;
-    background:var(--btn,#f6f6f6); font:inherit; }
-  .filebtn:hover { background:var(--btnhover,#ececec); }
 </style>
 </head>
 <body>
@@ -295,9 +291,8 @@ details.help b { color:var(--fg); }
       company has a CTO or any engineer. Leave the window open while it runs.
     </p>
     <div class="controls">
-      <label class="filebtn">Load company list
-        <input type="file" id="visitFile" accept=".csv" hidden>
-      </label>
+      <button id="loadList">Load company list</button>
+      <input type="file" id="visitFile" accept=".csv" hidden>
       <button class="run" id="visit">Start visiting</button>
       <span class="stat" id="visitProgress"></span>
       <span class="sep"></span>

@@ -455,6 +455,8 @@ void (async () => {
 const visitBtn = el<HTMLButtonElement>('visit');
 let queueItems: { row: string; company: string; companyUrl: string; profileUrl: string }[] = [];
 
+el('loadList').addEventListener('click', () => el<HTMLInputElement>('visitFile').click());
+
 el<HTMLInputElement>('visitFile').addEventListener('change', async event => {
   const file = (event.target as HTMLInputElement).files?.[0];
   if (!file) return;

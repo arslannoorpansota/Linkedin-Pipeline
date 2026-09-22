@@ -34,6 +34,16 @@ export function toCsv(leads: Lead[]): string {
   return '﻿' + [header, ...rows].join('\r\n') + '\r\n';
 }
 
+/** CSV from whatever keys the records actually carry, for shapes that are
+ *  not Lead — the company facts, for instance. */
+export function rowsToCsv(rows: Record<string, unknown>[]): string {
+  if (rows.length === 0) return '';
+  const cols = [...new Set(rows.flatMap(r => Object.keys(r)))];
+  const header = cols.map(cell).join(',');
+  const body = rows.map(r => cols.map(c => cell(r[c])).join(','));
+  return '\ufeff' + [header, ...body].join('\r\n') + '\r\n';
+}
+
 export function toJson(leads: Lead[]): string {
   return JSON.stringify({
     schemaVersion: 1,

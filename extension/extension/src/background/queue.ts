@@ -4,7 +4,7 @@
  *  clicks Next on the page it is already on. This queue navigates, so it has
  *  to outlive the page: every navigation tears the content script down.
  *  It therefore runs in the service worker and keeps its state in
- *  chrome.storage.session, which survives the worker being suspended.
+ *  chrome.storage.local, which survives the worker being suspended.
  */
 
 export interface QueueItem {
@@ -36,18 +36,18 @@ const EMPTY: QueueState = {
 };
 
 export async function getState(): Promise<QueueState> {
-  const got = await chrome.storage.session.get(KEY);
+  const got = await chrome.storage.local.get(KEY);
   return { ...EMPTY, ...(got[KEY] as Partial<QueueState> | undefined) };
 }
 
 export async function setState(patch: Partial<QueueState>): Promise<QueueState> {
   const next = { ...(await getState()), ...patch };
-  await chrome.storage.session.set({ [KEY]: next });
+  await chrome.storage.local.set({ [KEY]: next });
   return next;
 }
 
 export async function reset(): Promise<void> {
-  await chrome.storage.session.set({ [KEY]: EMPTY });
+  await chrome.storage.local.set({ [KEY]: EMPTY });
 }
 
 /** LinkedIn tells us to stop in prose; believe it immediately. */

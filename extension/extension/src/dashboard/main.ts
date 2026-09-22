@@ -1,6 +1,6 @@
 import { allCompanies, allLeads, allRaw, clearCompanies, clearLeads, countLeads, getSettings, putCompany, putLeads, putRaw, setSettings } from '../db';
 import { parseLeads } from '../lib/salesnav';
-import { download, toCsv, toJson } from '../lib/csv';
+import { download, rowsToCsv, toCsv, toJson } from '../lib/csv';
 import type { CaptureStats, Lead } from '../types';
 
 const el = <T extends HTMLElement>(id: string): T => {
@@ -480,6 +480,7 @@ el<HTMLInputElement>('visitFile').addEventListener('change', async event => {
 });
 
 visitBtn.addEventListener('click', async () => {
+  try {
   const state = await chrome.runtime.sendMessage({ type: 'queue:state' });
   if (state?.running) {
     await chrome.runtime.sendMessage({ type: 'queue:stop' });
@@ -497,6 +498,14 @@ visitBtn.addEventListener('click', async () => {
     visitBtn.textContent = 'Stop visiting';
     setConn('live', 'Visiting');
     setStatus(`Visiting ${res.queued} company pages. Leave this window open.`);
+  } else {
+    setStatus('The background worker did not start the run. '
+      + 'Reload the extension at chrome://extensions, then try again.', true);
+  }
+  } catch (err) {
+    setConn('alert', 'Error');
+    setStatus(`Could not start: ${String(err)}. Reload the extension and this page.`, true);
+    console.error('[LLE] visit start failed', err);
   }
 });
 
@@ -517,7 +526,7 @@ el('companyCsv').addEventListener('click', async () => {
       capturedAt: r['capturedAt'],
     };
   });
-  download(`companies-${Date.now()}.csv`, toCsv(flat as never), 'text/csv');
+  download(`companies-${Date.now()}.csv`, rowsToCsv(flat as never), 'text/csv');
   setStatus(`Saved ${flat.length} companies to Downloads.`);
 });
 

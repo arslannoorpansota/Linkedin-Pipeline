@@ -21,15 +21,15 @@ chrome.action.onClicked.addListener(() => { void openDashboard(); });
 /** The tab the queue drives. Kept in session storage so a suspended worker
  *  can pick the run back up instead of opening a second tab. */
 async function workTabId(): Promise<number | null> {
-  const got = await chrome.storage.session.get('workTabId');
+  const got = await chrome.storage.local.get('workTabId');
   const id = got['workTabId'] as number | undefined;
   if (id === undefined) return null;
   try { await chrome.tabs.get(id); return id; } catch { return null; }
 }
 
 async function setWorkTab(id: number | null): Promise<void> {
-  if (id === null) await chrome.storage.session.remove('workTabId');
-  else await chrome.storage.session.set({ workTabId: id });
+  if (id === null) await chrome.storage.local.remove('workTabId');
+  else await chrome.storage.local.set({ workTabId: id });
 }
 
 function notify(payload: unknown): void {

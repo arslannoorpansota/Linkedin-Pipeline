@@ -1,11 +1,12 @@
 import type { Lead, Settings } from './types';
 
 const DB_NAME = 'lle';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 const STORE_LEADS = 'leads';
 const STORE_RAW = 'raw';
 const STORE_META = 'meta';
+const STORE_COMPANIES = 'companies';
 
 let dbPromise: Promise<IDBDatabase> | null = null;
 
@@ -24,6 +25,9 @@ function open(): Promise<IDBDatabase> {
       }
       if (!db.objectStoreNames.contains(STORE_META)) {
         db.createObjectStore(STORE_META);
+      }
+      if (!db.objectStoreNames.contains(STORE_COMPANIES)) {
+        db.createObjectStore(STORE_COMPANIES, { keyPath: 'companyId' });
       }
     };
     req.onsuccess = () => resolve(req.result);
@@ -91,4 +95,19 @@ export async function getSettings(): Promise<Settings> {
 
 export async function setSettings(settings: Settings): Promise<void> {
   await tx(STORE_META, 'readwrite', s => s.put(settings, 'settings'));
+}
+
+
+/* ---- company facts from the account pages ---------------------------- */
+
+export function putCompany(record: unknown): Promise<IDBValidKey> {
+  return tx(STORE_COMPANIES, 'readwrite', s => s.put(record as never));
+}
+
+export function allCompanies<T = unknown>(): Promise<T[]> {
+  return tx<T[]>(STORE_COMPANIES, 'readonly', s => s.getAll() as IDBRequest<T[]>);
+}
+
+export function clearCompanies(): Promise<void> {
+  return tx(STORE_COMPANIES, 'readwrite', s => s.clear()).then(() => undefined);
 }

@@ -8,6 +8,9 @@ const PATTERNS = [
   /\/sales-api\/salesApiLeadSearch/i,
   /\/sales-api\/salesApiPeopleSearch/i,
   /\/sales-api\/salesApiAccountSearch/i,
+  // Company/account detail pages: headcount, revenue band, CXO counts.
+  /\/sales-api\/salesApiCompanies/i,
+  /\/sales-api\/salesApiAccountProfiles/i,
 ];
 
 interface Capture { url: string; body: unknown; error?: string; at: number }

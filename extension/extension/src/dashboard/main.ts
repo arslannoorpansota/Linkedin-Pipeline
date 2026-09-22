@@ -1,4 +1,4 @@
-import { allLeads, allRaw, clearLeads, countLeads, getSettings, putLeads, putRaw, setSettings } from '../db';
+import { allCompanies, allLeads, allRaw, clearCompanies, clearLeads, countLeads, getSettings, putCompany, putLeads, putRaw, setSettings } from '../db';
 import { parseLeads } from '../lib/salesnav';
 import { download, toCsv, toJson } from '../lib/csv';
 import type { CaptureStats, Lead } from '../types';
@@ -187,6 +187,35 @@ chrome.runtime.onMessage.addListener(msg => {
     seenPaths.set(path, n);
     pushTrace(msg.hit ? 'hit' : 'tick');
     setConn('live', paging ? 'Collecting' : 'Connected');
+    return;
+  }
+
+  if (msg?.type === 'company') {
+    void (async () => {
+      await putCompany({ ...(msg.facts as object), gate: msg.gate });
+      const n = (await allCompanies()).length;
+      el('visitStat').textContent = `${n} companies read`;
+    })();
+    return;
+  }
+
+  if (msg?.type === 'queue') {
+    const m = msg as { event: string; index?: number; total?: number;
+                       company?: string; ok?: boolean; visited?: number; failed?: number };
+    if (m.event === 'progress') {
+      setStatus(`Reading ${m.index} of ${m.total}: ${m.company}`);
+      el('visitProgress').textContent = `${m.index} / ${m.total}`;
+    } else if (m.event === 'done') {
+      setConn('idle', 'Finished');
+      setStatus(`Done. Read ${m.visited} companies, ${m.failed} could not be read. `
+        + `Press Download company data.`, false);
+      visitBtn.textContent = 'Start visiting';
+    } else if (m.event === 'blocked') {
+      setConn('alert', 'Stopped');
+      setStatus('LinkedIn showed a limit or verification notice. Stop for today; '
+        + 'progress is saved and you can resume later.', true);
+      visitBtn.textContent = 'Start visiting';
+    }
     return;
   }
 
@@ -419,3 +448,79 @@ void (async () => {
 
   if (settings.autoRun) setTimeout(() => { if (!paging) void beginAutoRun(); }, 1200);
 })();
+
+
+/* ---- visit queue: walk every company page ---------------------------- */
+
+const visitBtn = el<HTMLButtonElement>('visit');
+let queueItems: { row: string; company: string; companyUrl: string; profileUrl: string }[] = [];
+
+el<HTMLInputElement>('visitFile').addEventListener('change', async event => {
+  const file = (event.target as HTMLInputElement).files?.[0];
+  if (!file) return;
+  const text = await file.text();
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  const head = (lines.shift() ?? '').split(',').map(h => h.replace(/^"|"$/g, '').trim());
+  const iRow = head.indexOf('row');
+  const iCo = head.indexOf('company');
+  const iUrl = head.indexOf('companyUrl');
+  const iProf = head.indexOf('profileUrl');
+  if (iUrl < 0) return setStatus('That CSV has no companyUrl column.', true);
+
+  queueItems = lines.map(line => {
+    const cells = line.match(/("([^"]|"")*"|[^,]*)/g)?.filter((_, i) => i % 2 === 0) ?? [];
+    const cell = (i: number) => (cells[i] ?? '').replace(/^"|"$/g, '').replace(/""/g, '"').trim();
+    return { row: cell(iRow), company: cell(iCo), companyUrl: cell(iUrl), profileUrl: cell(iProf) };
+  }).filter(x => x.companyUrl.startsWith('http'));
+
+  el('visitStat').textContent = `${queueItems.length} companies loaded`;
+  setStatus(`Loaded ${queueItems.length} companies. Press Start visiting.`);
+});
+
+visitBtn.addEventListener('click', async () => {
+  const state = await chrome.runtime.sendMessage({ type: 'queue:state' });
+  if (state?.running) {
+    await chrome.runtime.sendMessage({ type: 'queue:stop' });
+    visitBtn.textContent = 'Start visiting';
+    return setStatus('Stopped. Progress is saved.', true);
+  }
+  if (queueItems.length === 0) return setStatus('Load a CSV with company URLs first.', true);
+
+  const lo = Math.max(4, Number(el<HTMLInputElement>('visitMin').value) || 6) * 1000;
+  const hi = Math.max(lo, Number(el<HTMLInputElement>('visitMax').value) * 1000 || lo + 6000);
+  const res = await chrome.runtime.sendMessage({
+    type: 'queue:start', items: queueItems, minDelay: lo, maxDelay: hi,
+  });
+  if (res?.ok) {
+    visitBtn.textContent = 'Stop visiting';
+    setConn('live', 'Visiting');
+    setStatus(`Visiting ${res.queued} company pages. Leave this window open.`);
+  }
+});
+
+el('companyCsv').addEventListener('click', async () => {
+  const rows = await allCompanies<Record<string, unknown>>();
+  if (rows.length === 0) return setStatus('No company data yet.', true);
+  const flat = rows.map(r => {
+    const g = (r['gate'] ?? {}) as Record<string, unknown>;
+    return {
+      companyId: r['companyId'], name: r['name'], headcount: r['headcount'],
+      revenue: r['revenue'], industry: r['industry'], location: r['location'],
+      website: r['website'], employeesListed: r['employeesListed'],
+      decisionMakers: r['decisionMakers'], cxoCount: r['cxoCount'],
+      keep: g['keep'], gateReason: g['reason'], hasCto: g['hasCto'],
+      engineerTitles: (g['engineerTitles'] as string[] ?? []).join(' | '),
+      confident: g['confident'],
+      titles: (r['titles'] as string[] ?? []).join(' | '),
+      capturedAt: r['capturedAt'],
+    };
+  });
+  download(`companies-${Date.now()}.csv`, toCsv(flat as never), 'text/csv');
+  setStatus(`Saved ${flat.length} companies to Downloads.`);
+});
+
+el('clearCompanies').addEventListener('click', async () => {
+  await clearCompanies();
+  el('visitStat').textContent = '0 companies read';
+  setStatus('Cleared stored company data.');
+});

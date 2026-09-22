@@ -238,6 +238,10 @@ details.help b { color:var(--fg); }
   .bar { padding:0 14px; gap:10px; }
   .wrap { padding:0 14px 60px; }
 }
+  .filebtn { display:inline-flex; align-items:center; cursor:pointer;
+    padding:6px 12px; border:1px solid var(--line,#d0d0d0); border-radius:6px;
+    background:var(--btn,#f6f6f6); font:inherit; }
+  .filebtn:hover { background:var(--btnhover,#ececec); }
 </style>
 </head>
 <body>
@@ -279,6 +283,30 @@ details.help b { color:var(--fg); }
       <span class="field">every <input type="number" id="minDelay" value="4" min="2" max="60">–<input type="number" id="maxDelay" value="9" min="2" max="60">s</span>
       <span class="sep"></span>
       <label class="toggle"><input type="checkbox" id="autoRun"> <b>Start automatically</b> when this page opens</label>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Check companies<span class="spacer"></span>
+      <span class="stat" id="visitStat">0 companies read</span></p>
+    <p style="margin:0 0 10px;color:var(--muted,#666);font-size:13px">
+      Load the CSV of company URLs, then this opens each account page in turn and
+      reads headcount, revenue and the job titles on it. It works out whether the
+      company has a CTO or any engineer. Leave the window open while it runs.
+    </p>
+    <div class="controls">
+      <label class="filebtn">Load company list
+        <input type="file" id="visitFile" accept=".csv" hidden>
+      </label>
+      <button class="run" id="visit">Start visiting</button>
+      <span class="stat" id="visitProgress"></span>
+      <span class="sep"></span>
+      <label>every <input id="visitMin" type="number" value="6" min="4" style="width:3.5em"></label>
+      <label>&ndash; <input id="visitMax" type="number" value="12" min="5" style="width:3.5em"> s</label>
+    </div>
+    <div class="controls" style="margin-top:8px">
+      <button id="companyCsv">Download company data</button>
+      <button id="clearCompanies">Clear company data</button>
     </div>
   </section>
 

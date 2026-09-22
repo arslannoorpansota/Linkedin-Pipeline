@@ -22,6 +22,8 @@ export interface CompanyFacts {
   cxoCount: number | null;
   /** Every job title we could see anywhere on the page. */
   titles: string[];
+  /** Trimmed HTML of the people areas, so we can see what actually rendered. */
+  domSample: string;
   capturedAt: string;
 }
 
@@ -40,6 +42,26 @@ const clean = (s: string | null | undefined): string | null => {
 function labelledCount(text: string, label: RegExp): number | null {
   const m = text.match(new RegExp(label.source + String.raw`[^(]*\((\d[\d,]*)\)`, 'i'));
   return m ? num(m[1]) : null;
+}
+
+/** The same counts, read off the links that carry them. */
+function countFromLinks(doc: Document, label: RegExp): number | null {
+  for (const a of doc.querySelectorAll('a, button')) {
+    const t = clean(a.textContent) ?? '';
+    if (label.test(t)) {
+      const n = t.match(/\((\d[\d,]*)\)/);
+      if (n) return num(n[1]);
+    }
+  }
+  return null;
+}
+
+/** True once the account page has painted the parts we read. */
+export function pageIsReady(doc: Document): boolean {
+  const t = doc.body?.textContent ?? '';
+  return /All employees\s*\(/i.test(t)
+      || /\d[\d,]*\s+employees?\b/i.test(t)
+      || /Relationship explorer/i.test(t);
 }
 
 export function companyIdFromUrl(url: string): string | null {
@@ -62,8 +84,23 @@ export function collectTitles(root: ParentNode): string[] {
   return [...out];
 }
 
+/** A slice of the page around anything that looks like a person, capped so the
+ *  store stays small. Diagnostic only. */
+function sampleDom(doc: Document): string {
+  const bits: string[] = [];
+  const marks = ['employee', 'people', 'decision', 'cxo', 'persona', 'relationship'];
+  for (const el of doc.querySelectorAll('section, div[class*="card"], a[href*="/sales/lead/"]')) {
+    const t = (el.textContent ?? '').toLowerCase();
+    if (marks.some(m => t.includes(m)) && el.innerHTML.length < 6000) {
+      bits.push(el.outerHTML.slice(0, 3000));
+      if (bits.length >= 4) break;
+    }
+  }
+  return bits.join('\n<!-- ---- -->\n').slice(0, 12000);
+}
+
 export function parseCompanyPage(doc: Document, url: string): CompanyFacts {
-  const text = doc.body?.innerText?.slice(0, 20000) ?? '';
+  const text = (doc.body?.innerText ?? doc.body?.textContent ?? '').slice(0, 20000);
 
   const pick = (sel: string): string | null =>
     clean(doc.querySelector(sel)?.textContent);
@@ -72,6 +109,7 @@ export function parseCompanyPage(doc: Document, url: string): CompanyFacts {
   // "All employees (15)". Prefer the explicit line, fall back to the link.
   const headcount =
     num(text.match(/([\d,]+)\s+employees?\b/i)?.[1]) ??
+    countFromLinks(doc, /All employees/i) ??
     labelledCount(text, /All employees/);
 
   const website = doc.querySelector<HTMLAnchorElement>(
@@ -87,10 +125,11 @@ export function parseCompanyPage(doc: Document, url: string): CompanyFacts {
     location: pick('[data-anonymize="location"]'),
     website: website?.href ?? null,
     description: clean(doc.querySelector('[data-anonymize="company-blurb"], .about__description')?.textContent),
-    employeesListed: labelledCount(text, /All employees/),
-    decisionMakers: labelledCount(text, /Decision makers/),
-    cxoCount: labelledCount(text, /CXO/),
+    employeesListed: countFromLinks(doc, /All employees/i) ?? labelledCount(text, /All employees/),
+    decisionMakers: countFromLinks(doc, /Decision makers/i) ?? labelledCount(text, /Decision makers/),
+    cxoCount: countFromLinks(doc, /^CXO/i) ?? labelledCount(text, /CXO/),
     titles: collectTitles(doc),
+    domSample: sampleDom(doc),
     capturedAt: new Date().toISOString(),
   };
 }

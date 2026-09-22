@@ -1,6 +1,6 @@
 import { CHANNEL } from '../lib/channel';
 import { AutoPager, type AutoPageConfig, type AutoPageEvent } from './autopage';
-import { parseCompanyPage, founderGate } from '../lib/company';
+import { parseCompanyPage, founderGate, pageIsReady } from '../lib/company';
 import { BLOCK_MARKERS } from '../background/queue';
 
 console.info('[LLE] content script running on', window.location.href);
@@ -82,14 +82,22 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       sendResponse({ ok: false, blocked: true, url: window.location.href });
       return true;
     }
-    try {
-      const facts = parseCompanyPage(document, window.location.href);
-      const gate = founderGate(facts);
-      send({ type: 'company', facts, gate, pageUrl: window.location.href });
-      sendResponse({ ok: true, facts, gate });
-    } catch (err) {
-      sendResponse({ ok: false, error: String(err) });
-    }
+    // The account page paints its people well after `load`; poll rather than
+    // guess a delay, or we read an empty shell and call it "no engineers".
+    void (async () => {
+      const deadline = Date.now() + 15000;
+      while (!pageIsReady(document) && Date.now() < deadline) {
+        await new Promise(r => setTimeout(r, 500));
+      }
+      try {
+        const facts = parseCompanyPage(document, window.location.href);
+        const gate = founderGate(facts);
+        send({ type: 'company', facts, gate, pageUrl: window.location.href });
+        sendResponse({ ok: true, ready: pageIsReady(document), facts, gate });
+      } catch (err) {
+        sendResponse({ ok: false, error: String(err) });
+      }
+    })();
     return true;
   }
 

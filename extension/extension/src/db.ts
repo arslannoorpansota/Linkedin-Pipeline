@@ -1,12 +1,13 @@
 import type { Lead, Settings } from './types';
 
 const DB_NAME = 'lle';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 const STORE_LEADS = 'leads';
 const STORE_RAW = 'raw';
 const STORE_META = 'meta';
 const STORE_COMPANIES = 'companies';
+const STORE_PROFILES = 'profiles';
 
 let dbPromise: Promise<IDBDatabase> | null = null;
 
@@ -28,6 +29,9 @@ function open(): Promise<IDBDatabase> {
       }
       if (!db.objectStoreNames.contains(STORE_COMPANIES)) {
         db.createObjectStore(STORE_COMPANIES, { keyPath: 'companyId' });
+      }
+      if (!db.objectStoreNames.contains(STORE_PROFILES)) {
+        db.createObjectStore(STORE_PROFILES, { keyPath: 'profileId' });
       }
     };
     req.onsuccess = () => resolve(req.result);
@@ -110,4 +114,19 @@ export function allCompanies<T = unknown>(): Promise<T[]> {
 
 export function clearCompanies(): Promise<void> {
   return tx(STORE_COMPANIES, 'readwrite', s => s.clear()).then(() => undefined);
+}
+
+
+/* ---- profile facts from the lead pages ------------------------------- */
+
+export function putProfile(record: unknown): Promise<IDBValidKey> {
+  return tx(STORE_PROFILES, 'readwrite', s => s.put(record as never));
+}
+
+export function allProfiles<T = unknown>(): Promise<T[]> {
+  return tx<T[]>(STORE_PROFILES, 'readonly', s => s.getAll() as IDBRequest<T[]>);
+}
+
+export function clearProfiles(): Promise<void> {
+  return tx(STORE_PROFILES, 'readwrite', s => s.clear()).then(() => undefined);
 }

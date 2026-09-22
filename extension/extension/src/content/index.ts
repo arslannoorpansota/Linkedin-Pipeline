@@ -1,6 +1,7 @@
 import { CHANNEL } from '../lib/channel';
 import { AutoPager, type AutoPageConfig, type AutoPageEvent } from './autopage';
 import { parseCompanyPage, founderGate, pageIsReady } from '../lib/company';
+import { parseProfilePage, rateProfile, profileIsReady } from '../lib/profile';
 import { BLOCK_MARKERS } from '../background/queue';
 
 console.info('[LLE] content script running on', window.location.href);
@@ -82,12 +83,25 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
       sendResponse({ ok: false, blocked: true, url: window.location.href });
       return true;
     }
-    // The account page paints its people well after `load`; poll rather than
-    // guess a delay, or we read an empty shell and call it "no engineers".
+    // Pages paint well after `load`; poll rather than guess a delay, or we
+    // read an empty shell and call it "no engineers".
+    const wantProfile = msg.kind === 'profile';
     void (async () => {
+      const ready = wantProfile ? profileIsReady : pageIsReady;
       const deadline = Date.now() + 15000;
-      while (!pageIsReady(document) && Date.now() < deadline) {
+      while (!ready(document) && Date.now() < deadline) {
         await new Promise(r => setTimeout(r, 500));
+      }
+      if (wantProfile) {
+        try {
+          const facts = parseProfilePage(document, window.location.href);
+          const verdict = rateProfile(facts);
+          send({ type: 'profile', facts, verdict, pageUrl: window.location.href });
+          sendResponse({ ok: true, ready: profileIsReady(document), facts, verdict });
+        } catch (err) {
+          sendResponse({ ok: false, error: String(err) });
+        }
+        return;
       }
       try {
         const facts = parseCompanyPage(document, window.location.href);

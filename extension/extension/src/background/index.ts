@@ -90,14 +90,23 @@ async function step(): Promise<void> {
   }
 
   const loaded = await waitForLoad(tabId);
-  // Give the SPA a moment to render after `complete`; it paints late.
-  await new Promise(r => setTimeout(r, 2500));
+  await new Promise(r => setTimeout(r, 1500));
 
   const result = loaded
     ? await scrape(tabId, 'company')
     : { ok: false, error: 'page did not finish loading' };
 
   const res = result as { ok?: boolean; blocked?: boolean; error?: string };
+
+  // Then the person. The company page cannot tell us whether the founder is
+  // technical; their own profile can, and it renders in a background tab.
+  if (!res?.blocked && item.profileUrl) {
+    await new Promise(r => setTimeout(r, jitter(2000, 4000)));
+    await chrome.tabs.update(tabId, { url: item.profileUrl });
+    const pLoaded = await waitForLoad(tabId);
+    await new Promise(r => setTimeout(r, 1500));
+    if (pLoaded) await scrape(tabId, 'profile');
+  }
 
   if (res?.blocked) {
     await setState({ running: false, stoppedReason: 'LinkedIn showed a limit or verification notice' });

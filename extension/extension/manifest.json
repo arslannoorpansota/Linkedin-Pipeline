@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "LinkedIn Lead Extractor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Extract Sales Navigator leads to JSON/CSV for downstream filtering and enrichment.",
   "permissions": [
     "storage",

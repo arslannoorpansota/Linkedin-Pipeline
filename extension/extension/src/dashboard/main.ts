@@ -1,4 +1,4 @@
-import { allCompanies, allLeads, allRaw, clearCompanies, clearLeads, countLeads, getSettings, putCompany, putLeads, putRaw, setSettings } from '../db';
+import { allCompanies, allLeads, allProfiles, allRaw, clearCompanies, clearLeads, clearProfiles, countLeads, getSettings, putCompany, putLeads, putProfile, putRaw, setSettings } from '../db';
 import { parseLeads } from '../lib/salesnav';
 import { download, rowsToCsv, toCsv, toJson } from '../lib/csv';
 import type { CaptureStats, Lead } from '../types';
@@ -195,6 +195,15 @@ chrome.runtime.onMessage.addListener(msg => {
       await putCompany({ ...(msg.facts as object), gate: msg.gate });
       const n = (await allCompanies()).length;
       el('visitStat').textContent = `${n} companies read`;
+    })();
+    return;
+  }
+
+  if (msg?.type === 'profile') {
+    void (async () => {
+      await putProfile({ ...(msg.facts as object), verdict: msg.verdict });
+      const n = (await allProfiles()).length;
+      el('visitStat').textContent += ` / ${n} profiles`;
     })();
     return;
   }
@@ -531,7 +540,31 @@ el('companyCsv').addEventListener('click', async () => {
   setStatus(`Saved ${flat.length} companies to Downloads.`);
 });
 
+el('companyCsv').addEventListener('dblclick', () => {/* noop */});
+
+async function exportProfiles(): Promise<void> {
+  const rows = await allProfiles<Record<string, unknown>>();
+  if (rows.length === 0) return setStatus('No profile data yet.', true);
+  const flat = rows.map(r => {
+    const v = (r['verdict'] ?? {}) as Record<string, unknown>;
+    return {
+      profileId: r['profileId'], name: r['name'], headline: r['headline'],
+      currentTitle: r['currentTitle'], about: r['about'],
+      experience: (r['experience'] as string[] ?? []).join(' | '),
+      education: (r['education'] as string[] ?? []).join(' | '),
+      profileRating: v['rating'], profileReason: v['reason'],
+      technical: v['technical'],
+      evidence: (v['evidence'] as string[] ?? []).join(' | '),
+      capturedAt: r['capturedAt'], domSample: r['domSample'],
+    };
+  });
+  download(`profiles-${Date.now()}.csv`, rowsToCsv(flat as never), 'text/csv');
+  setStatus(`Saved ${flat.length} profiles to Downloads.`);
+}
+el('profileCsv').addEventListener('click', () => { void exportProfiles(); });
+
 el('clearCompanies').addEventListener('click', async () => {
+  await clearProfiles();
   await clearCompanies();
   el('visitStat').textContent = '0 companies read';
   setStatus('Cleared stored company data.');

@@ -524,6 +524,7 @@ el('companyCsv').addEventListener('click', async () => {
       confident: g['confident'],
       titles: (r['titles'] as string[] ?? []).join(' | '),
       capturedAt: r['capturedAt'],
+      domSample: r['domSample'],
     };
   });
   download(`companies-${Date.now()}.csv`, rowsToCsv(flat as never), 'text/csv');

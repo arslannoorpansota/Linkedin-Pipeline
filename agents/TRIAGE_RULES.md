@@ -72,6 +72,34 @@ See `CADENCE.md` §5.
 
 ## 3. The founder gate — the decisive keep/skip test
 
+> ### Set by Faizan 2026-09-25 — the four gates, in order (applies to every lead)
+>
+> A KEEP must pass **all four**. Fail any one = SKIP.
+>
+> 1. **Title** on the row is **Founder, Co-Founder or CEO**. Any other title (CFO, Director,
+>    Advisor, VP, Recruiter, Partnerships Lead) is a skip, even if they founded something on the side.
+> 2. **The founder is non-technical** — no developer / engineer / R&D / IT career, no "writes code".
+> 3. **No engineering in the company** — no CTO, engineer, developer or technical lead, and no
+>    software subsidiary. (Bill Tyson / IIP Group: owns Insurance Software Automation, a software
+>    development company → skip.)
+> 4. **There is a software product to build.** A non-technical founder whose business has nothing
+>    to do with software is a skip: insurance agency, broker, recruiter, clinic, lab, fund, trainer,
+>    distributor, manufacturer, association. A product that is already shipped and running is also
+>    a skip. This **replaces** the `keep-non-technical-no-cto` memory's "everything else is a caveat"
+>    for service businesses.
+>
+> **Always read the lead's full `profile.json` and `company.json` before deciding.** Never judge
+> "technical" or "no product" from the list view. Software subsidiaries and shipped apps show up
+> only in the full company description.
+>
+> **Never add a duplicate row.** Dedupe on URL, profile id, bare name (strip ", CIRM", ", DO",
+> "Dr") and company alone before writing — four dupes slipped in on 2026-09-25 because the
+> sheet spells names without the credential suffix.
+>
+> First applied to the 41 leads of 2026-09-24 (rows 2505–2545 after the 2026-09-25 deletion):
+> gates 1–3 kept 27; gate 4 on the full json left **3** (Jeffrey Fry P7, Rob Jacomen P6,
+> Tanesha B. P6).
+
 > **Technical founder = skip. Non-technical founder with a real build need = keep.**
 >
 > ### Set by Faizan 2026-09-19 — FINAL, and it comes FIRST
